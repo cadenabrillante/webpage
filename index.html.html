@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadena Brillante · a network of minds in science and technology</title>
+  <style>
+    :root {
+      --navy-main: #16253D;
+      --navy-deep: #0B1220;
+      --navy-panel: #223756;
+      --orange: #F97316;
+      --cream: #FDF4E8;
+      --peach: #F7B267;
+      --teal: #5BB6BC;
+      --salvia: #9BB08A;
+      --oliva: #55743F;
+      --marron: #8A6D52;
+      --rojo: #C2453A;
+      --vino: #8C3B4A;
+      --grey-pending: #A9B6C9;
+      --grey-muted: #8492A8;
+      --line: #3B4A61;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      background-color: var(--navy-deep);
+      color: var(--cream);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      background: var(--navy-main);
+      border-bottom: 2px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: 40px;
+      object-fit: contain;
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+    }
+
+    .logo-tagline {
+      font-size: 12px;
+      color: var(--orange);
+      text-transform: lowercase;
+      line-height: 1.2;
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--cream);
+      padding: 8px 14px;
+      border-radius: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      border-color: var(--line);
+      background: var(--navy-panel);
+    }
+
+    .nav-btn.active {
+      background: var(--orange);
+      color: var(--navy-deep);
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .page-section {
+      display: none;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.15;
+      margin-bottom: 16px;
+      color: var(--cream);
+    }
+
+    h2 {
+      font-size: 24px;
+      margin: 32px 0 16px;
+      color: var(--orange);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+
+    h3 {
+      font-size: 18px;
+      margin: 20px 0 10px;
+      color: var(--peach);
+    }
+
+    p { margin-bottom: 16px; color: var(--cream); }
+
+    .hero {
+      background: var(--navy-panel);
+      padding: 40px;
+      border-radius: 12px;
+      border-left: 4px solid var(--orange);
+      margin-bottom: 32px;
+    }
+
+    .hero-subline {
+      font-size: 18px;
+      color: var(--grey-pending);
+      margin-bottom: 24px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--orange);
+      color: var(--navy-deep);
+      padding: 12px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: background 0.2s ease;
+    }
+
+    .btn:hover { background: var(--peach); }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--line);
+      color: var(--cream);
+    }
+
+    .btn-secondary:hover {
+      background: var(--navy-main);
+      border-color: var(--cream);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin: 28px 0;
+    }
+
+    .stat-card {
+      background: var(--navy-main);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 48px;
+      font-weight: 800;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      color: var(--grey-pending);
+    }
+
+    .panel {
+      background: var(--navy-main);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      margin-left: 20px;
+      margin-bottom: 16px;
+    }
+
+    li { margin-bottom: 8px; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: var(--navy-main);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      background: var(--navy-panel);
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .sources {
+      font-size: 12px;
+      color: var(--grey-muted);
+      margin-top: 16px;
+      border-top: 1px solid var(--line);
+      padding-top: 12px;
+    }
+
+    footer {
+      background: var(--navy-main);
+      border-top: 1px solid var(--line);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 14px;
+      color: var(--grey-muted);
+    }
+
+    footer a { color: var(--teal); text-decoration: none; }
+
+    @media (max-width: 600px) {
+      .nav-container { flex-direction: column; align-items: flex-start; }
+      .hero { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <!-- SVG Brand Symbol (Replace with <img src="logo.png" alt="Cadena Brillante" class="logo-img"> if using external image file) -->
+        <svg class="logo-img" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="40" height="40" rx="8" fill="#F97316"/>
+          <path d="M20 9L29 20L20 31L11 20L20 9Z" fill="#16253D"/>
+          <circle cx="20" cy="20" r="4" fill="#FDF4E8"/>
+        </svg>
+        
+        <div class="logo-text">
+          <span class="logo-title">Cadena Brillante</span>
+          <span class="logo-tagline">a network of minds in science and technology</span>
+        </div>
+      </div>
+      <nav>
+        <button class="nav-btn active" onclick="showPage('home', event)">Home</button>
+        <button class="nav-btn" onclick="showPage('who-we-are', event)">Who we are</button>
+        <button class="nav-btn" onclick="showPage('what-we-do', event)">What we do</button>
+        <button class="nav-btn" onclick="showPage('scholarship', event)">Scholarship</button>
+        <button class="nav-btn" onclick="showPage('tips', event)">Application tips</button>
+        <button class="nav-btn" onclick="showPage('contact', event)">Contact</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- PAGE 1: HOME -->
+    <section id="home" class="page-section active">
+      <div class="hero">
+        <h1>Talent shines everywhere. Opportunity does not.</h1>
+        <p class="hero-subline">Cadena Brillante supports access to education in Piura, Peru, with a focus on women in STEM.</p>
+        <div class="btn-group">
+          <button class="btn" onclick="showPage('scholarship', event)">See the scholarship →</button>
+          <button class="btn btn-secondary" onclick="showPage('contact', event)">Get in touch →</button>
+        </div>
+      </div>
+
+      <div class="grid-3">
+        <div class="stat-card">
+          <div class="stat-number">2</div>
+          <div class="stat-label">master’s scholarships in Spain</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">4</div>
+          <div class="stat-label">primary schools in Piura equipped with school materials</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">~450</div>
+          <div class="stat-label">pupils reached, especially girls</div>
+        </div>
+      </div>
+
+      <div class="panel">
+        <p>We are a small non-profit organisation built by three people. We work at both ends of education: we equip primary schools in Piura with school materials, and we fund master’s scholarships in Spain for outstanding women from the region. We work with the University of Piura, which promotes the programme on campus and helps select the scholars, and with a partner university in Spain.</p>
+      </div>
+
+      <h2>Why Piura, why now</h2>
+      <ul>
+        <li>32% of people in Piura live in poverty, against a national average of 28%.</li>
+        <li>At age 15, 19% of girls in Peru expect a career in STEM, against 38% of boys — one of the widest gaps in Latin America.</li>
+        <li>Only 2% of adults in Peru hold a master’s degree or equivalent, against an OECD average of 16%.</li>
+        <li>The OECD identifies the absence of female role models as a central barrier in STEM, and recommends mentoring and visible role models. Girls need to see women succeeding in STEM to believe they can too.</li>
+      </ul>
+
+      <div class="sources">
+        Poverty — INEI, Evolución de la Pobreza Monetaria 2015–2024 (May 2025). STEM career expectations and role models — OECD (2025), Gender Differences in Education, Skills and STEM Careers in Latin America and the Caribbean, based on PISA 2022. Master’s attainment — OECD, Education at a Glance 2025.
+      </div>
+
+      <h2>Sustainable Development Goals</h2>
+      <p>Our work supports the UN Sustainable Development Goals, in particular SDG 4 (Quality Education), SDG 5 (Gender Equality) and SDG 10 (Reduced Inequalities).</p>
+
+      <div class="panel" style="margin-top: 24px; border-left: 3px solid var(--teal);">
+        <p style="margin:0; font-weight: 500;">Two lives changed directly. Hundreds of children with the materials they need to learn. Written and run by three volunteers.</p>
+      </div>
+    </section>
+
+    <!-- PAGE 2: WHO WE ARE -->
+    <section id="who-we-are" class="page-section">
+      <h1>Who we are</h1>
+      <p>Cadena Brillante is a non-profit organisation created by three people who believe education should be a right, not a privilege. We built it in our own time, from scratch, because it matters to us.</p>
+
+      <h2>The Team</h2>
+      <div class="grid-3">
+        <div class="panel">
+          <h3>Janek</h3>
+          <p style="color:var(--orange); font-size:14px; font-weight:600;">Project Lead</p>
+          <p>Data analyst. Leads the project, the partnership with the University of Piura and the design of the pilot.</p>
+        </div>
+        <div class="panel">
+          <h3>Alex</h3>
+          <p style="color:var(--orange); font-size:14px; font-weight:600;">Impact Lead</p>
+          <p>Data analyst. Responsible for results tracking, the quarterly progress report and events.</p>
+        </div>
+        <div class="panel">
+          <h3>Izabela</h3>
+          <p style="color:var(--orange); font-size:14px; font-weight:600;">Fundraising & Communications Lead</p>
+          <p>Software engineer and a woman in STEM. Leads donor relations, fund tracking and communications.</p>
+        </div>
+      </div>
+
+      <h2>How We Work</h2>
+      <ul>
+        <li>No salaries and no overhead. Every euro goes to the beneficiaries.</li>
+        <li>Tuition is paid directly to universities. No money is transferred to individuals.</li>
+        <li>Tuition goes to institutions, so the money is traceable end to end.</li>
+        <li>Scholars are selected anonymously by a committee, not by us alone.</li>
+        <li>We report on results, not on intentions.</li>
+      </ul>
+
+      <h2>Our Partners</h2>
+      <p><strong>University of Piura (UDEP)</strong> — our institutional partner in Peru. UDEP promotes the scholarship among its students, joins the selection panel, and hosts our workshop on its campus.</p>
+      <p><strong>A partner university in Spain</strong> — receives the donation, issues the donor’s tax certificate, and directs the funds to the two master’s scholarships.</p>
+
+      <h2>Mentoring and Support</h2>
+      <p>Scholars are not left alone with a transfer of money. They receive guidance through the whole process — choosing a programme, writing a CV and motivation letter, applying to the university, and then the practical side: documents, relocation and what to expect from life abroad. That support comes from our team and our network, which includes graduates of the University of Manchester and the Barcelona School of Economics.</p>
+    </section>
+
+    <!-- PAGE 3: WHAT WE DO -->
+    <section id="what-we-do" class="page-section">
+      <h1>What we do</h1>
+
+      <h2>Master’s scholarships in Spain</h2>
+      <p>We fund two master’s scholarships in Spain for outstanding women from Piura who have the academic record but not the means. Both scholarships cover the full tuition fee, paid directly to the university. Scholars also receive support with living costs, and help with their application and mentoring throughout.</p>
+      <p>We focus on future-oriented fields — mainly engineering, and possibly cybersecurity and artificial intelligence. The programmes we support are chosen for strong employment outcomes and, where available, internships built into the course.</p>
+      <p>Applicants choose up to two programmes from the list we support. Selection is made together with the University of Piura, and applications are assessed anonymously.</p>
+
+      <h2>School materials for primary schools in Piura</h2>
+      <p>Alongside the scholarships, we equip primary schools in Piura with the school materials their pupils need, reaching around 450 children, especially girls. The aim is simple and direct: a child who has the basic materials to work with is a child who can keep learning.</p>
+
+      <h2>Workshops in Piura — our pilot</h2>
+      <p>Between 28 September and 8 October 2026 we are running our first activities on the ground in Piura: a STEM workshop for around 40 schoolchildren, and a workshop for around 20 university students at the UDEP campus on how to apply to universities abroad.</p>
+    </section>
+
+    <!-- PAGE 4: SCHOLARSHIP -->
+    <section id="scholarship" class="page-section">
+      <h1>Scholarship</h1>
+      
+      <h2>Who the scholarship is for</h2>
+      <p>The programme is for women from the Piura region who have completed a bachelor’s degree and plan to study a master’s in a STEM field in Spain.</p>
+      
+      <h3>You can apply if:</h3>
+      <ul>
+        <li>you hold a bachelor’s degree and have completed your thesis</li>
+        <li>you are interested in engineering, and possibly cybersecurity or artificial intelligence</li>
+        <li>you meet the entry requirements of the programme you choose — these are set by the university and published on its website</li>
+        <li>you are able to cover the remaining costs of studying abroad, since the scholarship covers tuition in full and part of your living costs</li>
+      </ul>
+
+      <h2>What the scholarship includes</h2>
+      <ul>
+        <li>Full tuition, paid directly to the university</li>
+        <li>Support with living costs</li>
+        <li>Help with your application: programme choice, CV, motivation letter</li>
+        <li>Mentoring before and during your studies</li>
+        <li>Practical guidance on documents, relocation and life abroad</li>
+      </ul>
+
+      <h2>How to apply</h2>
+      <h3>Stage 1 — Application</h3>
+      <p>Choose up to two programmes from the list we support and rank them by preference. We recommend choosing programmes in the same or a related field. Your application is assessed on your first choice; the second may be used at a later stage, for example if your first choice turns out to be unavailable.</p>
+
+      <p><strong>Documents required:</strong> bachelor’s diploma and transcript (a scan is enough at this stage), CV (one page), motivation letter (maximum 700 words, for your first choice), completed application form.</p>
+
+      <p><strong>Your motivation letter should answer three questions:</strong></p>
+      <ul>
+        <li>Why this programme and this university?</li>
+        <li>How has your experience so far prepared you for it?</li>
+        <li>How will this master’s help you reach your professional goals?</li>
+      </ul>
+
+      <h3>How applications are assessed</h3>
+      <table>
+        <thead>
+          <tr><th>Criterion</th><th>Weight</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Academic grades</td><td>60%</td></tr>
+          <tr><td>Experience</td><td>15%</td></tr>
+          <tr><td>Motivation letter</td><td>15%</td></tr>
+          <tr><td>Courses and related activity</td><td>5%</td></tr>
+          <tr><td>English</td><td>5%</td></tr>
+        </tbody>
+      </table>
+      <p>Applications are assessed anonymously. Preparing a good application should take one or two days — we value your time as much as our own.</p>
+
+      <h3>Stage 2 — Interview</h3>
+      <p>The highest-scoring candidates are invited to an informal online interview of about 30 minutes. It helps us understand your motivation, how you think, and how prepared you are to study and live abroad.</p>
+
+      <h2>Timeline</h2>
+      <table>
+        <thead>
+          <tr><th>When</th><th>What happens</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>December 2026</td><td>The call opens. Applications are invited, with support from UDEP on campus.</td></tr>
+          <tr><td>January – April 2027</td><td>Selected candidates are supported with their university applications — CV, motivation letter, submission.</td></tr>
+          <tr><td>April 2027</td><td>The two highest-ranked candidates holding an offer of admission receive the scholarship.</td></tr>
+          <tr><td>September 2027</td><td>Studies begin in Spain.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- PAGE 5: APPLICATION TIPS -->
+    <section id="tips" class="page-section">
+      <h1>Application tips</h1>
+      <p>Preparing a good application should take about one or two days. Focus on quality, not length.</p>
+
+      <div class="panel">
+        <h3>Choose your programme deliberately</h3>
+        <p>Read the syllabus on the university’s website. Make sure you understand what the programme actually covers and that it fits your plans.</p>
+      </div>
+
+      <div class="panel">
+        <h3>CV: be specific, not general</h3>
+        <p>Instead of listing responsibilities, show what you actually did and what came of it.</p>
+      </div>
+
+      <div class="panel">
+        <h3>Motivation letter: focus on why, not what</h3>
+        <p>Do not just describe your experience. Show why you are choosing this programme, how your experience has prepared you for it, and how it will help you reach your goals.</p>
+      </div>
+
+      <div class="panel">
+        <h3>Avoid general statements — show the real you</h3>
+        <p>Instead of “I have always been interested in…”, give a concrete example.</p>
+      </div>
+
+      <div class="panel">
+        <h3>Be consistent</h3>
+        <p>Your CV, your motivation letter and your choice of programme should tell one coherent story. You do not always need to repeat achievements from your CV in the letter.</p>
+      </div>
+
+      <div class="panel">
+        <h3>For the interview</h3>
+        <ul>
+          <li>Find a quiet place with no distractions</li>
+          <li>Check your internet connection in advance</li>
+          <li>Turn your camera on, use a neutral background, and dress tidily</li>
+          <li>Be ready to talk about why you chose your programme and what your plans are</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PAGE 6: CONTACT -->
+    <section id="contact" class="page-section">
+      <h1>Contact</h1>
+      <p>We are three volunteers, so we answer every message ourselves. Write to us at <a href="mailto:equipo@cadenabrillante.org" style="color:var(--orange);">equipo@cadenabrillante.org</a>.</p>
+      <p>If you are a candidate with a question about the scholarship, an organisation that works in Piura, or a university interested in the programme, we would like to hear from you.</p>
+      
+      <div class="panel" style="margin-top:24px;">
+        <p><strong>Email:</strong> equipo@cadenabrillante.org</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Cadena Brillante · <a href="mailto:equipo@cadenabrillante.org">equipo@cadenabrillante.org</a></p>
+  </footer>
+
+  <script>
+    function showPage(pageId, evt) {
+      const sections = document.querySelectorAll('.page-section');
+      const buttons = document.querySelectorAll('.nav-btn');
+      
+      sections.forEach(section => section.classList.remove('active'));
+      buttons.forEach(button => button.classList.remove('active'));
+
+      document.getElementById(pageId).classList.add('active');
+      
+      if (evt && evt.target) {
+        evt.target.classList.add('active');
+      } else {
+        const targetBtn = Array.from(buttons).find(b => b.getAttribute('onclick').includes(pageId));
+        if (targetBtn) targetBtn.classList.add('active');
+      }
+      
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
