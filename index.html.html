@@ -33,6 +33,10 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    /* Language toggling visibility rules */
+    body.lang-en .lang-es { display: none !important; }
+    body.lang-es .lang-en { display: none !important; }
+
     header {
       background: var(--navy-main);
       border-bottom: 2px solid var(--line);
@@ -44,11 +48,10 @@
     .nav-container {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 16px 24px;
+      padding: 12px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
       gap: 16px;
     }
 
@@ -57,11 +60,13 @@
       align-items: center;
       gap: 12px;
       text-decoration: none;
+      flex-shrink: 0; /* Prevents logo section from squeezing */
     }
 
     .logo-img {
-      height: 40px;
-      width: 40px;
+      height: 48px;
+      width: auto;
+      max-width: 160px; /* Prevents long image ALT text from widening header */
       object-fit: contain;
       flex-shrink: 0;
     }
@@ -86,21 +91,28 @@
       line-height: 1.2;
     }
 
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: 0;
+    }
+
     nav {
       display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
+      gap: 4px;
     }
 
     .nav-btn {
       background: transparent;
       border: 1px solid transparent;
       color: var(--cream);
-      padding: 8px 14px;
+      padding: 6px 10px;
       border-radius: 6px;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 500;
       cursor: pointer;
+      white-space: nowrap;
       transition: all 0.2s ease;
     }
 
@@ -113,6 +125,33 @@
       background: var(--orange);
       color: var(--navy-deep);
       font-weight: 600;
+    }
+
+    /* Language Switcher Pill */
+    .lang-switcher {
+      display: flex;
+      background: var(--navy-panel);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 2px;
+      margin-left: 8px;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--grey-pending);
+      padding: 4px 10px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .lang-btn.active {
+      background: var(--orange);
+      color: var(--navy-deep);
     }
 
     main {
@@ -281,37 +320,64 @@
 
     footer a { color: var(--teal); text-decoration: none; }
 
-    @media (max-width: 600px) {
-      .nav-container { flex-direction: column; align-items: flex-start; }
-      .hero { padding: 24px; }
-    }
+    @media (max-width: 900px) {
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .nav-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
   </style>
 </head>
-<body>
+<body class="lang-en">
 
   <header>
     <div class="nav-container">
       <div class="logo">
-        <!-- SVG Brand Symbol (Replace with <img src="logo.png" alt="Cadena Brillante" class="logo-img"> if using external image file) -->
-        <svg class="logo-img" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="40" height="40" rx="8" fill="#F97316"/>
-          <path d="M20 9L29 20L20 31L11 20L20 9Z" fill="#16253D"/>
-          <circle cx="20" cy="20" r="4" fill="#FDF4E8"/>
-        </svg>
-        
+        <img src="1.png" alt="Cadena Brillante Logo" class="logo-img">
         <div class="logo-text">
           <span class="logo-title">Cadena Brillante</span>
-          <span class="logo-tagline">a network of minds in science and technology</span>
+          <span class="logo-tagline lang-en">a network of minds in science and technology</span>
+          <span class="logo-tagline lang-es">una red de mentes en ciencia y tecnología</span>
         </div>
       </div>
-      <nav>
-        <button class="nav-btn active" onclick="showPage('home', event)">Home</button>
-        <button class="nav-btn" onclick="showPage('who-we-are', event)">Who we are</button>
-        <button class="nav-btn" onclick="showPage('what-we-do', event)">What we do</button>
-        <button class="nav-btn" onclick="showPage('scholarship', event)">Scholarship</button>
-        <button class="nav-btn" onclick="showPage('tips', event)">Application tips</button>
-        <button class="nav-btn" onclick="showPage('contact', event)">Contact</button>
-      </nav>
+      
+      <div class="nav-right">
+        <nav>
+          <button class="nav-btn active" onclick="showPage('home', event)">
+            <span class="lang-en">Home</span>
+            <span class="lang-es">Inicio</span>
+          </button>
+          <button class="nav-btn" onclick="showPage('who-we-are', event)">
+            <span class="lang-en">Who we are</span>
+            <span class="lang-es">Quiénes somos</span>
+          </button>
+          <button class="nav-btn" onclick="showPage('what-we-do', event)">
+            <span class="lang-en">What we do</span>
+            <span class="lang-es">Qué hacemos</span>
+          </button>
+          <button class="nav-btn" onclick="showPage('scholarship', event)">
+            <span class="lang-en">Scholarship</span>
+            <span class="lang-es">Beca</span>
+          </button>
+          <button class="nav-btn" onclick="showPage('tips', event)">
+            <span class="lang-en">Application tips</span>
+            <span class="lang-es">Consejos</span>
+          </button>
+          <button class="nav-btn" onclick="showPage('contact', event)">
+            <span class="lang-en">Contact</span>
+            <span class="lang-es">Contacto</span>
+          </button>
+        </nav>
+
+        <div class="lang-switcher">
+          <button id="btn-en" class="lang-btn active" onclick="setLanguage('en')">EN</button>
+          <button id="btn-es" class="lang-btn" onclick="setLanguage('es')">ES</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -319,228 +385,451 @@
     <!-- PAGE 1: HOME -->
     <section id="home" class="page-section active">
       <div class="hero">
-        <h1>Talent shines everywhere. Opportunity does not.</h1>
-        <p class="hero-subline">Cadena Brillante supports access to education in Piura, Peru, with a focus on women in STEM.</p>
+        <h1>
+          <span class="lang-en">Talent shines everywhere. Opportunity does not.</span>
+          <span class="lang-es">El talento brilla en todas partes. La oportunidad no.</span>
+        </h1>
+        <p class="hero-subline">
+          <span class="lang-en">Cadena Brillante supports access to education in Piura, Peru, with a focus on women in STEM.</span>
+          <span class="lang-es">Cadena Brillante apoya el acceso a la educación en Piura, Perú, con un enfoque en mujeres en STEM.</span>
+        </p>
         <div class="btn-group">
-          <button class="btn" onclick="showPage('scholarship', event)">See the scholarship →</button>
-          <button class="btn btn-secondary" onclick="showPage('contact', event)">Get in touch →</button>
+          <button class="btn" onclick="showPage('scholarship', event)">
+            <span class="lang-en">See the scholarship →</span>
+            <span class="lang-es">Ver la beca →</span>
+          </button>
+          <button class="btn btn-secondary" onclick="showPage('contact', event)">
+            <span class="lang-en">Get in touch →</span>
+            <span class="lang-es">Ponte en contacto →</span>
+          </button>
         </div>
       </div>
 
       <div class="grid-3">
         <div class="stat-card">
           <div class="stat-number">2</div>
-          <div class="stat-label">master’s scholarships in Spain</div>
+          <div class="stat-label">
+            <span class="lang-en">master’s scholarships in Spain</span>
+            <span class="lang-es">becas de maestría en España</span>
+          </div>
         </div>
         <div class="stat-card">
           <div class="stat-number">4</div>
-          <div class="stat-label">primary schools in Piura equipped with school materials</div>
+          <div class="stat-label">
+            <span class="lang-en">primary schools in Piura equipped with school materials</span>
+            <span class="lang-es">escuelas primarias en Piura equipadas con materiales escolares</span>
+          </div>
         </div>
         <div class="stat-card">
           <div class="stat-number">~450</div>
-          <div class="stat-label">pupils reached, especially girls</div>
+          <div class="stat-label">
+            <span class="lang-en">pupils reached, especially girls</span>
+            <span class="lang-es">estudiantes alcanzados, especialmente niñas</span>
+          </div>
         </div>
       </div>
 
       <div class="panel">
-        <p>We are a small non-profit organisation built by three people. We work at both ends of education: we equip primary schools in Piura with school materials, and we fund master’s scholarships in Spain for outstanding women from the region. We work with the University of Piura, which promotes the programme on campus and helps select the scholars, and with a partner university in Spain.</p>
+        <p class="lang-en">We are a small non-profit organisation built by three people. We work at both ends of education: we equip primary schools in Piura with school materials, and we fund master’s scholarships in Spain for outstanding women from the region. We work with the University of Piura, which promotes the programme on campus and helps select the scholars, and with a partner university in Spain.</p>
+        <p class="lang-es">Somos una pequeña organización sin fines de lucro creada por tres personas. Trabajamos en ambos extremos de la educación: equipamos escuelas primarias en Piura con materiales escolares y financiamos becas de maestría en España para mujeres destacadas de la región. Trabajamos con la Universidad de Piura, que promueve el programa en el campus y ayuda a seleccionar a las becarias, y con una universidad socia en España.</p>
       </div>
 
-      <h2>Why Piura, why now</h2>
-      <ul>
+      <h2>
+        <span class="lang-en">Why Piura, why now</span>
+        <span class="lang-es">Por qué Piura, por qué ahora</span>
+      </h2>
+      <ul class="lang-en">
         <li>32% of people in Piura live in poverty, against a national average of 28%.</li>
         <li>At age 15, 19% of girls in Peru expect a career in STEM, against 38% of boys — one of the widest gaps in Latin America.</li>
         <li>Only 2% of adults in Peru hold a master’s degree or equivalent, against an OECD average of 16%.</li>
         <li>The OECD identifies the absence of female role models as a central barrier in STEM, and recommends mentoring and visible role models. Girls need to see women succeeding in STEM to believe they can too.</li>
       </ul>
+      <ul class="lang-es">
+        <li>El 32% de las personas en Piura vive en situación de pobreza, frente a un promedio nacional del 28%.</li>
+        <li>A los 15 años, el 19% de las niñas en el Perú espera seguir una carrera en STEM, frente al 38% de los niños: una de las brechas más amplias de América Latina.</li>
+        <li>Solo el 2% de los adultos en el Perú tiene una maestría o equivalente, frente al promedio de la OCDE del 16%.</li>
+        <li>La OCDE identifica la falta de referentes femeninos como una barrera central en STEM y recomienda la mentoría y visibilizar modelos a seguir. Las niñas necesitan ver a mujeres triunfando en STEM para creer que ellas también pueden.</li>
+      </ul>
 
       <div class="sources">
-        Poverty — INEI, Evolución de la Pobreza Monetaria 2015–2024 (May 2025). STEM career expectations and role models — OECD (2025), Gender Differences in Education, Skills and STEM Careers in Latin America and the Caribbean, based on PISA 2022. Master’s attainment — OECD, Education at a Glance 2025.
+        Poverty / Pobreza — INEI, Evolución de la Pobreza Monetaria 2015–2024 (May 2025). STEM career expectations and role models / Expectativas de carrera en STEM — OECD (2025), Gender Differences in Education, Skills and STEM Careers in Latin America and the Caribbean, based on PISA 2022. Master’s attainment / Nivel de maestría — OECD, Education at a Glance 2025.
       </div>
 
-      <h2>Sustainable Development Goals</h2>
-      <p>Our work supports the UN Sustainable Development Goals, in particular SDG 4 (Quality Education), SDG 5 (Gender Equality) and SDG 10 (Reduced Inequalities).</p>
+      <h2>
+        <span class="lang-en">Sustainable Development Goals</span>
+        <span class="lang-es">Objetivos de Desarrollo Sostenible</span>
+      </h2>
+      <p class="lang-en">Our work supports the UN Sustainable Development Goals, in particular SDG 4 (Quality Education), SDG 5 (Gender Equality) and SDG 10 (Reduced Inequalities).</p>
+      <p class="lang-es">Nuestro trabajo apoya los Objetivos de Desarrollo Sostenible de las Naciones Unidas, en particular el ODS 4 (Educación de Calidad), ODS 5 (Igualdad de Género) y ODS 10 (Reducción de las Desigualdades).</p>
 
       <div class="panel" style="margin-top: 24px; border-left: 3px solid var(--teal);">
-        <p style="margin:0; font-weight: 500;">Two lives changed directly. Hundreds of children with the materials they need to learn. Written and run by three volunteers.</p>
+        <p class="lang-en" style="margin:0; font-weight: 500;">Two lives changed directly. Hundreds of children with the materials they need to learn. Written and run by three volunteers.</p>
+        <p class="lang-es" style="margin:0; font-weight: 500;">Dos vidas transformadas directamente. Cientos de niños con los materiales que necesitan para aprender. Creado y gestionado por tres voluntarios.</p>
       </div>
     </section>
 
     <!-- PAGE 2: WHO WE ARE -->
     <section id="who-we-are" class="page-section">
-      <h1>Who we are</h1>
-      <p>Cadena Brillante is a non-profit organisation created by three people who believe education should be a right, not a privilege. We built it in our own time, from scratch, because it matters to us.</p>
+      <h1>
+        <span class="lang-en">Who we are</span>
+        <span class="lang-es">Quiénes somos</span>
+      </h1>
+      <p class="lang-en">Cadena Brillante is a non-profit organisation created by three people who believe education should be a right, not a privilege. We built it in our own time, from scratch, because it matters to us.</p>
+      <p class="lang-es">Cadena Brillante es una organización sin fines de lucro creada por tres personas que creen que la educación debe ser un derecho, no un privilegio. La construimos en nuestro tiempo libre, desde cero, porque nos importa.</p>
 
-      <h2>The Team</h2>
+      <h2>
+        <span class="lang-en">The Team</span>
+        <span class="lang-es">El Equipo</span>
+      </h2>
       <div class="grid-3">
         <div class="panel">
           <h3>Janek</h3>
-          <p style="color:var(--orange); font-size:14px; font-weight:600;">Project Lead</p>
-          <p>Data analyst. Leads the project, the partnership with the University of Piura and the design of the pilot.</p>
+          <p style="color:var(--orange); font-size:14px; font-weight:600;">
+            <span class="lang-en">Project Lead</span>
+            <span class="lang-es">Líder del Proyecto</span>
+          </p>
+          <p class="lang-en">Data analyst. Leads the project, the partnership with the University of Piura and the design of the pilot.</p>
+          <p class="lang-es">Analista de datos. Dirige el proyecto, la alianza con la Universidad de Piura y el diseño del piloto.</p>
         </div>
         <div class="panel">
           <h3>Alex</h3>
-          <p style="color:var(--orange); font-size:14px; font-weight:600;">Impact Lead</p>
-          <p>Data analyst. Responsible for results tracking, the quarterly progress report and events.</p>
+          <p style="color:var(--orange); font-size:14px; font-weight:600;">
+            <span class="lang-en">Impact Lead</span>
+            <span class="lang-es">Líder de Impacto</span>
+          </p>
+          <p class="lang-en">Data analyst. Responsible for results tracking, the quarterly progress report and events.</p>
+          <p class="lang-es">Analista de datos. Responsable del seguimiento de resultados, el informe trimestral de avance y eventos.</p>
         </div>
         <div class="panel">
           <h3>Izabela</h3>
-          <p style="color:var(--orange); font-size:14px; font-weight:600;">Fundraising & Communications Lead</p>
-          <p>Software engineer and a woman in STEM. Leads donor relations, fund tracking and communications.</p>
+          <p style="color:var(--orange); font-size:14px; font-weight:600;">
+            <span class="lang-en">Fundraising & Communications Lead</span>
+            <span class="lang-es">Líder de Recaudación y Comunicación</span>
+          </p>
+          <p class="lang-en">Software engineer and a woman in STEM. Leads donor relations, fund tracking and communications.</p>
+          <p class="lang-es">Ingeniera de software y mujer en STEM. Dirige las relaciones con donantes, seguimiento de fondos y comunicaciones.</p>
         </div>
       </div>
 
-      <h2>How We Work</h2>
-      <ul>
+      <h2>
+        <span class="lang-en">How We Work</span>
+        <span class="lang-es">Cómo Trabajamos</span>
+      </h2>
+      <ul class="lang-en">
         <li>No salaries and no overhead. Every euro goes to the beneficiaries.</li>
         <li>Tuition is paid directly to universities. No money is transferred to individuals.</li>
         <li>Tuition goes to institutions, so the money is traceable end to end.</li>
         <li>Scholars are selected anonymously by a committee, not by us alone.</li>
         <li>We report on results, not on intentions.</li>
       </ul>
+      <ul class="lang-es">
+        <li>Sin salarios ni gastos administrativos. Cada euro va directamente a los beneficiarios.</li>
+        <li>La matrícula se paga directamente a las universidades. No se transfiere dinero a personas individuales.</li>
+        <li>El pago va a las instituciones, por lo que el dinero es rastreable de principio a fin.</li>
+        <li>Las becarias son seleccionadas de forma anónima por un comité, no solo por nosotros.</li>
+        <li>Reportamos sobre resultados, no sobre intenciones.</li>
+      </ul>
 
-      <h2>Our Partners</h2>
-      <p><strong>University of Piura (UDEP)</strong> — our institutional partner in Peru. UDEP promotes the scholarship among its students, joins the selection panel, and hosts our workshop on its campus.</p>
-      <p><strong>A partner university in Spain</strong> — receives the donation, issues the donor’s tax certificate, and directs the funds to the two master’s scholarships.</p>
+      <h2>
+        <span class="lang-en">Our Partners</span>
+        <span class="lang-es">Nuestros Socios</span>
+      </h2>
+      <p class="lang-en"><strong>University of Piura (UDEP)</strong> — our institutional partner in Peru. UDEP promotes the scholarship among its students, joins the selection panel, and hosts our workshop on its campus.</p>
+      <p class="lang-es"><strong>Universidad de Piura (UDEP)</strong> — nuestro socio institucional en Perú. La UDEP promueve la beca entre sus estudiantes, integra el panel de selección y acoge nuestros talleres en su campus.</p>
 
-      <h2>Mentoring and Support</h2>
-      <p>Scholars are not left alone with a transfer of money. They receive guidance through the whole process — choosing a programme, writing a CV and motivation letter, applying to the university, and then the practical side: documents, relocation and what to expect from life abroad. That support comes from our team and our network, which includes graduates of the University of Manchester and the Barcelona School of Economics.</p>
+      <p class="lang-en"><strong>A partner university in Spain</strong> — receives the donation, issues the donor’s tax certificate, and directs the funds to the two master’s scholarships.</p>
+      <p class="lang-es"><strong>Una universidad socia en España</strong> — recibe la donación, emite el certificado fiscal del donante y destina los fondos a las dos becas de maestría.</p>
+
+      <h2>
+        <span class="lang-en">Mentoring and Support</span>
+        <span class="lang-es">Mentoría y Acompañamiento</span>
+      </h2>
+      <p class="lang-en">Scholars are not left alone with a transfer of money. They receive guidance through the whole process — choosing a programme, writing a CV and motivation letter, applying to the university, and then the practical side: documents, relocation and what to expect from life abroad. That support comes from our team and our network, which includes graduates of the University of Manchester and the Barcelona School of Economics.</p>
+      <p class="lang-es">Las becarias no se quedan solas tras la adjudicación. Reciben orientación durante todo el proceso: elección del programa, redacción del CV y carta de motivación, postulación a la universidad y los aspectos prácticos: documentación, traslado y qué esperar de la vida en el extranjero. Ese apoyo proviene de nuestro equipo y red, que incluye graduados de la Universidad de Mánchester y la Barcelona School of Economics.</p>
     </section>
 
     <!-- PAGE 3: WHAT WE DO -->
     <section id="what-we-do" class="page-section">
-      <h1>What we do</h1>
+      <h1>
+        <span class="lang-en">What we do</span>
+        <span class="lang-es">Qué hacemos</span>
+      </h1>
 
-      <h2>Master’s scholarships in Spain</h2>
-      <p>We fund two master’s scholarships in Spain for outstanding women from Piura who have the academic record but not the means. Both scholarships cover the full tuition fee, paid directly to the university. Scholars also receive support with living costs, and help with their application and mentoring throughout.</p>
-      <p>We focus on future-oriented fields — mainly engineering, and possibly cybersecurity and artificial intelligence. The programmes we support are chosen for strong employment outcomes and, where available, internships built into the course.</p>
-      <p>Applicants choose up to two programmes from the list we support. Selection is made together with the University of Piura, and applications are assessed anonymously.</p>
+      <h2>
+        <span class="lang-en">Master’s scholarships in Spain</span>
+        <span class="lang-es">Becas de maestría en España</span>
+      </h2>
+      <p class="lang-en">We fund two master’s scholarships in Spain for outstanding women from Piura who have the academic record but not the means. Both scholarships cover the full tuition fee, paid directly to the university. Scholars also receive support with living costs, and help with their application and mentoring throughout.</p>
+      <p class="lang-es">Financiamos dos becas de maestría en España para mujeres destacadas de Piura que cuentan con la excelencia académica pero no con los recursos económicos. Ambas becas cubren la matrícula completa, pagada directamente a la universidad. Las becarias también reciben apoyo con los gastos de manutención, ayuda en su postulación y mentoría continua.</p>
 
-      <h2>School materials for primary schools in Piura</h2>
-      <p>Alongside the scholarships, we equip primary schools in Piura with the school materials their pupils need, reaching around 450 children, especially girls. The aim is simple and direct: a child who has the basic materials to work with is a child who can keep learning.</p>
+      <p class="lang-en">We focus on future-oriented fields — mainly engineering, and possibly cybersecurity and artificial intelligence. The programmes we support are chosen for strong employment outcomes and, where available, internships built into the course.</p>
+      <p class="lang-es">Nos enfocamos en campos orientados al futuro, principalmente ingeniería, y posiblemente ciberseguridad e inteligencia artificial. Los programas que apoyamos se eligen por sus altos índices de empleabilidad y, cuando están disponibles, prácticas profesionales integradas.</p>
 
-      <h2>Workshops in Piura — our pilot</h2>
-      <p>Between 28 September and 8 October 2026 we are running our first activities on the ground in Piura: a STEM workshop for around 40 schoolchildren, and a workshop for around 20 university students at the UDEP campus on how to apply to universities abroad.</p>
+      <p class="lang-en">Applicants choose up to two programmes from the list we support. Selection is made together with the University of Piura, and applications are assessed anonymously.</p>
+      <p class="lang-es">Las postulantes eligen hasta dos programas de la lista que apoyamos. La selección se realiza conjuntamente con la Universidad de Piura y las solicitudes se evalúan de forma anónima.</p>
+
+      <h2>
+        <span class="lang-en">School materials for primary schools in Piura</span>
+        <span class="lang-es">Materiales escolares para primarias en Piura</span>
+      </h2>
+      <p class="lang-en">Alongside the scholarships, we equip primary schools in Piura with the school materials their pupils need, reaching around 450 children, especially girls. The aim is simple and direct: a child who has the basic materials to work with is a child who can keep learning.</p>
+      <p class="lang-es">Junto con las becas, equipamos a escuelas primarias en Piura con los útiles escolares que sus alumnos necesitan, alcanzando a unos 450 niños y niñas. El objetivo es directo: un estudiante con los materiales básicos para trabajar es un estudiante que puede seguir aprendiendo.</p>
+
+      <h2>
+        <span class="lang-en">Workshops in Piura — our pilot</span>
+        <span class="lang-es">Talleres en Piura — nuestro piloto</span>
+      </h2>
+      <p class="lang-en">Between 28 September and 8 October 2026 we are running our first activities on the ground in Piura: a STEM workshop for around 40 schoolchildren, and a workshop for around 20 university students at the UDEP campus on how to apply to universities abroad.</p>
+      <p class="lang-es">Entre el 28 de septiembre y el 8 de octubre de 2026 llevaremos a cabo nuestras primeras actividades presenciales en Piura: un taller de STEM para unos 40 escolares y un taller para unos 20 estudiantes universitarios en el campus de la UDEP sobre cómo postular a universidades en el extranjero.</p>
     </section>
 
     <!-- PAGE 4: SCHOLARSHIP -->
     <section id="scholarship" class="page-section">
-      <h1>Scholarship</h1>
+      <h1>
+        <span class="lang-en">Scholarship</span>
+        <span class="lang-es">Beca</span>
+      </h1>
       
-      <h2>Who the scholarship is for</h2>
-      <p>The programme is for women from the Piura region who have completed a bachelor’s degree and plan to study a master’s in a STEM field in Spain.</p>
+      <h2>
+        <span class="lang-en">Who the scholarship is for</span>
+        <span class="lang-es">A quién va dirigida la beca</span>
+      </h2>
+      <p class="lang-en">The programme is for women from the Piura region who have completed a bachelor’s degree and plan to study a master’s in a STEM field in Spain.</p>
+      <p class="lang-es">El programa está dirigido a mujeres de la región Piura que hayan completado su grado o bachillerato universitario y planeen estudiar una maestría en un área STEM en España.</p>
       
-      <h3>You can apply if:</h3>
-      <ul>
+      <h3>
+        <span class="lang-en">You can apply if:</span>
+        <span class="lang-es">Puedes postular si:</span>
+      </h3>
+      <ul class="lang-en">
         <li>you hold a bachelor’s degree and have completed your thesis</li>
         <li>you are interested in engineering, and possibly cybersecurity or artificial intelligence</li>
         <li>you meet the entry requirements of the programme you choose — these are set by the university and published on its website</li>
         <li>you are able to cover the remaining costs of studying abroad, since the scholarship covers tuition in full and part of your living costs</li>
       </ul>
+      <ul class="lang-es">
+        <li>cuentas con grado académico o título y has sustentado tu tesis</li>
+        <li>estás interesada en ingeniería, y posiblemente ciberseguridad o inteligencia artificial</li>
+        <li>cumples con los requisitos de admisión del programa elegido (establecidos por cada universidad)</li>
+        <li>puedes cubrir los costos restantes de estudiar en el extranjero, ya que la beca cubre la matrícula completa y una parte de la manutención</li>
+      </ul>
 
-      <h2>What the scholarship includes</h2>
-      <ul>
+      <h2>
+        <span class="lang-en">What the scholarship includes</span>
+        <span class="lang-es">Qué incluye la beca</span>
+      </h2>
+      <ul class="lang-en">
         <li>Full tuition, paid directly to the university</li>
         <li>Support with living costs</li>
         <li>Help with your application: programme choice, CV, motivation letter</li>
         <li>Mentoring before and during your studies</li>
         <li>Practical guidance on documents, relocation and life abroad</li>
       </ul>
+      <ul class="lang-es">
+        <li>Matrícula completa, pagada directamente a la universidad</li>
+        <li>Apoyo económico para gastos de manutención</li>
+        <li>Asesoría en la postulación: elección de programa, CV, carta de motivación</li>
+        <li>Mentoría antes y durante los estudios</li>
+        <li>Guía práctica para trámites, traslado y vida en el extranjero</li>
+      </ul>
 
-      <h2>How to apply</h2>
-      <h3>Stage 1 — Application</h3>
-      <p>Choose up to two programmes from the list we support and rank them by preference. We recommend choosing programmes in the same or a related field. Your application is assessed on your first choice; the second may be used at a later stage, for example if your first choice turns out to be unavailable.</p>
+      <h2>
+        <span class="lang-en">How to apply</span>
+        <span class="lang-es">Cómo postular</span>
+      </h2>
+      <h3>
+        <span class="lang-en">Stage 1 — Application</span>
+        <span class="lang-es">Etapa 1 — Postulación</span>
+      </h3>
+      <p class="lang-en">Choose up to two programmes from the list we support and rank them by preference. We recommend choosing programmes in the same or a related field. Your application is assessed on your first choice; the second may be used at a later stage, for example if your first choice turns out to be unavailable.</p>
+      <p class="lang-es">Elige hasta dos programas de la lista compatible y ordénalos por preferencia. Recomendamos elegir programas en la misma área o afines. Tu solicitud se evaluará en función de tu primera opción; la segunda opción podrá utilizarse en caso de indisponibilidad de la primera.</p>
 
-      <p><strong>Documents required:</strong> bachelor’s diploma and transcript (a scan is enough at this stage), CV (one page), motivation letter (maximum 700 words, for your first choice), completed application form.</p>
+      <p class="lang-en"><strong>Documents required:</strong> bachelor’s diploma and transcript (a scan is enough at this stage), CV (one page), motivation letter (maximum 700 words, for your first choice), completed application form.</p>
+      <p class="lang-es"><strong>Documentos requeridos:</strong> diploma y certificado de notas (basta con un escaneo en esta etapa), CV (una página), carta de motivación (máximo 700 palabras, para tu primera opción), formulario de solicitud completado.</p>
 
-      <p><strong>Your motivation letter should answer three questions:</strong></p>
-      <ul>
+      <p class="lang-en"><strong>Your motivation letter should answer three questions:</strong></p>
+      <p class="lang-es"><strong>Tu carta de motivación debe responder tres preguntas:</strong></p>
+      <ul class="lang-en">
         <li>Why this programme and this university?</li>
         <li>How has your experience so far prepared you for it?</li>
         <li>How will this master’s help you reach your professional goals?</li>
       </ul>
+      <ul class="lang-es">
+        <li>¿Por qué este programa y esta universidad?</li>
+        <li>¿Cómo te ha preparado tu experiencia previa para esta maestría?</li>
+        <li>¿De qué manera te ayudará esta maestría a alcanzar tus metas profesionales?</li>
+      </ul>
 
-      <h3>How applications are assessed</h3>
+      <h3>
+        <span class="lang-en">How applications are assessed</span>
+        <span class="lang-es">Cómo se evalúan las solicitudes</span>
+      </h3>
       <table>
         <thead>
-          <tr><th>Criterion</th><th>Weight</th></tr>
+          <tr>
+            <th>
+              <span class="lang-en">Criterion</span>
+              <span class="lang-es">Criterio</span>
+            </th>
+            <th>
+              <span class="lang-en">Weight</span>
+              <span class="lang-es">Ponderación</span>
+            </th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td>Academic grades</td><td>60%</td></tr>
-          <tr><td>Experience</td><td>15%</td></tr>
-          <tr><td>Motivation letter</td><td>15%</td></tr>
-          <tr><td>Courses and related activity</td><td>5%</td></tr>
-          <tr><td>English</td><td>5%</td></tr>
+          <tr>
+            <td><span class="lang-en">Academic grades</span><span class="lang-es">Rendimiento académico</span></td>
+            <td>60%</td>
+          </tr>
+          <tr>
+            <td><span class="lang-en">Experience</span><span class="lang-es">Experiencia</span></td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td><span class="lang-en">Motivation letter</span><span class="lang-es">Carta de motivación</span></td>
+            <td>15%</td>
+          </tr>
+          <tr>
+            <td><span class="lang-en">Courses and related activity</span><span class="lang-es">Cursos y actividades afines</span></td>
+            <td>5%</td>
+          </tr>
+          <tr>
+            <td><span class="lang-en">English</span><span class="lang-es">Inglés</span></td>
+            <td>5%</td>
+          </tr>
         </tbody>
       </table>
-      <p>Applications are assessed anonymously. Preparing a good application should take one or two days — we value your time as much as our own.</p>
+      <p class="lang-en">Applications are assessed anonymously. Preparing a good application should take one or two days — we value your time as much as our own.</p>
+      <p class="lang-es">Las solicitudes se evalúan de forma anónima. Preparar una buena postulación toma entre uno y dos días; valoramos tu tiempo tanto como el nuestro.</p>
 
-      <h3>Stage 2 — Interview</h3>
-      <p>The highest-scoring candidates are invited to an informal online interview of about 30 minutes. It helps us understand your motivation, how you think, and how prepared you are to study and live abroad.</p>
+      <h3>
+        <span class="lang-en">Stage 2 — Interview</span>
+        <span class="lang-es">Etapa 2 — Entrevista</span>
+      </h3>
+      <p class="lang-en">The highest-scoring candidates are invited to an informal online interview of about 30 minutes. It helps us understand your motivation, how you think, and how prepared you are to study and live abroad.</p>
+      <p class="lang-es">Las candidatas con mayor puntuación son invitadas a una entrevista virtual informal de unos 30 minutos para conocer tu motivación, visión y preparación para estudiar en el extranjero.</p>
 
-      <h2>Timeline</h2>
+      <h2>
+        <span class="lang-en">Timeline</span>
+        <span class="lang-es">Cronograma</span>
+      </h2>
       <table>
         <thead>
-          <tr><th>When</th><th>What happens</th></tr>
+          <tr>
+            <th><span class="lang-en">When</span><span class="lang-es">Cuándo</span></th>
+            <th><span class="lang-en">What happens</span><span class="lang-es">Qué ocurre</span></th>
+          </tr>
         </thead>
         <tbody>
-          <tr><td>December 2026</td><td>The call opens. Applications are invited, with support from UDEP on campus.</td></tr>
-          <tr><td>January – April 2027</td><td>Selected candidates are supported with their university applications — CV, motivation letter, submission.</td></tr>
-          <tr><td>April 2027</td><td>The two highest-ranked candidates holding an offer of admission receive the scholarship.</td></tr>
-          <tr><td>September 2027</td><td>Studies begin in Spain.</td></tr>
+          <tr>
+            <td><span class="lang-en">December 2026</span><span class="lang-es">Diciembre 2026</span></td>
+            <td><span class="lang-en">The call opens. Applications are invited, with support from UDEP on campus.</span><span class="lang-es">Apertura de convocatoria con difusión y apoyo en el campus de la UDEP.</span></td>
+          </tr>
+          <tr>
+            <td><span class="lang-en">January – April 2027</span><span class="lang-es">Enero – Abril 2027</span></td>
+            <td><span class="lang-en">Selected candidates are supported with their university applications — CV, motivation letter, submission.</span><span class="lang-es">Acompañamiento a las candidatas seleccionadas en sus postulaciones a la universidad.</span></td>
+          </tr>
+          <tr>
+            <td><span class="lang-en">April 2027</span><span class="lang-es">Abril 2027</span></td>
+            <td><span class="lang-en">The two highest-ranked candidates holding an offer of admission receive the scholarship.</span><span class="lang-es">Adjudicación formal de las dos becas a las candidatas con carta de admisión.</span></td>
+          </tr>
+          <tr>
+            <td><span class="lang-en">September 2027</span><span class="lang-es">Septiembre 2027</span></td>
+            <td><span class="lang-en">Studies begin in Spain.</span><span class="lang-es">Inicio de clases en España.</span></td>
+          </tr>
         </tbody>
       </table>
     </section>
 
     <!-- PAGE 5: APPLICATION TIPS -->
     <section id="tips" class="page-section">
-      <h1>Application tips</h1>
-      <p>Preparing a good application should take about one or two days. Focus on quality, not length.</p>
+      <h1>
+        <span class="lang-en">Application tips</span>
+        <span class="lang-es">Consejos de postulación</span>
+      </h1>
+      <p class="lang-en">Preparing a good application should take about one or two days. Focus on quality, not length.</p>
+      <p class="lang-es">Preparar una buena postulación debe tomar uno o dos días. Enfócate en la calidad, no en la extensión.</p>
 
       <div class="panel">
-        <h3>Choose your programme deliberately</h3>
-        <p>Read the syllabus on the university’s website. Make sure you understand what the programme actually covers and that it fits your plans.</p>
+        <h3>
+          <span class="lang-en">Choose your programme deliberately</span>
+          <span class="lang-es">Elige tu programa con criterio</span>
+        </h3>
+        <p class="lang-en">Read the syllabus on the university’s website. Make sure you understand what the programme actually covers and that it fits your plans.</p>
+        <p class="lang-es">Revisa la malla curricular en la web de la universidad. Asegúrate de comprender el plan de estudios y de que se alinee con tus objetivos.</p>
       </div>
 
       <div class="panel">
-        <h3>CV: be specific, not general</h3>
-        <p>Instead of listing responsibilities, show what you actually did and what came of it.</p>
+        <h3>
+          <span class="lang-en">CV: be specific, not general</span>
+          <span class="lang-es">CV: sé específica, no general</span>
+        </h3>
+        <p class="lang-en">Instead of listing responsibilities, show what you actually did and what came of it.</p>
+        <p class="lang-es">En lugar de listar funciones genéricas, destaca logros específicos y resultados concretos.</p>
       </div>
 
       <div class="panel">
-        <h3>Motivation letter: focus on why, not what</h3>
-        <p>Do not just describe your experience. Show why you are choosing this programme, how your experience has prepared you for it, and how it will help you reach your goals.</p>
+        <h3>
+          <span class="lang-en">Motivation letter: focus on why, not what</span>
+          <span class="lang-es">Carta de motivación: enfócate en el porqué</span>
+        </h3>
+        <p class="lang-en">Do not just describe your experience. Show why you are choosing this programme, how your experience has prepared you for it, and how it will help you reach your goals.</p>
+        <p class="lang-es">No te limites a describir tu currículum. Explica por qué eliges el programa, cómo te prepara tu trayectoria y cómo te impulsará hacia tus metas.</p>
       </div>
 
       <div class="panel">
-        <h3>Avoid general statements — show the real you</h3>
-        <p>Instead of “I have always been interested in…”, give a concrete example.</p>
+        <h3>
+          <span class="lang-en">Avoid general statements — show the real you</span>
+          <span class="lang-es">Evita clichés — muestra tu perfil real</span>
+        </h3>
+        <p class="lang-en">Instead of “I have always been interested in…”, give a concrete example.</p>
+        <p class="lang-es">En vez de “Siempre me ha interesado...”, aporta un ejemplo concreto de tu trayectoria.</p>
       </div>
 
       <div class="panel">
-        <h3>Be consistent</h3>
-        <p>Your CV, your motivation letter and your choice of programme should tell one coherent story. You do not always need to repeat achievements from your CV in the letter.</p>
+        <h3>
+          <span class="lang-en">Be consistent</span>
+          <span class="lang-es">Manten la coherencia</span>
+        </h3>
+        <p class="lang-en">Your CV, your motivation letter and your choice of programme should tell one coherent story. You do not always need to repeat achievements from your CV in the letter.</p>
+        <p class="lang-es">Tu CV, carta de motivación y elección de maestría deben articular una historia coherente y sólida.</p>
       </div>
 
       <div class="panel">
-        <h3>For the interview</h3>
-        <ul>
+        <h3>
+          <span class="lang-en">For the interview</span>
+          <span class="lang-es">Para la entrevista</span>
+        </h3>
+        <ul class="lang-en">
           <li>Find a quiet place with no distractions</li>
           <li>Check your internet connection in advance</li>
           <li>Turn your camera on, use a neutral background, and dress tidily</li>
           <li>Be ready to talk about why you chose your programme and what your plans are</li>
+        </ul>
+        <ul class="lang-es">
+          <li>Busca un espacio tranquilo y libre de distracciones</li>
+          <li>Verifica tu conexión a internet con anticipación</li>
+          <li>Enciende tu cámara, usa un fondo neutro y vístete de forma adecuada</li>
+          <li>Prepárate para explicar tus motivaciones y planes a futuro</li>
         </ul>
       </div>
     </section>
 
     <!-- PAGE 6: CONTACT -->
     <section id="contact" class="page-section">
-      <h1>Contact</h1>
-      <p>We are three volunteers, so we answer every message ourselves. Write to us at <a href="mailto:equipo@cadenabrillante.org" style="color:var(--orange);">equipo@cadenabrillante.org</a>.</p>
-      <p>If you are a candidate with a question about the scholarship, an organisation that works in Piura, or a university interested in the programme, we would like to hear from you.</p>
+      <h1>
+        <span class="lang-en">Contact</span>
+        <span class="lang-es">Contacto</span>
+      </h1>
+      <p class="lang-en">We are three volunteers, so we answer every message ourselves. Write to us at <a href="mailto:equipo@cadenabrillante.org" style="color:var(--orange);">equipo@cadenabrillante.org</a>.</p>
+      <p class="lang-es">Somos tres voluntarios, por lo que respondemos cada mensaje personalmente. Escríbenos a <a href="mailto:equipo@cadenabrillante.org" style="color:var(--orange);">equipo@cadenabrillante.org</a>.</p>
+
+      <p class="lang-en">If you are a candidate with a question about the scholarship, an organisation that works in Piura, or a university interested in the programme, we would like to hear from you.</p>
+      <p class="lang-es">Si eres una postulante con preguntas sobre la beca, una organización que opera en Piura o una universidad interesada en el programa, nos encantará escucharte.</p>
       
       <div class="panel" style="margin-top:24px;">
-        <p><strong>Email:</strong> equipo@cadenabrillante.org</p>
+        <p><strong>Email / Correo electrónico:</strong> equipo@cadenabrillante.org</p>
       </div>
     </section>
   </main>
@@ -550,6 +839,16 @@
   </footer>
 
   <script>
+    function setLanguage(lang) {
+      document.body.classList.remove('lang-en', 'lang-es');
+      document.body.classList.add('lang-' + lang);
+      
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+
+      localStorage.setItem('preferred_lang', lang);
+    }
+
     function showPage(pageId, evt) {
       const sections = document.querySelectorAll('.page-section');
       const buttons = document.querySelectorAll('.nav-btn');
@@ -559,15 +858,27 @@
 
       document.getElementById(pageId).classList.add('active');
       
-      if (evt && evt.target) {
-        evt.target.classList.add('active');
-      } else {
-        const targetBtn = Array.from(buttons).find(b => b.getAttribute('onclick').includes(pageId));
-        if (targetBtn) targetBtn.classList.add('active');
+      if (evt && evt.currentTarget) {
+        evt.currentTarget.classList.add('active');
       }
       
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    // Auto-detect browser or saved language on page load
+    (function initLanguage() {
+      const savedLang = localStorage.getItem('preferred_lang');
+      if (savedLang) {
+        setLanguage(savedLang);
+      } else {
+        const userLang = navigator.language || navigator.userLanguage;
+        if (userLang.startsWith('es')) {
+          setLanguage('es');
+        } else {
+          setLanguage('en');
+        }
+      }
+    })();
   </script>
 </body>
 </html>
