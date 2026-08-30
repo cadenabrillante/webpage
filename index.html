@@ -88,6 +88,7 @@
       --ink: #16253D;
       --ink-soft: #3A4A63;
       --orange-ink: #A8450A;
+      --rust-deep: #7E3307;
 
       --font-display: 'Archivo', Arial, Helvetica, system-ui, sans-serif;
       --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -147,7 +148,9 @@
       display: flex; justify-content: space-between; align-items: center; gap: 24px;
     }
 
-    .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; flex-shrink: 0; margin-left: 16px; margin-right: 56px; }
+    .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; flex-shrink: 0; margin-left: 16px; margin-right: 56px; min-width: 0; }
+    .menu-toggle .burger { display: none; width: 18px; height: 14px; }
+    #lang-label-short { display: none; }
     .logo-text { display: flex; flex-direction: column; }
     .logo-title {
       font-family: var(--font-display); font-size: 23px; font-weight: 700;
@@ -251,7 +254,6 @@
       color: var(--warm-faint); border-top-color: var(--warm-rule);
     }
     .band--warm .sdg-disclaimer a { color: var(--warm-link); }
-    .band--warm .sdg p { color: var(--ink); }
     .band--warm .rule { background: var(--warm-eyebrow); }
     .band--warm .card, .band--warm .course, .band--warm .step-card, .band--warm table {
       background: #FFFFFF; box-shadow: 0 14px 30px -16px rgba(84, 40, 8, 0.5);
@@ -431,6 +433,32 @@
       font-size: 17px; color: var(--orange-ink); max-width: 80ch;
     }
 
+    .card--wide {
+      margin-top: 22px; padding: 22px 26px; display: grid;
+      grid-template-columns: 200px minmax(0, 1fr); gap: 30px; align-items: center;
+    }
+    .card--wide .cw-head .dot { margin-bottom: 10px; }
+    .card--wide .cw-head h3 { margin-bottom: 0; }
+    .card--wide .cw-head .card-rule { margin: 8px 0 0; }
+    .cw-quote {
+      padding: 20px 26px;
+      background: linear-gradient(133deg,
+        var(--warm-3) 0%, #F9C68C 28%, #FADFBB 52%, #FDEBD2 72%, var(--cream) 88%);
+    }
+    .cw-brand { color: var(--rust-deep); }
+    .cw-spark {
+      width: 25px; height: 21px; vertical-align: -3px; margin-left: 4px;
+      color: var(--rust-deep);
+    }
+    .cw-quote p {
+      margin: 0; max-width: none;
+      font-family: var(--font-display); font-weight: 700; font-size: 19px;
+      color: var(--navy); line-height: 1.35;
+    }
+    @media (max-width: 860px) {
+      .card--wide { grid-template-columns: 1fr; gap: 16px; }
+    }
+
 
 
     /* ---------- cycle diagram ---------- */
@@ -447,11 +475,11 @@
       fill: var(--navy); letter-spacing: 0.06em;
     }
     .cyc-label {
-      font-family: var(--font-display); font-size: 17px; font-weight: 700;
+      font-family: var(--font-display); font-size: 19.5px; font-weight: 700;
       fill: var(--navy); letter-spacing: -0.01em;
     }
     .cyc-link {
-      font-family: var(--font-body); font-size: 13.5px; font-weight: 600;
+      font-family: var(--font-body); font-size: 12px; font-weight: 600;
       fill: #A8450A; letter-spacing: 0.02em;
     }
     .card .dot { display: flex; align-items: center; justify-content: center; }
@@ -490,7 +518,8 @@
       font-family: var(--font-display); font-size: 34px; font-weight: 800;
       color: var(--orange); line-height: 1; letter-spacing: -0.03em;
     }
-    .fact-value small { font-size: 17px; font-weight: 600; letter-spacing: 0; }
+    .fact-value small { font-size: 17px; font-weight: 600; letter-spacing: 0; color: var(--peach); }
+    .fact-value .ord { font-size: 0.52em; vertical-align: 0.5em; letter-spacing: 0; }
     .fact h3 { color: var(--cream); font-size: 15.5px; margin: 12px 0 6px; }
     .fact p { font-size: 13.5px; color: var(--grey); margin: 0; max-width: 46ch; line-height: 1.5; }
 
@@ -547,16 +576,8 @@
       gap: 26px; margin-top: 34px; align-items: stretch;
     }
     .sdg { max-width: 300px; display: flex; flex-direction: column; }
-    .sdg-img {
-      display: block; width: 100%; height: auto; max-width: 168px;
-      margin-bottom: 16px;
-    }
-    .sdg p {
-      font-size: 13.5px; line-height: 1.55; margin: 0; max-width: none;
-      flex: 1; background: #FFFFFF; color: var(--ink);
-      padding: 14px 16px;
-      box-shadow: 0 14px 30px -16px rgba(84, 40, 8, 0.5);
-    }
+    .sdg-img { display: block; width: 100%; height: auto; max-width: 168px; }
+
     .band--light .sdg-disclaimer { color: #6C7A8E; border-top-color: var(--hairline-light); }
     .band--light .sdg-disclaimer a { color: var(--oliva); }
     .sdg-disclaimer {
@@ -572,6 +593,7 @@
 
     /* ---------- tables ---------- */
 
+    body { overflow-x: clip; }
     .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     table { width: 100%; min-width: 420px; border-collapse: collapse; font-size: 15px; }
     th, td { padding: 13px 18px; text-align: left; border-bottom: 1px solid var(--hairline-light); }
@@ -650,12 +672,18 @@
 
     /* ---------- responsive ---------- */
 
+    /* ---------- line breaking ---------- */
+
+    h1, h2, h3 { text-wrap: balance; }
+    p, li, dd, figcaption { text-wrap: pretty; }
+
     /* ---------- per-section measure (line-break control) ---------- */
 
     .work-list { max-width: 90ch; }
     #what-we-do .block p,
     #what-we-do .band-inner > p:not(.lead) { max-width: 92ch; }
     #scholarship .block > p { max-width: 84ch; }
+    #what-we-do h1 { max-width: 32ch; }
     .step-card p { max-width: 94ch; }
     #courses .band-inner > p:not(.note) { max-width: 92ch; }
     #contact .block > p { max-width: 98ch; }
@@ -696,8 +724,17 @@
       .footer-ask-line { font-size: 15px; }
       .btn--sm { width: auto; }
       .logo { margin-left: 0; margin-right: 0; }
+      .lang-picker { margin-right: 0; }
       .nav-right::before { display: none; }
-      .menu-toggle { display: block; }
+      .menu-toggle { display: flex; align-items: center; padding: 10px 12px; }
+      .menu-toggle .burger { display: block; }
+      .menu-toggle .menu-label { display: none; }
+      #lang-label { display: none; }
+      #lang-label-short { display: inline; }
+      .lang-current { padding: 8px 11px; gap: 7px; }
+      .logo { gap: 10px; }
+      .logo-title { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .logo .mark { width: 40px; }
       .nav-right { gap: 12px; }
       nav {
         display: none; position: absolute; left: 0; right: 0; top: 100%;
@@ -724,39 +761,18 @@
       .stats { grid-template-columns: 1fr; }
     }
 
+    @media (max-width: 400px) {
+      .logo-title { font-size: 15px; }
+      .logo .mark { width: 34px; }
+      .logo { gap: 8px; }
+      .nav-container { padding-left: 12px; padding-right: 12px; }
+      .lang-current { padding: 8px 8px; }
+      .menu-toggle { padding: 10px 10px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       * { transition: none !important; }
-    }
-    html, body {
-      max-width: 100% !important;
-      overflow-x: hidden !important;
-    }
-
-    /* Force the header container to stay within screen bounds */
-    header, 
-    nav, 
-    .nav-container {
-      max-width: 100vw !important;
-      box-sizing: border-box !important;
-    }
-
-    /* On smaller screens, prevent header contents from pushing bounds */
-    @media (max-width: 780px) {
-      .logo {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        min-width: 0 !important;
-      }
-      
-      .logo-title {
-        font-size: 16px !important;
-      }
-
-      .lang-picker {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-      }
     }
   </style>
 
@@ -787,8 +803,9 @@
       </a>
 
       <div class="nav-right">
-        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav">
-          <span class="lang-en">Menu</span><span class="lang-es">Menú</span>
+        <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Menu">
+          <svg class="burger" viewBox="0 0 18 14" aria-hidden="true"><path d="M0 1 H18 M0 7 H18 M0 13 H18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <span class="menu-label lang-en">Menu</span><span class="menu-label lang-es">Menú</span>
         </button>
 
         <nav id="primary-nav" aria-label="Primary">
@@ -802,7 +819,7 @@
             <span class="lang-en">What we do</span><span class="lang-es">Qué hacemos</span>
           </a>
           <a class="nav-btn" data-page="scholarship" href="#/en/scholarship">
-            <span class="lang-en">Scholarship</span><span class="lang-es">Beca</span>
+            <span class="lang-en">Scholarships</span><span class="lang-es">Becas</span>
           </a>
           <a class="nav-btn" data-page="courses" href="#/en/courses">
             <span class="lang-en">Courses</span><span class="lang-es">Cursos</span>
@@ -817,7 +834,7 @@
 
         <div class="lang-picker" id="lang-picker">
           <button class="lang-current" id="lang-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Language / Idioma">
-            <span id="lang-label">Español</span>
+            <span id="lang-label">Español</span><span id="lang-label-short" aria-hidden="true">ESP</span>
             <svg class="chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 L6 6.5 L11 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <ul class="lang-menu" id="lang-menu" role="listbox" aria-labelledby="lang-toggle">
@@ -883,56 +900,69 @@
           </div>
           <div class="cycle" role="img" aria-labelledby="cycle-desc">
             <p id="cycle-desc" class="sr-only">
-              <span class="lang-en">A&nbsp;self-sustaining cycle in three stages. School materials in Piura make STEM feel possible. A&nbsp;master's scholarship in Spain opens a&nbsp;door. The scholar returns as a&nbsp;role model for other women in Piura, and the cycle continues.</span>
-              <span class="lang-es">Un ciclo que se sostiene solo, en tres etapas. El material escolar en Piura hace que STEM se vuelva posible. Una beca de maestría en España abre una puerta. La becaria regresa como referente para otras mujeres en Piura, y&nbsp;el ciclo continúa.</span>
+              <span class="lang-en">A&nbsp;self-sustaining cycle in four stages. School materials in Piura make STEM feel possible. STEM workshops keep that interest alive through secondary school and university. A&nbsp;master's scholarship in Spain opens a&nbsp;door. The scholar keeps her link with Piura and mentors other women from the region, and the cycle continues.</span>
+              <span class="lang-es">Un ciclo que se sostiene solo, en cuatro etapas. El material escolar en Piura hace que STEM se vuelva posible. Los talleres STEM mantienen vivo ese interés en secundaria y&nbsp;en la universidad. Una beca de maestría en España abre una puerta. La becaria mantiene el vínculo con Piura y&nbsp;acompaña a&nbsp;otras mujeres de la región, y&nbsp;el ciclo continúa.</span>
             </p>
-            <svg viewBox="0 0 760 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <defs>
                 <marker id="cyc-arrow" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto">
                   <path d="M 0 1 L 9 5 L 0 9 z" fill="#8A6D52"/>
                 </marker>
-                <path id="cyc-p1" d="M 409.6 44.1 A 213 213 0 0 1 577.5 334.8" fill="none"/>
-                <path id="cyc-p2" d="M 235.5 446.7 A 240 240 0 0 0 524.5 446.7" fill="none"/>
-                <path id="cyc-p3" d="M 182.5 334.8 A 213 213 0 0 1 350.4 44.1" fill="none"/>
+                <path id="cyc-p1" d="M 681.4 239.2 A 235 235 0 0 1 644.8 411.4" fill="none"/>
+                <path id="cyc-p2" d="M 311.3 485.6 A 248 248 0 0 0 493.1 524.2" fill="none"/>
+                <path id="cyc-p3" d="M 218.6 320.8 A 235 235 0 0 1 255.2 148.6" fill="none"/>
+                <path id="cyc-p4" d="M 409.2 48.6 A 235 235 0 0 1 581.4 85.2" fill="none"/>
               </defs>
 
-              <path d="M 448.4 93.9 A 175 175 0 0 1 553.7 276.3" fill="none" stroke="#8A6D52" stroke-width="1.8" marker-end="url(#cyc-arrow)"/>
-              <path d="M 485.3 394.8 A 175 175 0 0 1 274.7 394.8" fill="none" stroke="#8A6D52" stroke-width="1.8" marker-end="url(#cyc-arrow)"/>
-              <path d="M 206.3 276.3 A 175 175 0 0 1 311.6 93.9" fill="none" stroke="#8A6D52" stroke-width="1.8" marker-end="url(#cyc-arrow)"/>
+              <path d="M 642.0 246.1 A 195 195 0 0 1 611.7 389.0" fill="none" stroke="#8A6D52" stroke-width="1.8" marker-end="url(#cyc-arrow)"/>
+              <path d="M 483.9 472.0 A 195 195 0 0 1 341.0 441.7" fill="none" stroke="#8A6D52" stroke-width="1.8" marker-end="url(#cyc-arrow)"/>
+              <path d="M 258.0 313.9 A 195 195 0 0 1 288.3 171.0" fill="none" stroke="#8A6D52" stroke-width="1.8" marker-end="url(#cyc-arrow)"/>
+              <path d="M 416.1 88.0 A 195 195 0 0 1 559.0 118.3" fill="none" stroke="#8A6D52" stroke-width="1.8" marker-end="url(#cyc-arrow)"/>
 
               <text class="cyc-link lang-en"><textPath href="#cyc-p1" startOffset="50%" text-anchor="middle">STEM feels possible</textPath></text>
               <text class="cyc-link lang-es"><textPath href="#cyc-p1" startOffset="50%" text-anchor="middle">STEM se vuelve posible</textPath></text>
               <text class="cyc-link lang-en"><textPath href="#cyc-p2" startOffset="50%" text-anchor="middle">A door opens</textPath></text>
               <text class="cyc-link lang-es"><textPath href="#cyc-p2" startOffset="50%" text-anchor="middle">Se abre una puerta</textPath></text>
-              <text class="cyc-link lang-en"><textPath href="#cyc-p3" startOffset="50%" text-anchor="middle">The cycle continues</textPath></text>
-              <text class="cyc-link lang-es"><textPath href="#cyc-p3" startOffset="50%" text-anchor="middle">El ciclo continúa</textPath></text>
+              <text class="cyc-link lang-en"><textPath href="#cyc-p3" startOffset="50%" text-anchor="middle">The network grows</textPath></text>
+              <text class="cyc-link lang-es"><textPath href="#cyc-p3" startOffset="50%" text-anchor="middle">La red de mentes crece</textPath></text>
+              <text class="cyc-link lang-en"><textPath href="#cyc-p4" startOffset="50%" text-anchor="middle">The cycle continues</textPath></text>
+              <text class="cyc-link lang-es"><textPath href="#cyc-p4" startOffset="50%" text-anchor="middle">El ciclo continúa</textPath></text>
 
-              <circle cx="380" cy="255" r="62" fill="#F7B267"/>
-              <text class="cyc-centre lang-en" x="380" y="249" text-anchor="middle">THE</text>
-              <text class="cyc-centre lang-en" x="380" y="270" text-anchor="middle">CYCLE</text>
-              <text class="cyc-centre lang-es" x="380" y="260" text-anchor="middle">EL CICLO</text>
+              <circle cx="450" cy="280" r="62" fill="#F7B267"/>
+              <text class="cyc-centre lang-en" x="450" y="274" text-anchor="middle">THE</text>
+              <text class="cyc-centre lang-en" x="450" y="295" text-anchor="middle">CYCLE</text>
+              <text class="cyc-centre lang-es" x="450" y="285" text-anchor="middle">EL CICLO</text>
 
-              <circle cx="380" cy="80" r="46" fill="#F97316"/>
-              <g transform="translate(380 80)" fill="none" stroke="#16253D" stroke-width="2.6" stroke-linejoin="round">
+              <circle cx="613.5" cy="173.8" r="46" fill="#F97316"/>
+              <g transform="translate(613.5 173.8)" fill="none" stroke="#16253D" stroke-width="2.6" stroke-linejoin="round">
                 <path d="M -16 -11 L -2 -7 L -2 11 L -16 7 Z"/>
                 <path d="M 16 -11 L 2 -7 L 2 11 L 16 7 Z"/>
               </g>
-              <text class="cyc-label lang-en" x="380" y="22" text-anchor="middle">School materials</text>
-              <text class="cyc-label lang-es" x="380" y="22" text-anchor="middle">Material escolar</text>
+              <text class="cyc-label lang-en" x="660" y="120" text-anchor="start">School materials</text>
+              <text class="cyc-label lang-es" x="660" y="120" text-anchor="start">Material escolar</text>
 
-              <circle cx="531.6" cy="342.5" r="46" fill="#5BB6BC"/>
-              <g transform="translate(531.6 342.5)">
+              <circle cx="556.2" cy="443.5" r="46" fill="#9BB08A"/>
+              <g transform="translate(556.2 443.5)" fill="none" stroke="#16253D" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+                <rect x="-16" y="-18" width="32" height="23" rx="1.5"/>
+                <path d="M -9 -11 L 2 -11 M -9 -4.5 L 8 -4.5"/>
+                <path d="M -13 18 L -6 5 M 13 18 L 6 5 M 0 5 L 0 18"/>
+              </g>
+              <text class="cyc-label lang-en" x="598" y="500" text-anchor="start">STEM workshops</text>
+              <text class="cyc-label lang-es" x="598" y="500" text-anchor="start">Talleres STEM</text>
+
+              <circle cx="286.5" cy="386.2" r="46" fill="#5BB6BC"/>
+              <g transform="translate(286.5 386.2)">
                 <path d="M -18 -4 L 0 -13 L 18 -4 L 0 5 Z" fill="#16253D"/>
                 <path d="M -10 0.5 L -10 9 Q 0 15 10 9 L 10 0.5" fill="none" stroke="#16253D" stroke-width="2.6" stroke-linejoin="round"/>
                 <path d="M 14 -1.5 L 14 10" fill="none" stroke="#16253D" stroke-width="2.4"/>
               </g>
-              <text class="cyc-label lang-en" x="520" y="408" text-anchor="start">Master&#8217;s scholarships</text>
-              <text class="cyc-label lang-es" x="520" y="408" text-anchor="start">Becas de maestría</text>
+              <text class="cyc-label lang-en" x="222" y="393" text-anchor="end">Scholarships</text>
+              <text class="cyc-label lang-es" x="222" y="393" text-anchor="end">Becas de maestría</text>
 
-              <circle cx="228.4" cy="342.5" r="46" fill="#55743F"/>
-              <path transform="translate(228.4 342.5)" d="M 0 -17 Q 2.8 -2.8 17 0 Q 2.8 2.8 0 17 Q -2.8 2.8 -17 0 Q -2.8 -2.8 0 -17 Z" fill="#FDF4E8"/>
-              <text class="cyc-label lang-en" x="240" y="408" text-anchor="end">Role models</text>
-              <text class="cyc-label lang-es" x="240" y="408" text-anchor="end">Referentes</text>
+              <circle cx="343.8" cy="116.5" r="46" fill="#55743F"/>
+              <path transform="translate(343.8 116.5)" d="M 0 -17 Q 2.8 -2.8 17 0 Q 2.8 2.8 0 17 Q -2.8 2.8 -17 0 Q -2.8 -2.8 0 -17 Z" fill="#FDF4E8"/>
+              <text class="cyc-label lang-en" x="305" y="64" text-anchor="end">Role models</text>
+              <text class="cyc-label lang-es" x="305" y="64" text-anchor="end">Referentes</text>
             </svg>
           </div>
 
@@ -946,38 +976,48 @@
               <p class="lang-es">Los kits escolares fortalecen la calidad educativa desde etapas tempranas y&nbsp;ayudan a&nbsp;generar más confianza y&nbsp;motivación para que las niñas participen en STEM.</p>
               <p class="card-close lang-es">Una niña en Piura empieza a&nbsp;ver una carrera en ciencia como algo posible.</p>
             </div>
-            <div class="card c2">
+            <div class="card c3">
               <div class="dot"><span>02</span></div>
-              <h3><span class="lang-en">Scholarship</span><span class="lang-es">Beca</span></h3>
+              <h3><span class="lang-en">STEM workshops</span><span class="lang-es">Talleres STEM</span></h3>
+              <div class="card-rule"></div>
+              <p class="lang-en">STEM and AI&nbsp;workshops in Piura, led by professionals from leading companies, for secondary and university students.</p>
+              <p class="card-close lang-en">Between primary school and a&nbsp;master&#8217;s, the interest does not fade.</p>
+              <p class="lang-es">Talleres de STEM y&nbsp;de IA en Piura, impartidos por profesionales de empresas líderes, para escolares y&nbsp;universitarios.</p>
+              <p class="card-close lang-es">Entre la primaria y&nbsp;la maestría, el interés no se enfría.</p>
+            </div>
+            <div class="card c2">
+              <div class="dot"><span>03</span></div>
+              <h3><span class="lang-en">Scholarships</span><span class="lang-es">Becas</span></h3>
               <div class="card-rule"></div>
               <p class="lang-en">We fund high-employability STEM master's with paid internships, which let a&nbsp;scholar earn an income and build networks in the industries of the future.</p>
               <p class="card-close lang-en">Tuition and living support are covered, so the decision no longer depends on money.</p>
               <p class="lang-es">Financiamos másteres en STEM de alta empleabilidad y&nbsp;con prácticas remuneradas que permiten generar ingresos y&nbsp;construir redes en industrias del futuro.</p>
               <p class="card-close lang-es">La matrícula y&nbsp;la manutención están cubiertas, y&nbsp;la decisión deja de depender del dinero.</p>
             </div>
-            <div class="card c3">
-              <div class="dot"><span>03</span></div>
-              <h3><span class="lang-en">Role model</span><span class="lang-es">Referente</span></h3>
+            <div class="card c5">
+              <div class="dot"><span>04</span></div>
+              <h3><span class="lang-en">Role models</span><span class="lang-es">Referentes</span></h3>
               <div class="card-rule"></div>
-              <p class="lang-en">Scholars become role models for other women in Piura.</p>
-              <p class="card-close lang-en">They return as living proof that it can be done, and the path they took stops being hypothetical for everyone behind her.</p>
-              <p class="lang-es">Las becarias se convierten en referentes para otras mujeres en Piura.</p>
-              <p class="card-close lang-es">Regresan como prueba viva de que se puede, y&nbsp;el camino que recorrieron deja de ser una hipótesis para quienes vienen detrás.</p>
+              <p class="lang-en">Scholars become role models for other women in Piura. Each one joins our network of minds and mentors the women who apply after her.</p>
+              <p class="card-close lang-en">They are living proof that it can be done, and the path they took stops being hypothetical for everyone behind her.</p>
+              <p class="lang-es">Las becarias se convierten en referentes para otras mujeres en Piura. Cada una se suma a&nbsp;nuestra red de mentes y&nbsp;acompaña a&nbsp;las que postulan después.</p>
+              <p class="card-close lang-es">Son la prueba viva de que se puede, y&nbsp;el camino que recorrieron deja de ser una hipótesis para quienes vienen detrás.</p>
             </div>
-            <div class="card c4">
+          </div>
+
+          <div class="card card--wide c4">
+            <div class="cw-head">
               <div class="dot"><span aria-hidden="true">&#8635;</span></div>
               <h3><span class="lang-en">The cycle</span><span class="lang-es">El ciclo</span></h3>
               <div class="card-rule"></div>
-              <p class="lang-en">Every scholar joins our network of minds and mentors the women who apply after her.</p>
-              <p class="card-close lang-en">Nothing starts from zero again - each group leaves the next one better prepared.</p>
-              <p class="lang-es">Cada becaria se suma a&nbsp;nuestra red de mentes y&nbsp;acompaña a&nbsp;las mujeres que postulan después.</p>
-              <p class="card-close lang-es">Nada vuelve a&nbsp;empezar de cero - cada promoción deja mejor preparada a&nbsp;la siguiente.</p>
+            </div>
+            <div class="cw-quote">
+              <p>
+                <span class="lang-en">Each step makes the next one possible - that is the <span class="cw-brand">brilliant network</span><svg class="cw-spark" viewBox="0 0 40 34" aria-hidden="true"><path d="M 13 8 Q 15 17 24 19 Q 15 21 13 30 Q 11 21 2 19 Q 11 17 13 8 Z" fill="currentColor"/><path d="M 31 2 Q 32.2 7.8 38 9 Q 32.2 10.2 31 16 Q 29.8 10.2 24 9 Q 29.8 7.8 31 2 Z" fill="currentColor"/><path d="M 27 24 Q 27.7 27.3 31 28 Q 27.7 28.7 27 32 Q 26.3 28.7 23 28 Q 26.3 27.3 27 24 Z" fill="currentColor"/></svg></span>
+                <span class="lang-es">Cada paso hace posible el siguiente - esa es la <span class="cw-brand">cadena brillante</span><svg class="cw-spark" viewBox="0 0 40 34" aria-hidden="true"><path d="M 13 8 Q 15 17 24 19 Q 15 21 13 30 Q 11 21 2 19 Q 11 17 13 8 Z" fill="currentColor"/><path d="M 31 2 Q 32.2 7.8 38 9 Q 32.2 10.2 31 16 Q 29.8 10.2 24 9 Q 29.8 7.8 31 2 Z" fill="currentColor"/><path d="M 27 24 Q 27.7 27.3 31 28 Q 27.7 28.7 27 32 Q 26.3 28.7 23 28 Q 26.3 27.3 27 24 Z" fill="currentColor"/></svg></span>
+              </p>
             </div>
           </div>
-          <p class="closing">
-            <span class="lang-en">Lives changed directly - and a&nbsp;network that keeps the next generation coming.</span>
-            <span class="lang-es">Vidas transformadas directamente - y&nbsp;una red que sostiene a&nbsp;la siguiente generación.</span>
-          </p>
         </div>
       </div>
 
@@ -997,8 +1037,8 @@
             <div class="fact fact--pos">
               <div class="fact-value">31 %</div>
               <h3><span class="lang-en">Young people in higher education</span><span class="lang-es">Jóvenes en educación superior</span></h3>
-              <p class="lang-en">Of 20 to 24 year-olds enrolled in 2023, close to the OECD average of 34% and one of the highest rates among OECD countries in Latin America.</p>
-              <p class="lang-es">De los jóvenes de 20 a&nbsp;24 años matriculados en 2023, cerca del promedio OCDE (34%) y&nbsp;una de las tasas más altas entre los países OCDE de América Latina.</p>
+              <p class="lang-en">Of 20&#8211;24 year-olds in 2023, near the OECD average of 34% and among the highest of OECD countries in Latin America.</p>
+              <p class="lang-es">De 20 a&nbsp;24 años en 2023, cerca del promedio OCDE (34%) y&nbsp;de los más altos entre los países OCDE de América Latina.</p>
             </div>
             <div class="fact">
               <div class="fact-value">2 % <small>vs 16 %</small></div>
@@ -1021,11 +1061,11 @@
             <div class="fact">
               <div class="fact-value">$1,984</div>
               <h3><span class="lang-en">Spending per student</span><span class="lang-es">Gasto por alumno</span></h3>
-              <p class="lang-en">Per year, primary to post-secondary. The lowest of all countries the OECD measures, in a&nbsp;range reaching above $27,000.</p>
-              <p class="lang-es">Al año, de primaria a&nbsp;possecundaria. El más bajo de todos los países que mide la OCDE, en un rango que supera los 27.000 $.</p>
+              <p class="lang-en">Per year, primary to post-secondary. The lowest the OECD measures, in a&nbsp;range reaching above $27,000.</p>
+              <p class="lang-es">Al año, de primaria a&nbsp;possecundaria. El más bajo que mide la OCDE, en un rango que supera los 27.000 $.</p>
             </div>
             <div class="fact fact--pos">
-              <div class="fact-value"><span class="lang-en">2nd of 37</span><span class="lang-es">2.º de 37</span></div>
+              <div class="fact-value"><span class="lang-en">2<span class="ord">nd</span> of 37</span><span class="lang-es">2.º de 37</span></div>
               <h3><span class="lang-en">Improvement in mathematics</span><span class="lang-es">Mejora en matemáticas</span></h3>
               <p class="lang-en">Rate of improvement in PISA. Peru also ranks 2nd of 26 in reading and 2nd of 24 in science.</p>
               <p class="lang-es">Ritmo de mejora en PISA. Perú también es 2.º de 26 en lectura y&nbsp;2.º de 24 en ciencias.</p>
@@ -1082,20 +1122,14 @@
             <div class="sdg">
               <img class="sdg-img lang-en" src="data:image/png;base64,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" width="300" height="300" alt="UN Sustainable Development Goal 4: Quality Education" loading="lazy">
               <img class="sdg-img lang-es" src="data:image/png;base64,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" width="300" height="300" alt="Objetivo de Desarrollo Sostenible 4 de la ONU: Educación de Calidad" loading="lazy">
-              <p class="lang-en">Master&#8217;s places and classroom equipment, at both ends of the system.</p>
-              <p class="lang-es">Plazas de máster y&nbsp;equipamiento de aula, en ambos extremos del sistema.</p>
             </div>
             <div class="sdg">
               <img class="sdg-img lang-en" src="data:image/png;base64,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" width="300" height="300" alt="UN Sustainable Development Goal 5: Gender Equality" loading="lazy">
               <img class="sdg-img lang-es" src="data:image/png;base64,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" width="300" height="300" alt="Objetivo de Desarrollo Sostenible 5 de la ONU: Igualdad de Género" loading="lazy">
-              <p class="lang-en">The programme exists for women, in the fields where the gap is widest.</p>
-              <p class="lang-es">El programa existe para mujeres, en los campos donde la brecha es más amplia.</p>
             </div>
             <div class="sdg">
               <img class="sdg-img lang-en" src="data:image/png;base64,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" width="300" height="300" alt="UN Sustainable Development Goal 10: Reduced Inequalities" loading="lazy">
               <img class="sdg-img lang-es" src="data:image/png;base64,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" width="300" height="300" alt="Objetivo de Desarrollo Sostenible 10 de la ONU: Reducción de las Desigualdades" loading="lazy">
-              <p class="lang-en">Aimed at a&nbsp;region poorer than the national average.</p>
-              <p class="lang-es">Dirigido a&nbsp;una región más pobre que la media nacional.</p>
             </div>
           </div>
 
@@ -1170,7 +1204,7 @@
             </ul>
             <ul class="work-list lang-es">
               <li>Cero gastos administrativos. Sin salarios ni gastos de gestión - cada euro va a&nbsp;los beneficiarios.</li>
-              <li>La matrícula se paga directamente a&nbsp;las universidades. No se transfiere dinero a&nbsp;personas individuales, lo que lo hace rastreable de principio a&nbsp;fin.</li>
+              <li>La matrícula se paga directamente a&nbsp;las universidades. No se transfiere dinero a&nbsp;personas individuales,<br class="brk">lo que lo hace rastreable de principio a&nbsp;fin.</li>
               <li>Las becarias son seleccionadas de forma anónima por un comité diverso.</li>
               <li>Reportamos sobre resultados, no sobre intenciones.</li>
             </ul>
@@ -1189,8 +1223,8 @@
           <img class="head-mark" src="cb-mark.png" width="128" height="118" alt="" loading="lazy">
           <p class="eyebrow"><span class="lang-en">What we do</span><span class="lang-es">Qué hacemos</span></p>
           <h1 id="h-what" tabindex="-1">
-            <span class="lang-en">Scholarships, school materials and workshops</span>
-            <span class="lang-es">Becas, materiales escolares y&nbsp;talleres</span>
+            <span class="lang-en">Scholarships, school materials<br class="brk">and workshops</span>
+            <span class="lang-es">Becas, materiales escolares<br class="brk">y&nbsp;talleres</span>
           </h1>
           <div class="rule"></div>
           <p class="lead lead--full lang-en"><span class="nb">Two programmes, one cycle: removing the obstacle between a&nbsp;capable student and the next step.</span></p>
@@ -1198,10 +1232,12 @@
         </div>
       </div>
 
-      <div class="band band--warm">
+
+      <div class="band band--light">
         <div class="band-inner">
           <div class="block">
-            <h2><span class="lang-en">Master's scholarships in Spain</span><span class="lang-es">Becas de maestría en España</span></h2>
+            <p class="eyebrow"><span class="lang-en">In Spain</span><span class="lang-es">En España</span></p>
+            <h2><span class="lang-en">Master's scholarships</span><span class="lang-es">Becas de maestría</span></h2>
             <p class="lang-en">We fund master&#8217;s scholarships in Spain for women from Piura with a&nbsp;strong academic record. The scholarship covers the full tuition fee. Scholars also receive support with living costs, help applying to universities, and mentoring.</p>
             <p class="lang-es">Financiamos becas de maestría en España para mujeres de Piura que cuentan con un alto nivel académico. La beca cubre la matrícula completa. Además, las becarias reciben apoyo con los gastos de manutención, ayuda en la postulación a&nbsp;las universidades y&nbsp;mentoría.</p>
             <p class="lang-en">We support STEM. Our current focus is on future-oriented fields: engineering (especially environmental and circular engineering), cybersecurity, and artificial intelligence. We fund high-employability programmes with paid internships, which let a&nbsp;scholar earn additional income and build networks in the industries of the future, strengthening her CV before she has even graduated.</p>
@@ -1209,33 +1245,35 @@
             <p class="lang-en">Applicants choose up to two programmes from the list we support, ranked by preference, and applications are assessed anonymously. The scholarship cannot be combined with other full funding: if a&nbsp;scholar secures full funding elsewhere, the money is reallocated within the programme.</p>
             <p class="lang-es">Las postulantes eligen hasta dos programas de la lista que apoyamos, ordenados por preferencia, y&nbsp;las solicitudes se evalúan de forma anónima. La beca no es acumulable con otra financiación completa: si una becaria obtiene financiación total por otra vía, los fondos se reasignan dentro del programa.</p>
           </div>
-
-          <div class="block">
-            <h2><span class="lang-en">School materials for primary schools in Piura</span><span class="lang-es">Materiales escolares para primarias en Piura</span></h2>
-            <p class="lang-en">Alongside the scholarships, we invest in the earlier stages of education, equipping primary schools in Piura with learning tools and school materials: science books, notebooks, whiteboards, projectors, desks, speakers, internet routers, fans, markers and USB drives, digital resource libraries and basic English courses. These kits strengthen teaching quality from the start and give girls the confidence to approach STEM. The aim is simple and direct: a&nbsp;child who has the materials to work with is a&nbsp;child who can keep learning.</p>
-            <p class="lang-es">Junto con las becas, invertimos en las etapas iniciales de la educación, equipando escuelas primarias en Piura con herramientas de aprendizaje y&nbsp;material escolar: libros de ciencia, cuadernos, pizarras, proyectores, pupitres, altavoces, routers de internet, ventiladores, rotuladores y&nbsp;memorias USB, bibliotecas de recursos digitales y&nbsp;cursos básicos de inglés. Estos kits refuerzan la calidad educativa desde el inicio y&nbsp;dan a&nbsp;las niñas la confianza para acercarse a&nbsp;STEM. El objetivo es directo: un estudiante con los materiales para trabajar es un estudiante que puede seguir aprendiendo.</p>
-          </div>
         </div>
       </div>
 
       <div class="band band--blue">
         <div class="band-inner">
           <div class="block-head">
-            <p class="eyebrow"><span class="lang-en">Support</span><span class="lang-es">Acompañamiento</span></p>
-            <h2><span class="lang-en">Mentoring, not just a&nbsp;transfer</span><span class="lang-es">Mentoría, no solo una transferencia</span></h2>
-          </div>
-          <p class="lang-en">Scholars receive end-to-end support: choosing a&nbsp;programme, writing a&nbsp;CV and motivation letter, applying to the university, guidance on the paperwork, and what to expect from life abroad. That support comes from our team and our network, which includes graduates of the University of Manchester and the Barcelona School of Economics, and people who have won admission and funding at leading European universities. After finishing her studies, every scholar joins that network and mentors the women who apply after her - which is what makes the cycle self-sustaining.</p>
-          <p class="lang-es">Las becarias reciben acompañamiento de principio a&nbsp;fin: elección del programa, redacción del CV y&nbsp;carta de motivación, postulación a&nbsp;la universidad y&nbsp;los consejos sobre la documentación, y&nbsp;qué esperar de la vida en el extranjero. Ese apoyo proviene de nuestro equipo y&nbsp;de nuestra red, que incluye graduados de la Universidad de Mánchester y&nbsp;la Barcelona School of Economics, y&nbsp;personas que han conseguido admisión y&nbsp;financiación en universidades europeas líderes. Al terminar sus estudios, cada becaria se suma a&nbsp;esa red y&nbsp;acompaña a&nbsp;las mujeres que postulan después: eso es lo que hace posible que el ciclo se sostenga solo.</p>
-        </div>
-      </div>
-      <div class="band band--warm">
-        <div class="band-inner">
-          <div class="block-head">
             <p class="eyebrow"><span class="lang-en">Pilot</span><span class="lang-es">Piloto</span></p>
             <h2><span class="lang-en">Workshops in Piura</span><span class="lang-es">Talleres en Piura</span></h2>
           </div>
-          <p class="lang-en">We run activities on the ground in Piura: donations to primary schools, STEM workshops for schoolchildren, and workshops for university students on how to apply for master&#8217;s programmes at universities abroad.</p>
-          <p class="lang-es">Organizamos actividades presenciales en Piura: donaciones a&nbsp;escuelas primarias, talleres de STEM para escolares y&nbsp;talleres para estudiantes universitarios sobre cómo postular a&nbsp;másteres en universidades en el extranjero.</p>
+          <p class="lang-en">STEM and AI&nbsp;workshops in Piura, led by professionals from leading companies, for secondary school pupils and university students. We also organise donations to primary schools and sessions on how to apply for master&#8217;s programmes abroad.</p>
+          <p class="lang-es">Talleres de STEM y&nbsp;de IA en Piura, impartidos por profesionales de empresas líderes, para escolares de secundaria y&nbsp;estudiantes universitarios. También organizamos donaciones a&nbsp;escuelas primarias y&nbsp;sesiones sobre cómo postular a&nbsp;másteres en el extranjero.</p>
+        </div>
+      </div>
+
+      <div class="band band--warm">
+        <div class="band-inner">
+          <div class="block">
+            <p class="eyebrow"><span class="lang-en">In Piura</span><span class="lang-es">En Piura</span></p>
+            <h2><span class="lang-en">School materials for primary schools</span><span class="lang-es">Materiales escolares para primarias</span></h2>
+            <p class="lang-en">Alongside the scholarships, we invest in the earlier stages of education, equipping primary schools in Piura with learning tools and school materials: science books, notebooks, whiteboards, projectors, desks, speakers, internet routers, fans, markers and USB drives, digital resource libraries and basic English courses. These kits strengthen teaching quality from the start and give girls the confidence to approach STEM. When a&nbsp;girl in primary school sees that science is for her, she dares to dream.</p>
+            <p class="lang-es">Junto con las becas, invertimos en las etapas iniciales de la educación, equipando escuelas primarias en Piura con herramientas de aprendizaje y&nbsp;material escolar: libros de ciencia, cuadernos, pizarras, proyectores, pupitres, altavoces, routers de internet, ventiladores, rotuladores y&nbsp;memorias USB, bibliotecas de recursos digitales y&nbsp;cursos básicos de inglés. Estos kits refuerzan la calidad educativa desde el inicio y&nbsp;dan a&nbsp;las niñas la confianza para acercarse a&nbsp;STEM. Cuando una niña de primaria ve que la ciencia es para ella, se atreve a&nbsp;soñar.</p>
+          </div>
+
+          <div class="block">
+            <p class="eyebrow"><span class="lang-en">Support</span><span class="lang-es">Acompañamiento</span></p>
+            <h2><span class="lang-en">Mentoring and role models</span><span class="lang-es">Mentoría y&nbsp;referentes</span></h2>
+          <p class="lang-en">Scholars receive end-to-end support: choosing a&nbsp;programme, writing a&nbsp;CV and motivation letter, applying to the university, guidance on the paperwork, and what to expect from life abroad. That support comes from our team and our network, which includes graduates of the University of Manchester and the Barcelona School of Economics, and people who have won admission and funding at leading European universities. After finishing her studies, every scholar joins that network and mentors the women who apply after her - which is what makes the cycle self-sustaining.</p>
+          <p class="lang-es">Las becarias reciben acompañamiento de principio a&nbsp;fin: elección del programa, redacción del CV y&nbsp;carta de motivación, postulación a&nbsp;la universidad y&nbsp;los consejos sobre la documentación, y&nbsp;qué esperar de la vida en el extranjero. Ese apoyo proviene de nuestro equipo y&nbsp;de nuestra red, que incluye graduados de la Universidad de Mánchester y&nbsp;la Barcelona School of Economics, y&nbsp;personas que han conseguido admisión y&nbsp;financiación en universidades europeas líderes. Al terminar sus estudios, cada becaria se suma a&nbsp;esa red y&nbsp;acompaña a&nbsp;las mujeres que postulan después: eso es lo que hace posible que el ciclo se sostenga solo.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -1246,7 +1284,7 @@
       <div class="band band--blue">
         <div class="band-inner page-head">
           <img class="head-mark" src="cb-mark.png" width="128" height="118" alt="" loading="lazy">
-          <p class="eyebrow"><span class="lang-en">Scholarship</span><span class="lang-es">Beca</span></p>
+          <p class="eyebrow"><span class="lang-en">Scholarships</span><span class="lang-es">Becas</span></p>
           <h1 id="h-scholarship" tabindex="-1">
             <span class="lang-en">Full tuition and support with living costs.</span>
             <span class="lang-es">Matrícula completa y&nbsp;apoyo con el coste de vida.</span>
@@ -1603,8 +1641,8 @@
           <img class="head-mark" src="cb-mark.png" width="128" height="118" alt="" loading="lazy">
           <p class="eyebrow"><span class="lang-en">Application tips</span><span class="lang-es">Consejos de postulación</span></p>
           <h1 id="h-tips" tabindex="-1">
-            <span class="lang-en">Quality, not length</span>
-            <span class="lang-es">Calidad, no extensión</span>
+            <span class="lang-en">Before you write</span>
+            <span class="lang-es">Antes de escribir</span>
           </h1>
           <div class="rule"></div>
           <p class="lead lead--full lang-en"><span class="nb">Your CV, your motivation letter and your choice of programme should tell one coherent story.</span></p>
@@ -1680,16 +1718,16 @@
           <img class="head-mark" src="cb-mark.png" width="128" height="118" alt="" loading="lazy">
           <p class="eyebrow"><span class="lang-en">Contact</span><span class="lang-es">Contacto</span></p>
           <h1 id="h-contact" tabindex="-1">
-            <span class="lang-en">Every enquiry reaches us directly</span>
-            <span class="lang-es">Cada consulta llega directamente a&nbsp;nosotros</span>
+            <span class="lang-en">Write to us</span>
+            <span class="lang-es">Escríbenos</span>
           </h1>
           <div class="rule"></div>
-          <p class="lead lead--full lang-en"><span class="nb">Cadena Brillante is based in Madrid and works in Piura. Write to <a href="mailto:equipo@cadenabrillante.org">equipo@cadenabrillante.org</a>.</span></p>
-          <p class="lead lead--full lang-es"><span class="nb">Cadena Brillante tiene su sede en Madrid y&nbsp;trabaja en Piura. Escribe a&nbsp;<a href="mailto:equipo@cadenabrillante.org">equipo@cadenabrillante.org</a>.</span></p>
+          <p class="lead lead--full lang-en"><span class="nb">Cadena Brillante is based in Madrid and works in Piura. We read everything that arrives at <a href="mailto:equipo@cadenabrillante.org">equipo@cadenabrillante.org</a>.</span></p>
+          <p class="lead lead--full lang-es"><span class="nb">Cadena Brillante tiene su sede en Madrid y&nbsp;trabaja en Piura. Te leemos en <a href="mailto:equipo@cadenabrillante.org">equipo@cadenabrillante.org</a>.</span></p>
         </div>
       </div>
 
-      <div class="band band--warm">
+      <div class="band band--light">
         <div class="band-inner">
 
           <div class="block">
@@ -1700,31 +1738,14 @@
 
           <div class="block">
             <h2><span class="lang-en">Universities, organisations and supporters</span><span class="lang-es">Universidades, organizaciones y&nbsp;quienes quieran apoyar</span></h2>
+            <p class="lang-en">Are you an NGO working in Peru? An institution supporting education or gender equality? Someone who believes education is a&nbsp;right, not a&nbsp;privilege?</p>
             <p class="lang-en">We work with universities in Spain and with schools and organisations in the Piura region, and we are open to talking with others. If you are a&nbsp;university interested in hosting funded scholars, a&nbsp;school or organisation working in Piura, or an individual or company considering supporting the programme, write to us. We would be glad to work with you and walk you through how the programme works.</p>
+            <p class="lang-es">¿Eres una ONG con presencia en Perú? ¿Una institución que apoya la educación o&nbsp;la igualdad de género? ¿Una persona que cree que la educación es un derecho, no un privilegio?</p>
             <p class="lang-es">Trabajamos con universidades en España y&nbsp;con escuelas y&nbsp;organizaciones de la región de Piura, y&nbsp;estamos abiertos a&nbsp;hablar con otras. Si eres una universidad interesada en acoger becarias financiadas, una escuela u&nbsp;organización que opera en Piura, o&nbsp;una persona o&nbsp;empresa que se plantea apoyar el programa, escríbenos. Nos encantará trabajar contigo y&nbsp;explicarte cómo funciona el programa.</p>
           </div>
 
           <div class="btn-group">
             <a class="btn" href="mailto:equipo@cadenabrillante.org">equipo@cadenabrillante.org</a>
-          </div>
-        </div>
-
-        <div class="band-inner">
-          <div class="cards">
-            <div class="card c1">
-              <div class="dot"></div>
-              <h3><span class="lang-en">Where we are</span><span class="lang-es">Dónde estamos</span></h3>
-              <div class="card-rule"></div>
-              <p class="lang-en">Based in Madrid, Spain. Our work is in the Piura region of Peru, and in the Spanish universities where our scholars study.</p>
-              <p class="lang-es">Con sede en Madrid, España. Nuestro trabajo está en la región de Piura, en Perú, y&nbsp;en las universidades españolas donde estudian nuestras becarias.</p>
-            </div>
-            <div class="card c2">
-              <div class="dot"></div>
-              <h3><span class="lang-en">Which language</span><span class="lang-es">En qué idioma</span></h3>
-              <div class="card-rule"></div>
-              <p class="lang-en">Write in Spanish or English, whichever you prefer. We will reply in the same language.</p>
-              <p class="lang-es">Escribe en español o&nbsp;en inglés, en el idioma que prefieras. Te responderemos en el mismo idioma.</p>
-            </div>
           </div>
         </div>
       </div>
@@ -1786,7 +1807,7 @@
           'home': "Cadena Brillante · Talent shines everywhere",
           'who-we-are': "Who we are · Cadena Brillante",
           'what-we-do': "What we do · Cadena Brillante",
-          'scholarship': "Scholarship · Cadena Brillante",
+          'scholarship': "Scholarships · Cadena Brillante",
           'courses': "Featured courses · Cadena Brillante",
           'tips': "Application tips · Cadena Brillante",
           'contact': "Contact · Cadena Brillante"
@@ -1795,7 +1816,7 @@
           'home': "Cadena Brillante · El talento brilla en todas partes",
           'who-we-are': "Quiénes somos · Cadena Brillante",
           'what-we-do': "Qué hacemos · Cadena Brillante",
-          'scholarship': "Beca · Cadena Brillante",
+          'scholarship': "Becas · Cadena Brillante",
           'courses': "Cursos destacados · Cadena Brillante",
           'tips': "Consejos de postulación · Cadena Brillante",
           'contact': "Contacto · Cadena Brillante"
@@ -1849,6 +1870,8 @@
         }
         var label = document.getElementById('lang-label');
         if (label) label.textContent = (lang === 'es') ? 'Español' : 'English';
+        var labelShort = document.getElementById('lang-label-short');
+        if (labelShort) labelShort.textContent = (lang === 'es') ? 'ESP' : 'ENG';
 
         var links = document.querySelectorAll('a[data-page]');
         for (var j = 0; j < links.length; j++) {
