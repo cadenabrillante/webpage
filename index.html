@@ -12,15 +12,15 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Cadena Brillante">
   <meta property="og:url" content="https://cadenabrillante.org/">
-  <meta property="og:title" content="Talent shines everywhere. Opportunity does not.">
-  <meta property="og:description" content="We fund master's scholarships in Spain for women from Piura, Peru, and equip primary schools in the region. Three volunteers, no salaries, no overhead.">
+  <meta property="og:title" content="El talento brilla en todas partes.">
+  <meta property="og:description" content="Becas de máster en España, material escolar en Piura y una red de mentes en ciencia y tecnología que sigue creciendo.">
   <meta property="og:image" content="https://cadenabrillante.org/og.jpg">
-  <meta property="og:image:alt" content="Cadena Brillante: talent shines everywhere, opportunity does not">
-  <meta property="og:locale" content="en_GB">
-  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:image:alt" content="Cadena Brillante: el talento brilla en todas partes">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:locale:alternate" content="en_GB">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Talent shines everywhere. Opportunity does not.">
-  <meta name="twitter:description" content="Master's scholarships in Spain for women from Piura, Peru, and school materials for primary schools in the region.">
+  <meta name="twitter:title" content="El talento brilla en todas partes.">
+  <meta name="twitter:description" content="Becas de máster en España, material escolar en Piura y una red de mentes en ciencia y tecnología que sigue creciendo.">
   <meta name="twitter:image" content="https://cadenabrillante.org/og.jpg">
 
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -28,9 +28,8 @@
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preload" href="fonts/archivo-v25-latin_latin-ext-800.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/inter-v20-latin_latin-ext-regular.woff2" as="font" type="font/woff2" crossorigin>
 
   <script type="application/ld+json">
   {
@@ -50,6 +49,36 @@
   </script>
 
   <style>
+    /* ---------- self-hosted fonts, no third-party requests ---------- */
+    @font-face {
+      font-family: 'Archivo'; font-style: normal; font-weight: 500;
+      font-display: swap; src: url('fonts/archivo-v25-latin_latin-ext-500.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Archivo'; font-style: normal; font-weight: 600;
+      font-display: swap; src: url('fonts/archivo-v25-latin_latin-ext-600.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Archivo'; font-style: normal; font-weight: 700;
+      font-display: swap; src: url('fonts/archivo-v25-latin_latin-ext-700.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Archivo'; font-style: normal; font-weight: 800;
+      font-display: swap; src: url('fonts/archivo-v25-latin_latin-ext-800.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Inter'; font-style: normal; font-weight: 400;
+      font-display: swap; src: url('fonts/inter-v20-latin_latin-ext-regular.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Inter'; font-style: normal; font-weight: 500;
+      font-display: swap; src: url('fonts/inter-v20-latin_latin-ext-500.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Inter'; font-style: normal; font-weight: 600;
+      font-display: swap; src: url('fonts/inter-v20-latin_latin-ext-600.woff2') format('woff2');
+    }
+
     :root {
       /* deck palette — principales */
       --navy: #16253D;
@@ -61,7 +90,7 @@
       --warm-4: #F97316;
       --warm-ink: #16253D;
       --warm-ink-soft: #2C3E5A;
-      --warm-eyebrow: #B35A12;
+      --warm-eyebrow: #A8450A;
       --warm-link: #8A4008;
       --warm-faint: #6B4A2E;
       --warm-rule: rgba(22, 37, 61, 0.18);
@@ -233,15 +262,21 @@
     .band--warm {
       color: var(--warm-ink);
       background: linear-gradient(133deg,
-        var(--warm-1) 0%, var(--warm-1) 18%, #FDF0DF 34%, #FCE7CB 50%, #FADFBB 62%,
-        var(--warm-3) 80%, #F9902F 92%, var(--warm-4) 100%);
+        var(--warm-1) 0%, var(--warm-1) 32%, #FDF0DF 46%, #FCE7CB 60%, #FADFBB 74%,
+        var(--warm-3) 88%, #F9902F 96%, var(--warm-4) 100%);
     }
     .band--warm::after { opacity: 0.5; }
     /* mission band: orange corner sits top-right, directly beneath the hero circle */
+    /* Inicio only: sun reflection under the hero's orange circle */
     .band--warm.warm-tr {
-      background: linear-gradient(47deg,
-        var(--warm-1) 0%, var(--warm-1) 18%, #FDF0DF 34%, #FCE7CB 50%, #FADFBB 62%,
-        var(--warm-3) 80%, #F9902F 92%, var(--warm-4) 100%);
+      background-color: var(--warm-1);
+      background-image:
+        linear-gradient(to bottom,
+          rgba(253, 244, 232, 0) 40%, rgba(253, 244, 232, 0.5) 68%,
+          rgba(253, 244, 232, 0.9) 88%, var(--warm-1) 100%),
+        radial-gradient(circle 920px at 99% 8%,
+          var(--warm-4) 0%, #F9902F 8%, var(--warm-3) 20%, #FADFBB 44%,
+          #FCE7CB 60%, #FDF0DF 76%, var(--warm-1) 90%);
     }
     .band--warm .eyebrow { color: var(--warm-eyebrow); }
     .band--warm h1, .band--warm h2, .band--warm h3 { color: var(--warm-ink); }
@@ -295,6 +330,7 @@
       color: var(--cream); max-width: 26ch;
     }
     .band--light h1 { color: var(--navy); }
+    .hero h1 { max-width: 36ch; }
 
     /* phrases that should hold on one line on desktop */
     .nb { white-space: nowrap; }
@@ -525,7 +561,7 @@
 
     /* ---------- course cards ---------- */
 
-    .courses { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; }
+    .courses { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(290px, 100%), 1fr)); gap: 22px; }
     .course {
       background: #FFFFFF; box-shadow: 0 2px 12px rgba(22, 37, 61, 0.10);
       padding: 24px 24px 8px; display: flex; flex-direction: column;
@@ -675,6 +711,7 @@
     /* ---------- line breaking ---------- */
 
     h1, h2, h3 { text-wrap: balance; }
+    .fact h3 { text-wrap: normal; }
     p, li, dd, figcaption { text-wrap: pretty; }
 
     /* ---------- per-section measure (line-break control) ---------- */
@@ -717,7 +754,8 @@
 
     @media (max-width: 780px) {
       body { font-size: 16px; }
-      .band-inner, .hero-inner, .nav-container, .footer-inner { padding-left: 16px; padding-right: 16px; }
+      .band-inner, .hero-inner, .footer-inner { padding-left: 22px; padding-right: 22px; }
+      .nav-container { padding-left: 16px; padding-right: 16px; }
       .band-inner { padding-top: 40px; padding-bottom: 40px; }
       .footer-cta-inner { flex-direction: column; align-items: flex-start; gap: 22px; }
       .footer-ask { gap: 14px; }
@@ -733,13 +771,15 @@
       #lang-label-short { display: inline; }
       .lang-current { padding: 8px 11px; gap: 7px; }
       .logo { gap: 10px; }
-      .logo-title { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .logo-title { font-size: 17px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
       .logo .mark { width: 40px; }
       .nav-right { gap: 12px; }
       nav {
         display: none; position: absolute; left: 0; right: 0; top: 100%;
         flex-direction: column; gap: 0; background: var(--navy);
         border-bottom: 1px solid var(--line); padding: 6px 22px 14px;
+        max-height: calc(100vh - 100%); max-height: calc(100dvh - 100%);
+        overflow-y: auto; -webkit-overflow-scrolling: touch;
       }
       header.menu-open nav { display: flex; }
       .nav-btn {
@@ -834,7 +874,7 @@
 
         <div class="lang-picker" id="lang-picker">
           <button class="lang-current" id="lang-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Language / Idioma">
-            <span id="lang-label">Español</span><span id="lang-label-short" aria-hidden="true">ESP</span>
+            <span id="lang-label">Español</span><span id="lang-label-short" aria-hidden="true">ES</span>
             <svg class="chev" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5 L6 6.5 L11 1.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </button>
           <ul class="lang-menu" id="lang-menu" role="listbox" aria-labelledby="lang-toggle">
@@ -860,8 +900,8 @@
               <span class="lang-es">Piura · Perú</span>
             </p>
             <h1>
-              <span class="lang-en">Talent shines everywhere. Opportunity does not.</span>
-              <span class="lang-es">El talento brilla en todas partes. La oportunidad no.</span>
+              <span class="lang-en">Talent shines everywhere.<br class="brk">Opportunity does not.</span>
+              <span class="lang-es">El talento brilla en todas partes.<br class="brk">La oportunidad no.</span>
             </h1>
             <div class="rule"></div>
           </div>
@@ -1036,9 +1076,9 @@
             </div>
             <div class="fact fact--pos">
               <div class="fact-value">31 %</div>
-              <h3><span class="lang-en">Young people in higher education</span><span class="lang-es">Jóvenes en educación superior</span></h3>
-              <p class="lang-en">Of 20&#8211;24 year-olds in 2023, near the OECD average of 34% and among the highest of OECD countries in Latin America.</p>
-              <p class="lang-es">De 20 a&nbsp;24 años en 2023, cerca del promedio OCDE (34%) y&nbsp;de los más altos entre los países OCDE de América Latina.</p>
+              <h3><span class="lang-en">Enrolled in higher education</span><span class="lang-es">Matriculados en educación superior</span></h3>
+              <p class="lang-en">Of 20&#8211;24 year-olds in Peru, 2023. Near the OECD average of 34% and among the highest of OECD countries in Latin America.</p>
+              <p class="lang-es">De 20 a&nbsp;24 años en el Perú, 2023. Cerca del promedio OCDE (34%) y&nbsp;de los más altos entre los países OCDE de América Latina.</p>
             </div>
             <div class="fact">
               <div class="fact-value">2 % <small>vs 16 %</small></div>
@@ -1732,8 +1772,8 @@
 
           <div class="block">
             <h2><span class="lang-en">If you are thinking of applying</span><span class="lang-es">Si estás pensando en postular</span></h2>
-            <p class="lang-en">You do not need to wait for the call to open, and you do not need to have everything worked out before you write. If you are unsure whether your degree qualifies, whether your field is one we support, how the tuition and living support actually work, or what studying in Spain would mean in practice, ask us.</p>
-            <p class="lang-es">No necesitas esperar a&nbsp;que se abra la convocatoria, ni tenerlo todo resuelto antes de escribir. Si tienes dudas sobre si tu grado cumple los requisitos, si tu campo es uno de los que apoyamos, cómo funcionan en la práctica la matrícula y&nbsp;el apoyo a&nbsp;la manutención, o&nbsp;qué supone realmente estudiar en España, pregúntanos.</p>
+            <p class="lang-en">You do not need to wait for the call to open, or to have everything worked out before you write. If you are unsure about the requirements, your field, or how tuition and living support work, ask us.</p>
+            <p class="lang-es">No necesitas esperar a&nbsp;que se abra la convocatoria, ni tenerlo todo resuelto antes de escribir. Si tienes dudas sobre los requisitos, sobre tu campo o&nbsp;sobre cómo funcionan la matrícula y&nbsp;la manutención, pregúntanos.</p>
           </div>
 
           <div class="block">
@@ -1871,7 +1911,7 @@
         var label = document.getElementById('lang-label');
         if (label) label.textContent = (lang === 'es') ? 'Español' : 'English';
         var labelShort = document.getElementById('lang-label-short');
-        if (labelShort) labelShort.textContent = (lang === 'es') ? 'ESP' : 'ENG';
+        if (labelShort) labelShort.textContent = (lang === 'es') ? 'ES' : 'EN';
 
         var links = document.querySelectorAll('a[data-page]');
         for (var j = 0; j < links.length; j++) {
