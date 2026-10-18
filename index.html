@@ -726,6 +726,77 @@
     #courses .band-inner > p:not(.note) { max-width: 92ch; }
     #contact .block > p { max-width: 98ch; }
 
+    /* ---------- updates log ---------- */
+    .log-totals { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; margin-top: 40px; border-top: 1px solid var(--hairline-dark); max-width: 900px; }
+    .log-total { padding: 22px 22px 0 0; }
+    .log-total + .log-total { padding-left: 22px; border-left: 1px solid var(--hairline-dark); }
+    .log-total .num { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(32px, 4vw, 44px); line-height: 1; letter-spacing: -0.03em; color: var(--cream); margin-bottom: 8px; }
+    .log-total .lab { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--grey); line-height: 1.4; }
+
+    .log-filter { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 34px; }
+    .log-filter[hidden] { display: none; }
+    .chip { font: inherit; font-size: 13.5px; font-weight: 500; padding: 8px 16px; border: 1px solid var(--hairline-light); background: #FFFFFF; color: var(--navy); border-radius: 999px; cursor: pointer; }
+    .chip:hover { border-color: var(--navy); }
+    .chip[aria-pressed="true"] { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+    .chip:focus-visible, .chapter > summary:focus-visible, .log-entry > summary:focus-visible, .latest:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+    .chapter + .chapter { margin-top: 56px; }
+    .chapter[hidden], .log-entry[hidden] { display: none; }
+    .chapter > summary { list-style: none; cursor: pointer; padding: 0 44px 22px 0; border-bottom: 1px solid var(--hairline-light); position: relative; }
+    .chapter > summary::-webkit-details-marker, .log-entry > summary::-webkit-details-marker { display: none; }
+    .chapter > summary::after, .log-entry > summary::after { content: ""; position: absolute; right: 6px; width: 10px; height: 10px; border-right: 2px solid var(--navy); border-bottom: 2px solid var(--navy); transform: rotate(45deg); transition: transform .2s; }
+    .chapter > summary::after { top: 8px; }
+    .chapter[open] > summary::after, .log-entry[open] > summary::after { transform: rotate(-135deg); }
+    .chapter-meta { display: block; font-size: 11px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange-ink); margin-bottom: 10px; }
+    .chapter h2 { margin-bottom: 10px; }
+    .chapter-intro { max-width: 76ch; }
+
+    .log-entry { border-bottom: 1px solid var(--hairline-light); }
+    .log-entry > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 22px; align-items: center; padding: 22px 44px 22px 0; position: relative; }
+    .log-entry > summary::after { top: calc(50% - 7px); }
+    .log-entry > summary:hover .log-title { color: var(--rust-deep); }
+    .log-thumb { width: 96px; height: 96px; object-fit: cover; display: block; background: var(--card-warm); }
+    .log-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin-bottom: 6px; }
+    .log-date { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--orange-ink); }
+    .log-tag { font-size: 11px; font-weight: 600; letter-spacing: 0.06em; padding: 2px 10px; border-radius: 999px; background: rgba(22, 37, 61, 0.07); color: var(--navy); }
+    .log-title { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(17px, 2vw, 21px); line-height: 1.2; letter-spacing: -0.015em; color: var(--navy); margin-bottom: 4px; }
+    .log-tease { display: block; font-size: 14.5px; line-height: 1.5; color: var(--ink-soft); max-width: 70ch; }
+    .log-entry[open] .log-tease { display: none; }
+    .log-body { display: grid; grid-template-columns: minmax(0, 1fr); gap: 26px; padding: 4px 44px 34px 118px; }
+    .log-text p { max-width: 70ch; }
+    .log-gallery { display: grid; gap: 18px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .log-gallery--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 640px; }
+    .log-gallery--1 { grid-template-columns: minmax(0, 1fr); max-width: 300px; }
+    .log-fig { margin: 0; }
+    .log-fig img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; background: var(--card-warm); box-shadow: 0 2px 12px rgba(22, 37, 61, 0.14); }
+    .log-fig figcaption { font-size: 13px; line-height: 1.45; color: #6C7A8E; margin-top: 9px; }
+
+    .latest { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 30px; align-items: center; background: #FFFFFF; padding: 20px 28px 20px 20px; box-shadow: 0 2px 12px rgba(22, 37, 61, 0.10); text-decoration: none; color: inherit; transition: box-shadow .2s, transform .2s; }
+    .latest:hover { box-shadow: 0 6px 22px rgba(22, 37, 61, 0.16); transform: translateY(-2px); }
+    .latest-img { width: 150px; height: 150px; object-fit: cover; display: block; background: var(--card-warm); }
+    .latest-text { display: block; }
+    .latest .eyebrow { display: block; margin-bottom: 8px; color: var(--orange-ink); }
+    .latest-title { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(19px, 2.2vw, 25px); line-height: 1.2; letter-spacing: -0.02em; color: var(--navy); margin-bottom: 8px; }
+    .latest-tease { display: block; font-size: 15px; line-height: 1.55; color: var(--ink-soft); max-width: 70ch; margin-bottom: 12px; }
+    .latest-more { display: block; font-size: 14px; font-weight: 600; color: var(--oliva); }
+
+    @media (max-width: 860px) {
+      .log-body { padding: 4px 0 30px 0; }
+    }
+    @media (max-width: 640px) {
+      .log-totals { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .log-total { padding: 18px 12px 0 0; }
+      .log-total + .log-total { padding-left: 0; border-left: none; }
+      .log-total:nth-child(even) { padding-left: 18px; border-left: 1px solid var(--hairline-dark); }
+      .log-entry > summary { grid-template-columns: 72px minmax(0, 1fr); gap: 14px; padding-right: 32px; }
+      .log-thumb { width: 72px; height: 72px; }
+      .log-gallery, .log-gallery--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+      .log-gallery--1 { grid-template-columns: minmax(0, 1fr); max-width: 260px; }
+      .latest { grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 16px; }
+      .latest-img { width: 100%; height: 190px; }
+      .chapter > summary { padding-right: 32px; }
+    }
+
     @media (max-width: 1620px) {
       .head-mark { right: 0; }
     }
@@ -752,6 +823,44 @@
       .step-when { grid-column: 2; margin-bottom: 6px; }
       .step-spine { grid-row: 1 / span 2; grid-column: 1; align-self: stretch; }
       .step-card { grid-column: 2; }
+    }
+
+    /* header: eight nav items need more room, so compact first, then burger earlier than the 780px layout */
+    @media (max-width: 1700px) {
+      .logo-tagline { display: none; }
+      .nav-btn { padding: 8px 9px 7px; font-size: 14.5px; }
+      nav { gap: 0; }
+      .logo { margin-right: 28px; }
+      .nav-right { gap: 18px; }
+    }
+    @media (max-width: 1340px) {
+      .logo { margin-left: 0; margin-right: 0; }
+      .lang-picker { margin-right: 0; }
+      .nav-right::before { display: none; }
+      .menu-toggle { display: flex; align-items: center; padding: 10px 12px; }
+      .menu-toggle .burger { display: block; }
+      .menu-toggle .menu-label { display: none; }
+      #lang-label { display: none; }
+      #lang-label-short { display: inline; }
+      .lang-current { padding: 8px 11px; gap: 7px; }
+      .logo { gap: 10px; }
+      .logo-title { font-size: 17px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      .logo .mark { width: 40px; }
+      .nav-right { gap: 12px; }
+      nav {
+        display: none; position: absolute; left: 0; right: 0; top: 100%;
+        flex-direction: column; gap: 0; background: var(--navy);
+        border-bottom: 1px solid var(--line); padding: 6px 22px 14px;
+        max-height: calc(100vh - 100%); max-height: calc(100dvh - 100%);
+        overflow-y: auto; -webkit-overflow-scrolling: touch;
+      }
+      header.menu-open nav { display: flex; }
+      .nav-btn {
+        border-bottom: 1px solid var(--hairline-dark); border-left: 2px solid transparent;
+        padding: 13px 10px; font-size: 15px;
+      }
+      .nav-btn[aria-current="page"] { border-bottom-color: var(--hairline-dark); border-left-color: var(--orange); }
+      .logo-tagline { display: none; }
     }
 
     @media (max-width: 780px) {
@@ -861,6 +970,9 @@
           <a class="nav-btn" data-page="what-we-do" href="#/en/what-we-do">
             <span class="lang-en">What we do</span><span class="lang-es">Qué hacemos</span>
           </a>
+          <a class="nav-btn" data-page="updates" href="#/en/updates">
+            <span class="lang-en">Updates</span><span class="lang-es">Actividad</span>
+          </a>
           <a class="nav-btn" data-page="scholarship" href="#/en/scholarship">
             <span class="lang-en">Scholarships</span><span class="lang-es">Becas</span>
           </a>
@@ -925,9 +1037,9 @@
             </div>
             <div class="stat s2">
               <div class="dot"></div>
-              <h3><span class="lang-en">School materials for primary schools</span><span class="lang-es">Materiales escolares para primarias</span></h3>
+              <h3><span class="lang-en">School materials for primary schools</span><span class="lang-es">Materiales escolares para escuelas primarias</span></h3>
               <p class="stat-label lang-en">We bring school materials and classroom equipment to primary schools in Piura, so their pupils have what they need to learn every day.</p>
-              <p class="stat-label lang-es">Llevamos material escolar y&nbsp;equipamiento de aula a&nbsp;las primarias de Piura, para que sus alumnos tengan con qué aprender cada día.</p>
+              <p class="stat-label lang-es">Llevamos material escolar y&nbsp;equipamiento de aula a&nbsp;las escuelas primarias de Piura, para que sus alumnos tengan con qué aprender cada día.</p>
             </div>
           </div>
         </div>
@@ -1306,7 +1418,7 @@
         <div class="band-inner">
           <div class="block">
             <p class="eyebrow"><span class="lang-en">In Piura</span><span class="lang-es">En Piura</span></p>
-            <h2><span class="lang-en">School materials for primary schools</span><span class="lang-es">Materiales escolares para primarias</span></h2>
+            <h2><span class="lang-en">School materials for primary schools</span><span class="lang-es">Materiales escolares para escuelas primarias</span></h2>
             <p class="lang-en">Alongside the scholarships, we invest in the earlier stages of education, equipping primary schools in Piura with learning tools and school materials: science books, notebooks, whiteboards, projectors, desks, speakers, internet routers, fans, markers and USB drives, digital resource libraries and basic English courses. These kits strengthen teaching quality from the start and give girls the confidence to approach STEM. When a&nbsp;girl in primary school sees that science is for her, she dares to dream.</p>
             <p class="lang-es">Junto con las becas, invertimos en las etapas iniciales de la educación, equipando escuelas primarias en Piura con herramientas de aprendizaje y&nbsp;material escolar: libros de ciencia, cuadernos, pizarras, proyectores, pupitres, altavoces, routers de internet, ventiladores, rotuladores y&nbsp;memorias USB, bibliotecas de recursos digitales y&nbsp;cursos básicos de inglés. Estos kits refuerzan la calidad educativa desde el inicio y&nbsp;dan a&nbsp;las niñas la confianza para acercarse a&nbsp;STEM. Cuando una niña de primaria ve que la ciencia es para ella, se atreve a&nbsp;soñar.</p>
           </div>
@@ -1317,6 +1429,172 @@
           <p class="lang-en">Scholars receive end-to-end support: choosing a&nbsp;programme, writing a&nbsp;CV and motivation letter, applying to the university, guidance on the paperwork, and what to expect from life abroad. That support comes from our team and our network, which includes graduates of the University of Manchester and the Barcelona School of Economics, and people who have won admission and funding at leading European universities. After finishing their studies, every scholar joins that network and mentors the women who apply next - which is what makes the cycle self-sustaining.</p>
           <p class="lang-es">Las becarias reciben acompañamiento de principio a&nbsp;fin: elección del programa, redacción del CV y&nbsp;carta de motivación, postulación a&nbsp;la universidad y&nbsp;los consejos sobre la documentación, y&nbsp;qué esperar de la vida en el extranjero. Ese apoyo proviene de nuestro equipo y&nbsp;de nuestra red, que incluye graduados de la Universidad de Mánchester y&nbsp;la Barcelona School of Economics, y&nbsp;personas que han conseguido admisión y&nbsp;financiación en universidades europeas líderes. Al terminar sus estudios, cada becaria se suma a&nbsp;esa red y&nbsp;acompaña a&nbsp;las mujeres que postulan después - eso es lo que hace posible que el ciclo se sostenga solo.</p>
           </div>
+        </div>
+      </div>
+
+      <div class="band band--light">
+        <div class="band-inner">
+          <a class="latest" id="latest-update" data-page="updates" href="#/en/updates">
+            <img class="latest-img" src="images/piura-pilot/prim_1.JPG" width="1000" height="1333" alt="" loading="lazy" decoding="async">
+            <span class="latest-text">
+              <span class="eyebrow"><span class="lang-en">Latest update</span><span class="lang-es">Última novedad</span> · <span class="latest-date"><span class="lang-en">7 Oct 2026</span><span class="lang-es">7 oct 2026</span></span></span>
+              <span class="latest-title"><span class="lang-en">34 pupils, one school, new materials to learn</span><span class="lang-es">34 alumnos, una escuela y&nbsp;material para aprender</span></span>
+              <span class="latest-tease"><span class="lang-en">Notebooks, pencils, colours, rulers and science books for every pupil at I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-es">Cuadernos, lápices, colores, reglas y&nbsp;libros de ciencia para cada alumno de la I.E. Arrendamientos, Ayabaca (Meseta Andina).</span></span>
+              <span class="latest-more"><span class="lang-en">See all updates</span><span class="lang-es">Ver todas las novedades</span> &#8594;</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ UPDATES ============ -->
+    <section id="updates" class="page-section">
+
+      <div class="band band--blue">
+        <div class="band-inner page-head">
+          <img class="head-mark" src="cb-mark.png" width="128" height="118" alt="" loading="lazy">
+          <p class="eyebrow"><span class="lang-en">Updates</span><span class="lang-es">Actividad</span></p>
+          <h1 id="h-updates" tabindex="-1"><span class="lang-en">What we have done <br class="brk">so far</span><span class="lang-es">Lo que vamos <br class="brk">haciendo</span></h1>
+          <div class="rule"></div>
+          <p class="lead lead--full lang-en"><span class="nb">A running log of our work on the ground, newest first.</span></p>
+          <p class="lead lead--full lang-es"><span class="nb">Un registro de nuestro trabajo sobre el terreno, de lo más reciente a lo más antiguo.</span></p>
+
+          <div class="log-totals" id="log-totals" aria-label="Totals so far">
+            <div class="log-total"><span class="num" data-sum="pupils">34</span><span class="lab"><span class="lang-en">Pupils equipped</span><span class="lang-es">Alumnos equipados</span></span></div>
+            <div class="log-total"><span class="num"><span data-sum="students">20</span>+</span><span class="lab"><span class="lang-en">Students trained</span><span class="lang-es">Estudiantes formados</span></span></div>
+            <div class="log-total"><span class="num" data-sum="schools">1</span><span class="lab"><span class="lang-en">Schools reached</span><span class="lang-es">Escuelas alcanzadas</span></span></div>
+            <div class="log-total"><span class="num" data-sum="chapters">1</span><span class="lab"><span class="lang-en">Field pilots</span><span class="lang-es">Pilotos sobre el terreno</span></span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="band band--light">
+        <div class="band-inner">
+
+          <!--
+            HOW TO ADD AN UPDATE
+            1. New entry in an existing chapter: copy one <details class="log-entry"> block and paste it at the TOP of that chapter's
+               <div class="log-entries">. Newest first. Remove "open" from the entry that was open before.
+               data-tag is one of: school, workshop, partners. Optional counters (added to the totals strip automatically):
+               data-pupils="N" data-students="N" data-schools="N".
+            2. New chapter (a new trip or campaign): copy the whole <details class="chapter"> block and paste it ABOVE the current one,
+               remove "open" from the older chapter, and add the photos to images/.
+            3. The "Latest update" card on What we do fills itself from the first entry on this page.
+          -->
+
+          <div class="log-filter" id="log-filter" hidden role="group" aria-label="Filter">
+            <button type="button" class="chip" data-filter="all" aria-pressed="true"><span class="lang-en">All</span><span class="lang-es">Todo</span></button>
+            <button type="button" class="chip" data-filter="workshop" aria-pressed="false"><span class="lang-en">Workshops</span><span class="lang-es">Talleres</span></button>
+            <button type="button" class="chip" data-filter="school" aria-pressed="false"><span class="lang-en">School materials</span><span class="lang-es">Material escolar</span></button>
+            <button type="button" class="chip" data-filter="partners" aria-pressed="false"><span class="lang-en">Partners</span><span class="lang-es">Alianzas</span></button>
+          </div>
+
+          <details class="chapter" open>
+            <summary>
+              <span class="chapter-meta"><span class="lang-en">Chapter · 24 September – 9 October 2026</span><span class="lang-es">Capítulo · 24 de septiembre – 9 de octubre de 2026</span></span>
+              <h2><span class="lang-en">Pilot in Piura (Peru)</span><span class="lang-es">Piloto en Piura (Perú)</span></h2>
+              <p class="chapter-intro lang-en">Our first pilot on the ground: training for those who want to study a master&#8217;s in Spain, and school materials for a rural school in Ayabaca (Meseta Andina).</p>
+              <p class="chapter-intro lang-es">Nuestro primer piloto sobre el terreno: formación para quienes quieren estudiar un máster en España y&nbsp;material escolar para una escuela rural de Ayabaca (Meseta Andina).</p>
+            </summary>
+            <div class="log-entries">
+
+          <details class="log-entry" id="piura-school" data-tag="school" data-pupils="34" data-schools="1" open>
+            <summary>
+              <img class="log-thumb" src="images/piura-pilot/prim_1.JPG" width="96" height="96" alt="" loading="lazy" decoding="async">
+              <span class="log-main">
+                <span class="log-meta"><span class="log-date"><span class="lang-en">7 Oct 2026</span><span class="lang-es">7 oct 2026</span></span><span class="log-tag log-tag--school"><span class="lang-en">School materials</span><span class="lang-es">Material escolar</span></span></span>
+                <span class="log-title"><span class="lang-en">34 pupils, one school, new materials to learn</span><span class="lang-es">34 alumnos, una escuela y&nbsp;material para aprender</span></span>
+                <span class="log-tease"><span class="lang-en">Notebooks, pencils, colours, rulers and science books for every pupil at I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-es">Cuadernos, lápices, colores, reglas y&nbsp;libros de ciencia para cada alumno de la I.E. Arrendamientos, Ayabaca (Meseta Andina).</span></span>
+              </span>
+            </summary>
+            <div class="log-body">
+              <div class="log-text">
+              <p class="lang-en">We delivered notebooks, pencils, colouring pencils, erasers, sharpeners, rulers and science books to all 34 pupils of I.E. Arrendamientos, from 1st to 6th grade of primary.</p>
+              <p class="lang-es">Entregamos cuadernos, lápices, colores, borradores, tajadores, reglas y&nbsp;libros de ciencia a&nbsp;los 34 alumnos de la I.E. Arrendamientos, de 1.º a&nbsp;6.º de primaria.</p>
+              <p class="lang-en">The school is in the Lagunas area, the district with the lowest Human Development Index in the country in the latest complete district ranking from UNDP (2019).</p>
+              <p class="lang-es">La escuela está en la zona de Lagunas, el distrito con el menor Índice de Desarrollo Humano del país en el último ranking distrital completo del PNUD (2019).</p>
+              <p class="lang-en"><strong>In the pupils&#8217; words.</strong> Their favourite subjects include Science, Communication, Religion and Physical Education. One of the girls told us she walks more than an hour through the mountains every day, one way, to reach school and be able to study.</p>
+              <p class="lang-es"><strong>Voces de los alumnos.</strong> Entre sus asignaturas favoritas están Ciencia, Comunicación, Religión y&nbsp;Educación Física. Una de las niñas nos contó que cada día camina más de una hora por la montaña, solo de ida, para llegar a&nbsp;la escuela y&nbsp;poder estudiar.</p>
+              </div>
+              <div class="log-gallery log-gallery--3">
+                <figure class="log-fig"><img src="images/piura-pilot/prim_1.JPG" width="1000" height="1333" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">I.E. Arrendamientos, in Ayabaca (Meseta Andina).</span><span class="lang-es">La I.E. Arrendamientos, en Ayabaca (Meseta Andina).</span></figcaption></figure>
+                <figure class="log-fig"><img src="images/piura-pilot/prim_3.JPG" width="1000" height="1333" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">Pupils on the school playground with their new bags.</span><span class="lang-es">Alumnos en el patio de la escuela con sus mochilas nuevas.</span></figcaption></figure>
+                <figure class="log-fig"><img src="images/piura-pilot/prim_2.JPG" width="1000" height="1333" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">Notebooks, colouring pencils and books ready to hand out.</span><span class="lang-es">Cuadernos, colores y&nbsp;libros listos para repartir.</span></figcaption></figure>
+              </div>
+            </div>
+          </details>
+
+          <details class="log-entry" id="piura-ceramics" data-tag="partners">
+            <summary>
+              <img class="log-thumb" src="images/piura-pilot/ceramics_2.JPG" width="96" height="96" alt="" loading="lazy" decoding="async">
+              <span class="log-main">
+                <span class="log-meta"><span class="log-date"><span class="lang-en">6 Oct 2026</span><span class="lang-es">6 oct 2026</span></span><span class="log-tag log-tag--partners"><span class="lang-en">Partners</span><span class="lang-es">Alianzas</span></span></span>
+                <span class="log-title"><span class="lang-en">&#171;Chulucanas–Valencia, united by ceramics&#187;</span><span class="lang-es">&#171;Chulucanas–Valencia, unidos por la cerámica&#187;</span></span>
+                <span class="log-tease"><span class="lang-en">We attended the opening of an exhibition born from artisan exchanges between Valencia and Piura.</span><span class="lang-es">Asistimos a&nbsp;la inauguración de una muestra nacida del intercambio entre artesanos de Valencia y&nbsp;Piura.</span></span>
+              </span>
+            </summary>
+            <div class="log-body">
+              <div class="log-text">
+              <p class="lang-en">At the invitation of UDEP&#8217;s Projects Office, we attended the opening of this exhibition at the Alliance Française of Piura.</p>
+              <p class="lang-es">Por invitación de la Dirección de Proyectos de UDEP, asistimos a&nbsp;la inauguración de esta muestra en la Alianza Francesa de Piura.</p>
+              <p class="lang-en">The exhibition is part of the project &#171;Innovating and revaluing traditions to improve the competitiveness of Chulucanas ceramics&#187;, co-funded by the Generalitat Valenciana and delivered by an alliance of institutions from Peru and Spain, including the University of Piura and the Universitat Politècnica de València.</p>
+              <p class="lang-es">La muestra forma parte del proyecto &#171;Innovando y&nbsp;revalorizando las tradiciones para mejorar la competitividad de la cerámica de Chulucanas&#187;, cofinanciado por la Generalitat Valenciana y&nbsp;desarrollado por una alianza de instituciones de Perú y&nbsp;España, entre ellas la Universidad de Piura y&nbsp;la Universidad Politécnica de Valencia.</p>
+              <p class="lang-en">It is the fruit of knowledge-exchange residencies between artisans from Chulucanas and Valencia (November 2025 and April 2026), presented in 24 pieces that reflect the meeting of the two traditions.</p>
+              <p class="lang-es">Es el fruto de pasantías de intercambio de conocimientos entre artesanos de Chulucanas y&nbsp;Valencia (noviembre de 2025 y&nbsp;abril de 2026), que se presentan en 24 piezas que reflejan el encuentro entre ambas tradiciones.</p>
+              <p class="lang-en">We saw it as a good example of how cooperation between institutions in Valencia and the Piura region creates learning opportunities for people in the area. It is also the kind of bridge we want to build through education.</p>
+              <p class="lang-es">Nos pareció un buen ejemplo de cómo la cooperación entre instituciones de Valencia y&nbsp;de la región de Piura genera oportunidades de aprendizaje para personas del territorio. Es también el tipo de puente que queremos construir a&nbsp;través de la educación.</p>
+              </div>
+              <div class="log-gallery log-gallery--2">
+                <figure class="log-fig"><img src="images/piura-pilot/ceramics_2.JPG" width="1000" height="1333" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">The opening of the exhibition at the Alliance Française of Piura.</span><span class="lang-es">La inauguración de la muestra en la Alianza Francesa de Piura.</span></figcaption></figure>
+                <figure class="log-fig"><img src="images/piura-pilot/ceramics_1.JPG" width="1000" height="1333" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">Pieces from the first of the artisan pairs in the exhibition.</span><span class="lang-es">Piezas del primer equipo de artesanas de la muestra.</span></figcaption></figure>
+              </div>
+            </div>
+          </details>
+
+          <details class="log-entry" id="piura-workshop" data-tag="workshop" data-students="20">
+            <summary>
+              <img class="log-thumb" src="images/piura-pilot/udep_2.JPG" width="96" height="96" alt="" loading="lazy" decoding="async">
+              <span class="log-main">
+                <span class="log-meta"><span class="log-date"><span class="lang-en">2 Oct 2026</span><span class="lang-es">2 oct 2026</span></span><span class="log-tag log-tag--workshop"><span class="lang-en">Workshop</span><span class="lang-es">Taller</span></span></span>
+                <span class="log-title"><span class="lang-en">How to apply for a master&#8217;s: a workshop at UDEP</span><span class="lang-es">Cómo postular a&nbsp;un máster: taller en UDEP</span></span>
+                <span class="log-tease"><span class="lang-en">A one-hour in-person session for more than 20 students of the University of Piura.</span><span class="lang-es">Sesión presencial de 1&nbsp;hora para más de 20 estudiantes de la Universidad de Piura.</span></span>
+              </span>
+            </summary>
+            <div class="log-body">
+              <div class="log-text">
+              <p class="lang-en">A one-hour in-person session for more than 20 UDEP students.</p>
+              <p class="lang-es">Sesión presencial de 1&nbsp;hora para más de 20 estudiantes de UDEP.</p>
+              <p class="lang-en">We covered how to choose the right master&#8217;s programme and how to write a CV and a motivation letter, with a hands-on part.</p>
+              <p class="lang-es">Contenido: cómo elegir el máster adecuado y&nbsp;cómo escribir un CV y&nbsp;una carta de motivación, con una parte práctica.</p>
+              </div>
+              <div class="log-gallery log-gallery--1">
+                <figure class="log-fig"><img src="images/piura-pilot/udep_2.JPG" width="1000" height="1333" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">The University of Piura campus.</span><span class="lang-es">El campus de la Universidad de Piura.</span></figcaption></figure>
+              </div>
+            </div>
+          </details>
+
+          <details class="log-entry" id="piura-meetings" data-tag="partners">
+            <summary>
+              <img class="log-thumb" src="images/piura-pilot/udep_1.JPG" width="96" height="96" alt="" loading="lazy" decoding="async">
+              <span class="log-main">
+                <span class="log-meta"><span class="log-date"><span class="lang-en">24 Sep – 9 Oct 2026</span><span class="lang-es">24 sep – 9 oct 2026</span></span><span class="log-tag log-tag--partners"><span class="lang-en">Partners</span><span class="lang-es">Alianzas</span></span></span>
+                <span class="log-title"><span class="lang-en">Meetings with UDEP and HUB UDEP</span><span class="lang-es">Reuniones con UDEP y&nbsp;HUB UDEP</span></span>
+                <span class="log-tease"><span class="lang-en">Working with the University of Piura and its Centre for Innovation and Entrepreneurship.</span><span class="lang-es">Trabajo con la Universidad de Piura y&nbsp;su Centro de Innovación y&nbsp;Emprendimiento.</span></span>
+              </span>
+            </summary>
+            <div class="log-body">
+              <div class="log-text">
+              <p class="lang-en">We met with the University of Piura (UDEP) and with HUB UDEP, its Centre for Innovation and Entrepreneurship.</p>
+              <p class="lang-es">Nos reunimos con la Universidad de Piura (UDEP) y&nbsp;con HUB UDEP, su Centro de Innovación y&nbsp;Emprendimiento.</p>
+              </div>
+              <div class="log-gallery log-gallery--1">
+                <figure class="log-fig"><img src="images/piura-pilot/udep_1.JPG" width="1000" height="1333" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">At UDEP Internacional, the University of Piura&#8217;s international office.</span><span class="lang-es">En UDEP Internacional, la oficina internacional de la Universidad de Piura.</span></figcaption></figure>
+              </div>
+            </div>
+          </details>
+            </div>
+          </details>
+
         </div>
       </div>
     </section>
@@ -1839,7 +2117,7 @@
 
   <script>
     (function () {
-      var PAGES = ['home', 'who-we-are', 'what-we-do', 'scholarship', 'courses', 'tips', 'contact'];
+      var PAGES = ['home', 'who-we-are', 'what-we-do', 'updates', 'scholarship', 'courses', 'tips', 'contact'];
       var LANGS = ['en', 'es'];
 
       var TITLES = {
@@ -1847,6 +2125,7 @@
           'home': "Cadena Brillante · Talent shines everywhere",
           'who-we-are': "Who we are · Cadena Brillante",
           'what-we-do': "What we do · Cadena Brillante",
+          'updates': "Updates · Cadena Brillante",
           'scholarship': "Scholarships · Cadena Brillante",
           'courses': "Featured courses · Cadena Brillante",
           'tips': "Application tips · Cadena Brillante",
@@ -1856,6 +2135,7 @@
           'home': "Cadena Brillante · El talento brilla en todas partes",
           'who-we-are': "Quiénes somos · Cadena Brillante",
           'what-we-do': "Qué hacemos · Cadena Brillante",
+          'updates': "Actividad · Cadena Brillante",
           'scholarship': "Becas · Cadena Brillante",
           'courses': "Cursos destacados · Cadena Brillante",
           'tips': "Consejos de postulación · Cadena Brillante",
@@ -2007,6 +2287,51 @@
 
       window.addEventListener('hashchange', route);
       route();
+    })();
+  </script>
+
+  <script>
+    /* updates log: totals, filter chips, and the "Latest update" card on What we do */
+    (function () {
+      var entries = Array.prototype.slice.call(document.querySelectorAll('#updates .log-entry'));
+      var chapters = Array.prototype.slice.call(document.querySelectorAll('#updates .chapter'));
+      if (!entries.length) return;
+
+      var sums = { pupils: 0, students: 0, schools: 0, chapters: chapters.length };
+      entries.forEach(function (e) {
+        ['pupils', 'students', 'schools'].forEach(function (k) { sums[k] += parseInt(e.getAttribute('data-' + k), 10) || 0; });
+      });
+      Object.keys(sums).forEach(function (k) {
+        var el = document.querySelector('[data-sum="' + k + '"]');
+        if (el) el.textContent = sums[k];
+      });
+
+      var first = entries[0];
+      var card = document.getElementById('latest-update');
+      if (card) {
+        var thumb = first.querySelector('.log-thumb');
+        var pairs = [['.latest-date', '.log-date'], ['.latest-title', '.log-title'], ['.latest-tease', '.log-tease']];
+        pairs.forEach(function (p) {
+          var to = card.querySelector(p[0]), from = first.querySelector(p[1]);
+          if (to && from) to.innerHTML = from.innerHTML;
+        });
+        var img = card.querySelector('.latest-img');
+        if (img && thumb) img.src = thumb.getAttribute('src');
+      }
+
+      var bar = document.getElementById('log-filter');
+      if (bar && entries.length > 6) {
+        bar.hidden = false;
+        var chips = bar.querySelectorAll('.chip');
+        Array.prototype.forEach.call(chips, function (chip) {
+          chip.addEventListener('click', function () {
+            var f = chip.getAttribute('data-filter');
+            Array.prototype.forEach.call(chips, function (c) { c.setAttribute('aria-pressed', c === chip ? 'true' : 'false'); });
+            entries.forEach(function (e) { e.hidden = !(f === 'all' || e.getAttribute('data-tag') === f); });
+            chapters.forEach(function (c) { c.hidden = !c.querySelector('.log-entry:not([hidden])'); });
+          });
+        });
+      }
     })();
   </script>
 </body>
