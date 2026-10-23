@@ -84,7 +84,7 @@
     }
 
     :root {
-      /* deck palette — principales */
+      /* deck palette - principales */
       --navy: #16253D;
       --panel: #223756;
       --panel-line: #33496E;
@@ -261,7 +261,7 @@
     .band-inner + .band-inner { padding-top: 0; }
     .band-inner + .band-inner .block-head { margin-top: 34px; }
 
-    /* one flat navy across every blue band — no gradient, so no tonal drift */
+    /* one flat navy across every blue band - no gradient, so no tonal drift */
     .band--blue { background: var(--navy); }
     .band--light { background: var(--cream); color: var(--ink); }
     /* third surface from slides 7-21: cream at top-left washing into orange */
@@ -1051,6 +1051,11 @@
     .latest-wrap:hover { box-shadow: 0 6px 22px rgba(22, 37, 61, 0.16); transform: translateY(-2px); }
     .latest-wrap .latest, .latest-wrap .latest:hover { background: none; box-shadow: none; transform: none; }
     .latest-video { width: 128px; margin: 20px 20px 20px 0; }
+    #scholarship p.wide-p { max-width: 1000px; } /* first line keeps "(… 700 words)" */
+    #contact .photo-seam--up { transform: translateY(-54px); } /* photo sits two text lines higher */
+    #contact .mail-line { margin-bottom: 54px; } /* extra room at the bottom of Contact */
+    .founder-body p:not(.role) { min-height: 3lh; } /* every bio takes the same three lines */
+
 
 
     @media (max-width: 860px) {
@@ -1070,6 +1075,7 @@
       .log-video-play::before { left: 7px; top: 5px; border-width: 5px 0 5px 8px; }
       .log-video-word { font-size: 12px; letter-spacing: 0.12em; }
       .log-video-sub { display: none; }
+      .log-impact { display: none; } /* headline numbers are desktop/tablet only */
       .log-video a.log-video-link, .latest-wrap a.latest-video { color: var(--cream); }
       .latest-wrap { grid-template-columns: minmax(0, 1fr); }
       .latest-video { justify-self: start; margin: -4px 16px 16px; }
@@ -1322,7 +1328,7 @@
             <div class="stat s1">
               <div class="dot"></div>
               <h3><span class="lang-en">Master's scholarships in Spain</span><span class="lang-es">Becas de maestría en España</span><span class="lang-pl">Stypendia magisterskie w&nbsp;Hiszpanii</span></h3>
-              <p class="stat-label lang-en">We cover the full tuition of a&nbsp;master&#8217;s in STEM (science, technology, engineering and&nbsp;mathematics), help with the cost of living in Spain, and stay alongside every scholar with mentoring.</p>
+              <p class="stat-label lang-en">We cover the full tuition of a&nbsp;master&#8217;s in STEM (science, technology, engineering and&nbsp;mathematics), help with the cost of living in Spain, and provide mentoring to every scholar.</p>
               <p class="stat-label lang-es">Cubrimos la matrícula completa de la maestría en STEM (ciencia, tecnología, ingeniería y&nbsp;matemáticas), damos apoyo para los gastos de vivir en España y&nbsp;acompañamos con mentoría a&nbsp;cada becaria.</p><p class="stat-label lang-pl">Pokrywamy pełne czesne za studia magisterskie w&nbsp;dziedzinach STEM (nauki ścisłe, technologia, inżynieria i&nbsp;matematyka), pomagamy w&nbsp;kosztach życia w&nbsp;Hiszpanii i&nbsp;wspieramy każdą stypendystkę mentoringiem.</p>
             </div>
             <div class="stat s2">
@@ -1338,7 +1344,7 @@
       <div class="photo-seam photo-seam--right photo-seam--low photo-seam--fit">
         <figure>
           <div class="seam-ph" style="background-image: url('images/piura-pilot/dividers/inico_1.webp'); background-position: 50% 36%;"></div>
-          <figcaption><span class="lang-en">How the school thanked us.<br><a class="seam-link" data-page="updates" href="#/en/updates">See how the visit went</a>.</span><span class="lang-es">Así nos dio las gracias la escuela.<br><a class="seam-link" data-page="updates" href="#/es/updates">Así fue la visita</a>.</span><span class="lang-pl">Tak szkoła nam podziękowała.<br><a class="seam-link" data-page="updates" href="#/pl/updates">Zobacz, jak przebiegła wizyta</a>.</span></figcaption>
+          <figcaption><span class="lang-en">How the school thanked us.<br><a class="seam-link" data-page="updates" href="#/en/updates">See how the visit went</a>.</span><span class="lang-es">Así nos dio las gracias la escuela.<br><a class="seam-link" data-page="updates" href="#/es/updates">Mira cómo fue la visita</a>.</span><span class="lang-pl">Tak szkoła nam podziękowała.<br><a class="seam-link" data-page="updates" href="#/pl/updates">Zobacz, jak przebiegła wizyta</a>.</span></figcaption>
         </figure>
       </div>
 
@@ -1346,7 +1352,7 @@
         <div class="band-inner">
           <div class="block-head">
             <p class="eyebrow"><span class="lang-en">How it works</span><span class="lang-es">Cómo funciona</span><span class="lang-pl">Jak to działa</span></p>
-            <h2><span class="lang-en">Two fronts, one cycle</span><span class="lang-es">Dos frentes, un mismo ciclo</span><span class="lang-pl">Dwa obszary, jeden cykl</span></h2>
+            <h2><span class="lang-en">A self-sustaining cycle</span><span class="lang-es">Un ciclo que se sostiene solo</span><span class="lang-pl">Cykl, który napędza się sam</span></h2>
             <p class="lang-en"><span class="nb">We advance education at every stage, from school to university.</span></p>
             <p class="lang-es"><span class="nb">Impulsamos la educación en cada etapa, del colegio a&nbsp;la universidad.</span></p><p class="lang-pl"><span class="nb">Wspieramy edukację na każdym etapie, od szkoły po uniwersytet.</span></p>
           </div>
@@ -1523,11 +1529,11 @@
             Ritmo de mejora en PISA - OCDE, Education GPS, PISA 2022.
             Pobreza - INEI, Evolución de la Pobreza Monetaria 2015–2024 (2025).
           </div><div class="sources lang-pl">
-            Plany zawodowe w&nbsp;STEM, zatrudnienie kobiet w&nbsp;STEM i&nbsp;wzory do naśladowania – OECD (2025), Gender Differences in Education, Skills and STEM Careers in Latin America and the Caribbean, na podstawie PISA 2022.
-            Szkolnictwo wyższe i&nbsp;materiały szkolne – OECD (2026), Education and Skills in Peru.
-            Odsetek osób z&nbsp;tytułem magistra i&nbsp;wydatki na ucznia – OECD, Education at a&nbsp;Glance 2025.
-            Tempo poprawy w&nbsp;PISA – OECD, Education GPS, PISA 2022.
-            Ubóstwo – INEI, Evolución de la Pobreza Monetaria 2015–2024 (2025).
+            Plany zawodowe w&nbsp;STEM, zatrudnienie kobiet w&nbsp;STEM i&nbsp;wzory do naśladowania - OECD (2025), Gender Differences in Education, Skills and STEM Careers in Latin America and the Caribbean, na podstawie PISA 2022.
+            Szkolnictwo wyższe i&nbsp;materiały szkolne - OECD (2026), Education and Skills in Peru.
+            Odsetek osób z&nbsp;tytułem magistra i&nbsp;wydatki na ucznia - OECD, Education at a&nbsp;Glance 2025.
+            Tempo poprawy w&nbsp;PISA - OECD, Education GPS, PISA 2022.
+            Ubóstwo - INEI, Evolución de la Pobreza Monetaria 2015–2024 (2025).
           </div>
           <div class="sources lang-en">
             STEM career expectations, women in STEM employment and role models - OECD (2025), Gender Differences in Education, Skills and STEM Careers in Latin America and the Caribbean, based on PISA 2022.
@@ -1546,8 +1552,8 @@
             <h2><span class="lang-en">Role models are the missing piece</span><span class="lang-es">Los modelos a&nbsp;seguir son la pieza que falta</span><span class="lang-pl">Wzory do naśladowania to brakujący element</span></h2>
           </div>
           <div class="full">
-            <p class="lang-en">The Organisation for Economic Co-operation and Development (OECD) identifies the absence of female role models as a&nbsp;central barrier in STEM, and recommends mentoring and giving visibility to women in these careers. Girls need to see women succeeding in STEM to believe they can too. So each scholar becomes that example for the next generation.</p>
-            <p class="lang-es">La Organización para la Cooperación y&nbsp;el Desarrollo Económicos (OCDE) identifica la falta de referentes femeninos como una barrera central en STEM, y&nbsp;recomienda la mentoría y&nbsp;dar visibilidad a&nbsp;mujeres en estas carreras. Las niñas necesitan ver a&nbsp;mujeres que triunfan en STEM para creer que ellas también pueden. Por eso cada becaria se convierte en ese ejemplo para la siguiente generación.</p><p class="lang-pl">Organizacja Współpracy Gospodarczej i&nbsp;Rozwoju (OECD) wskazuje brak kobiecych wzorów do naśladowania jako kluczową barierę w&nbsp;STEM i&nbsp;zaleca mentoring oraz pokazywanie kobiet w&nbsp;tych zawodach. Dziewczęta muszą widzieć kobiety odnoszące sukcesy w&nbsp;STEM, aby uwierzyć, że też mogą. Dlatego każda stypendystka staje się takim przykładem dla następnego pokolenia.</p>
+            <p class="lang-en">The Organisation for Economic Co-operation and Development (OECD) identifies the absence of female role models as a&nbsp;central barrier in STEM, and recommends mentoring and giving visibility to women in these careers. Girls need to see women succeeding in STEM to believe they can too. So each of our scholars becomes that example for the next generation.</p>
+            <p class="lang-es">La Organización para la Cooperación y&nbsp;el Desarrollo Económicos (OCDE) identifica la falta de referentes femeninos como una barrera central en STEM, y&nbsp;recomienda la mentoría y&nbsp;dar visibilidad a&nbsp;mujeres en estas carreras. Las niñas necesitan ver a&nbsp;mujeres que triunfan en STEM para creer que ellas también pueden. Por eso cada una de nuestras becarias se convierte en ese ejemplo para la siguiente generación.</p><p class="lang-pl">Organizacja Współpracy Gospodarczej i&nbsp;Rozwoju (OECD) wskazuje brak kobiecych wzorów do naśladowania jako kluczową barierę w&nbsp;STEM i&nbsp;zaleca mentoring oraz pokazywanie kobiet w&nbsp;tych zawodach. Dziewczęta muszą widzieć kobiety odnoszące sukcesy w&nbsp;STEM, aby uwierzyć, że też mogą. Dlatego każda z&nbsp;naszych stypendystek staje się takim przykładem dla następnego pokolenia.</p>
           </div>
 
         </div>
@@ -1609,7 +1615,7 @@
         <div class="band-inner">
           <div class="block-head">
             <p class="eyebrow"><span class="lang-en">The team</span><span class="lang-es">El equipo</span><span class="lang-pl">Zespół</span></p>
-            <h2><span class="lang-en">The people who make it happen</span><span class="lang-es">Quiénes lo hacen posible</span><span class="lang-pl">Kto to umożliwia</span></h2>
+            <h2><span class="lang-en">The people who make it happen</span><span class="lang-es">Las personas que lo hacen realidad</span><span class="lang-pl">Poznaj nasz zespół</span></h2>
           </div>
       <svg class="founder-defs" width="0" height="0" aria-hidden="true" focusable="false">
         <defs>
@@ -1689,8 +1695,8 @@
                 <div class="founder-body">
                 <h3>Alex</h3>
                 <p class="role"><span class="lang-en">Impact lead</span><span class="lang-es">Líder de impacto</span><span class="lang-pl">Lider ds. wpływu</span></p>
-                <p class="lang-en">Data analyst. Responsible for results tracking, the quarterly progress report and events.</p>
-                <p class="lang-es">Analista de datos. Responsable del seguimiento de resultados, el informe trimestral de avance y&nbsp;eventos.</p><p class="lang-pl">Analityk danych. Odpowiada za monitorowanie wyników, kwartalny raport z&nbsp;postępów i&nbsp;wydarzenia.</p>
+                <p class="lang-en">Data analyst. Responsible for results tracking, marketing strategy and events.</p>
+                <p class="lang-es">Analista de datos. Responsable del seguimiento de resultados, la estrategia de marketing y&nbsp;los eventos.</p><p class="lang-pl">Analityk danych. Odpowiada za monitorowanie wyników, marketing i&nbsp;organizację wydarzeń.</p>
                 </div>
               </div>
             </div>
@@ -1724,18 +1730,18 @@
             <ul class="work-list lang-en">
               <li>Zero admin fees. No salaries, no overhead - every euro goes to the beneficiaries.</li>
               <li>Tuition is paid directly to universities. No money is transferred to individuals, which makes it traceable end to end.</li>
-              <li>Scholars are selected anonymously by a&nbsp;diverse committee.</li>
+              <li>We buy school materials ourselves and deliver them to schools.</li>
               <li>We report on results, not on intentions.</li>
             </ul>
             <ul class="work-list lang-es">
               <li>Cero gastos administrativos. Sin salarios ni gastos de gestión - cada euro va a&nbsp;los beneficiarios.</li>
               <li>La matrícula se paga directamente a&nbsp;las universidades. No se transfiere dinero a&nbsp;personas individuales,<br class="brk">lo que lo hace rastreable de principio a&nbsp;fin.</li>
-              <li>Las becarias son seleccionadas de forma anónima por un comité diverso.</li>
+              <li>Compramos nosotros mismos el material escolar y&nbsp;lo entregamos a&nbsp;las escuelas.</li>
               <li>Reportamos sobre resultados, no sobre intenciones.</li>
             </ul><ul class="work-list lang-pl">
-              <li>Zero kosztów administracyjnych. Bez pensji i&nbsp;opłat za zarządzanie – każde euro trafia do beneficjentów.</li>
+              <li>Zero kosztów administracyjnych. Bez pensji i&nbsp;opłat za zarządzanie - każde euro trafia do beneficjentów.</li>
               <li>Czesne trafia bezpośrednio do uczelni. Nie przekazujemy pieniędzy osobom prywatnym,<br class="brk">dzięki czemu każdy wydatek można prześledzić od początku do końca.</li>
-              <li>Stypendystki wybiera anonimowo zróżnicowana komisja.</li>
+              <li>Materiały szkolne kupujemy sami i&nbsp;dostarczamy je do szkół.</li>
               <li>Raportujemy wyniki, a&nbsp;nie zamiary.</li>
             </ul>
           </div>
@@ -1771,9 +1777,9 @@
               <h2><span class="lang-en">Master's scholarships</span><span class="lang-es">Becas de maestría</span><span class="lang-pl">Stypendia magisterskie</span></h2>
             </div>
             <div class="split-body">
-              <p class="lang-en">We fund master&#8217;s scholarships in Spain for women from Piura with a&nbsp;strong academic record. The scholarship covers the full tuition fee. Scholars also receive support with living costs, help applying to universities, and mentoring.</p>
+              <p class="lang-en">We fund master&#8217;s scholarships in Spain for women from Piura with a&nbsp;strong academic record. The scholarship covers the full tuition fee. Scholars also receive support with living costs, help with applying to universities, and mentoring.</p>
               <p class="lang-es">Financiamos becas de maestría en España para mujeres de Piura que cuentan con un alto nivel académico. La beca cubre la matrícula completa. Además, las becarias reciben apoyo con los gastos de manutención, ayuda en la postulación a&nbsp;las universidades y&nbsp;mentoría.</p><p class="lang-pl">Finansujemy stypendia magisterskie w&nbsp;Hiszpanii dla kobiet z&nbsp;Piury o&nbsp;wysokich wynikach w&nbsp;nauce. Stypendium pokrywa pełne czesne. Stypendystki otrzymują też wsparcie w&nbsp;kosztach utrzymania, pomoc w&nbsp;aplikowaniu na uczelnie i&nbsp;mentoring.</p>
-              <p class="lang-en">We support STEM. Our focus is on future-oriented fields: engineering (especially environmental and circular engineering), cybersecurity, artificial intelligence and other areas. We fund high-employability programmes with paid internships, which let scholars earn additional income, build networks in future industries and strengthen their CV before graduating.</p>
+              <p class="lang-en">We support STEM. Our focus is on future-oriented fields: engineering (especially environmental and circular engineering), cybersecurity, artificial intelligence and other areas. We fund high-employability programmes with paid internships, which let scholars earn additional income, build new networks in future industries and strengthen their CV before graduating.</p>
               <p class="lang-es">Apoyamos STEM. Nuestro foco está en los campos del futuro: ingeniería (especialmente ambiental y&nbsp;circular), ciberseguridad, inteligencia artificial y&nbsp;otras áreas. Financiamos maestrías de alta empleabilidad y&nbsp;con prácticas remuneradas que permiten generar ingresos adicionales, construir redes en industrias del futuro y&nbsp;reforzar el CV antes de graduarse.</p><p class="lang-pl">Wspieramy STEM. Skupiamy się na dziedzinach przyszłości: inżynierii (zwłaszcza środowiskowej i&nbsp;obiegu zamkniętego), cyberbezpieczeństwie, sztucznej inteligencji i&nbsp;innych obszarach. Finansujemy studia magisterskie o&nbsp;wysokiej zatrudnialności, z&nbsp;płatnymi praktykami, które pozwalają dodatkowo zarabiać, budować sieć kontaktów w&nbsp;branżach przyszłości i&nbsp;wzmocnić CV przed ukończeniem studiów.</p>
               <p class="lang-en">We also offer one-to-one sessions to help you apply for master&#8217;s programmes and for external scholarships, such as those from Fundación Carolina.</p>
               <p class="lang-es">Además, ofrecemos asesorías individuales para ayudarte a&nbsp;postular a&nbsp;maestrías y&nbsp;a&nbsp;becas externas, como las de la Fundación Carolina.</p><p class="lang-pl">Oferujemy też indywidualne konsultacje, które pomogą ci aplikować na studia magisterskie i&nbsp;o&nbsp;zewnętrzne stypendia, na przykład Fundación Carolina.</p>
@@ -1819,7 +1825,7 @@
               <h2><span class="lang-en">School materials</span><span class="lang-es">Materiales escolares</span><span class="lang-pl">Materiały szkolne</span></h2>
             </div>
             <div class="split-body">
-              <p class="lang-en">Alongside the scholarships, we invest in the earliest stages of education. We bring school materials and learning tools to primary schools in Piura, including in rural areas. Our kits can include science books, notebooks, colouring pencils, rulers, whiteboards, projectors, desks, speakers, internet routers, fans, USB drives, digital libraries and basic English courses. Teaching improves from the start, and girls gain the confidence to approach STEM: when a&nbsp;primary-school girl sees that science is for her, she dares to dream.</p>
+              <p class="lang-en">Alongside the scholarships, we invest in the earliest stages of education. We bring school materials and learning tools to primary schools in Piura, including in rural areas. Our kits can include science books, notebooks, colouring pencils, rulers, whiteboards, projectors, desks, speakers, internet routers, fans, USB drives, digital libraries and basic English courses. This way, teaching improves from day one and girls gain the confidence to get closer to STEM: when a&nbsp;girl sees that science is for her, she dares to dream.</p>
               <p class="lang-es">Junto con las becas, invertimos en las primeras etapas de la educación. Llevamos material escolar y&nbsp;herramientas de aprendizaje a&nbsp;escuelas primarias de Piura, también en zonas rurales. Nuestros kits pueden incluir libros de ciencia, cuadernos, colores, reglas, pizarras, proyectores, pupitres, altavoces, routers de internet, ventiladores, memorias USB, bibliotecas digitales y&nbsp;cursos básicos de inglés. Así mejora la enseñanza desde el principio y&nbsp;las niñas ganan confianza para acercarse a&nbsp;STEM: cuando una niña ve que la ciencia es para ella, se atreve a&nbsp;soñar.</p><p class="lang-pl">Oprócz stypendiów inwestujemy w&nbsp;najwcześniejsze etapy edukacji. Dostarczamy materiały szkolne i&nbsp;pomoce dydaktyczne do szkół podstawowych w&nbsp;Piurze, także na obszarach wiejskich. Nasze zestawy mogą obejmować książki do nauk przyrodniczych, zeszyty, kredki, linijki, tablice, projektory, ławki, głośniki, routery internetowe, wentylatory, pendrive’y, biblioteki cyfrowe i&nbsp;podstawowe kursy angielskiego. Dzięki temu nauczanie jest lepsze od samego początku, a&nbsp;dziewczęta nabierają pewności, by sięgnąć po STEM: kiedy dziewczynka widzi, że nauka jest dla niej, odważa się marzyć.</p>
             </div>
           </div>
@@ -1841,8 +1847,8 @@
               <h2><span class="lang-en">Mentoring and role models</span><span class="lang-es">Mentoría y&nbsp;referentes</span><span class="lang-pl">Mentoring i&nbsp;wzory do naśladowania</span></h2>
             </div>
             <div class="split-body">
-              <p class="lang-en">Scholars receive end-to-end support: choosing a&nbsp;programme, writing a&nbsp;CV and motivation letter, applying to the university, guidance on the paperwork, and what to expect from life abroad. That support comes from our team and our network, which includes graduates of the University of Manchester and the Barcelona School of Economics, and people who have won admission and funding at leading European universities. After finishing their studies, every scholar joins that network and mentors the women who apply next - which is what makes the cycle self-sustaining.</p>
-              <p class="lang-es">Las becarias reciben acompañamiento de principio a&nbsp;fin: elección del programa, redacción del CV y&nbsp;carta de motivación, postulación a&nbsp;la universidad y&nbsp;los consejos sobre la documentación, y&nbsp;qué esperar de la vida en el extranjero. Ese apoyo proviene de nuestro equipo y&nbsp;de nuestra red, que incluye graduados de la Universidad de Mánchester y&nbsp;la Barcelona School of Economics, y&nbsp;personas que han conseguido admisión y&nbsp;financiación en universidades europeas líderes. Al terminar sus estudios, cada becaria se suma a&nbsp;esa red y&nbsp;acompaña a&nbsp;las mujeres que postulan después - eso es lo que hace posible que el ciclo se sostenga solo.</p><p class="lang-pl">Stypendystki otrzymują wsparcie od początku do końca: przy wyborze programu, pisaniu CV i&nbsp;listu motywacyjnego, aplikowaniu na uczelnię, przygotowaniu dokumentów i&nbsp;w&nbsp;tym, czego spodziewać się po życiu za granicą. To wsparcie zapewnia nasz zespół i&nbsp;nasza sieć, w&nbsp;której są absolwenci Uniwersytetu w&nbsp;Manchesterze i&nbsp;Barcelona School of Economics oraz osoby, które dostały się na czołowe europejskie uczelnie i&nbsp;zdobyły finansowanie. Po studiach każda stypendystka dołącza do tej sieci i&nbsp;wspiera kobiety, które aplikują po niej – dzięki temu cykl podtrzymuje się sam.</p>
+              <p class="lang-en">Scholars receive end-to-end support: choosing a&nbsp;programme, writing a&nbsp;CV and motivation letter, applying to the university, guidance on the paperwork, and what to expect from life abroad. That support comes from our team and our network, which includes graduates of the University of Manchester and the Barcelona School of Economics, and people who received admission and funding offers from leading European universities. After finishing their studies, every scholar joins our network of mentors and supports the students who apply next - which is what makes the cycle self-sustaining.</p>
+              <p class="lang-es">Las becarias reciben acompañamiento de principio a&nbsp;fin: elección del programa, redacción del CV y&nbsp;carta de motivación, postulación a&nbsp;la universidad y&nbsp;los consejos sobre la documentación, y&nbsp;qué esperar de la vida en el extranjero. Ese apoyo proviene de nuestro equipo y&nbsp;de nuestra red, que incluye graduados de la Universidad de Mánchester y&nbsp;la Barcelona School of Economics, y&nbsp;personas que recibieron ofertas de admisión y&nbsp;financiación de universidades europeas líderes. Al terminar sus estudios, cada becaria se suma a&nbsp;nuestra red de mentores y&nbsp;acompaña a&nbsp;las estudiantes que postulan después - eso es lo que hace posible que el ciclo se sostenga solo.</p><p class="lang-pl">Stypendystki otrzymują wsparcie od początku do końca: przy wyborze programu, pisaniu CV i&nbsp;listu motywacyjnego, aplikowaniu na uczelnię, przygotowaniu dokumentów i&nbsp;w&nbsp;tym, czego spodziewać się po życiu za granicą. To wsparcie zapewnia nasz zespół i&nbsp;nasza sieć, w&nbsp;której są absolwenci Uniwersytetu w&nbsp;Manchesterze i&nbsp;Barcelona School of Economics oraz osoby, które otrzymały oferty przyjęcia i&nbsp;finansowania od czołowych europejskich uczelni. Po studiach każda stypendystka dołącza do naszej sieci mentorów i&nbsp;wspiera studentki, które aplikują po niej - dzięki temu cykl podtrzymuje się sam.</p>
             </div>
           </div>
         </div>
@@ -1856,7 +1862,7 @@
             <span class="latest-text">
               <span class="eyebrow"><span class="lang-en">Latest update</span><span class="lang-es">Última actividad</span><span class="lang-pl">Ostatnie działanie</span> · <span class="latest-date"><span class="lang-en">7 Oct 2026</span><span class="lang-es">7 oct 2026</span><span class="lang-pl">7 paź 2026</span></span></span>
               <span class="latest-title"><span class="lang-en">34 pupils, one school, new materials to learn</span><span class="lang-es">34 alumnos, una escuela y&nbsp;material para aprender</span><span class="lang-pl">34 uczniów, jedna szkoła i&nbsp;materiały do nauki</span></span>
-              <span class="latest-tease"><span class="lang-en">Notebooks, pencils, colours, rulers and science books for every pupil at I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-es">Cuadernos, lápices, colores, reglas y&nbsp;libros de ciencia para cada alumno de la I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-pl">Zeszyty, ołówki, kredki, linijki i&nbsp;książki do nauk przyrodniczych dla każdego ucznia I.E. Arrendamientos, Ayabaca (Meseta Andina).</span></span>
+              <span class="latest-tease"><span class="lang-en">Science books, backpacks and more for every pupil at I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-es">Libros de ciencia, mochilas y&nbsp;más para cada alumno de la I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-pl">Podręczniki, plecaki i&nbsp;nie tylko dla każdego ucznia I.E. Arrendamientos, Ayabaca (Meseta Andina).</span></span>
               <span class="latest-more"><span class="lang-en">See all updates</span><span class="lang-es">Ver todas las actividades</span><span class="lang-pl">Zobacz wszystkie działania</span> &#8594;</span>
             </span>
           </a>
@@ -1910,17 +1916,17 @@
               <span class="log-main">
                 <span class="log-meta"><span class="log-date"><span class="lang-en">7 Oct 2026</span><span class="lang-es">7 oct 2026</span><span class="lang-pl">7 paź 2026</span></span><span class="log-tag log-tag--school"><span class="lang-en">School materials</span><span class="lang-es">Material escolar</span><span class="lang-pl">Materiały szkolne</span></span></span>
                 <span class="log-title"><span class="lang-en">34 pupils, one school, new materials to learn</span><span class="lang-es">34 alumnos, una escuela y&nbsp;material para aprender</span><span class="lang-pl">34 uczniów, jedna szkoła i&nbsp;materiały do nauki</span></span>
-                <span class="log-tease"><span class="lang-en">Notebooks, pencils, colours, rulers and science books for every pupil at I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-es">Cuadernos, lápices, colores, reglas y&nbsp;libros de ciencia para cada alumno de la I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-pl">Zeszyty, ołówki, kredki, linijki i&nbsp;książki do nauk przyrodniczych dla każdego ucznia I.E. Arrendamientos, Ayabaca (Meseta Andina).</span></span>
+                <span class="log-tease"><span class="lang-en">Science books, backpacks and more for every pupil at I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-es">Libros de ciencia, mochilas y&nbsp;más para cada alumno de la I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-pl">Podręczniki, plecaki i&nbsp;nie tylko dla każdego ucznia I.E. Arrendamientos, Ayabaca (Meseta Andina).</span></span>
               </span>
-              <span class="log-video"><a class="log-video-link" href="PASTE-INSTAGRAM-URL" target="_blank" rel="noopener"><span class="log-video-play" aria-hidden="true"></span><span class="log-video-word"><span class="lang-en">VIDEO</span><span class="lang-es">VIDEO</span><span class="lang-pl">WIDEO</span></span><span class="log-video-sub"><span class="lang-en">on Instagram</span><span class="lang-es">en Instagram</span><span class="lang-pl">na Instagramie</span></span></a></span>
+              <span class="log-video"><a class="log-video-link" href="https://www.instagram.com/reel/Dez-tv4iMt3/" target="_blank" rel="noopener"><span class="log-video-play" aria-hidden="true"></span><span class="log-video-word"><span class="lang-en">VIDEO</span><span class="lang-es">VIDEO</span><span class="lang-pl">WIDEO</span></span><span class="log-video-sub"><span class="lang-en">on Instagram</span><span class="lang-es">en Instagram</span><span class="lang-pl">na Instagramie</span></span></a></span>
               <span class="log-impact"><span class="log-impact-num">34</span><span class="log-impact-lab"><span class="lang-en">pupils</span><span class="lang-es">alumnos</span><span class="lang-pl">uczniów</span></span></span>
             </summary>
             <div class="log-body">
               <div class="log-text">
-              <p class="lang-en">We delivered notebooks, pencils, colouring pencils, erasers, sharpeners, rulers and science books to all 34 pupils of I.E. Arrendamientos, from 1st to 6th grade of primary.</p>
-              <p class="lang-es">Entregamos cuadernos, lápices, colores, borradores, tajadores, reglas y&nbsp;libros de ciencia a&nbsp;los 34 alumnos de la I.E. Arrendamientos, de 1.º a&nbsp;6.º de primaria.</p><p class="lang-pl">Przekazaliśmy zeszyty, ołówki, kredki, gumki, temperówki, linijki i&nbsp;książki do nauk przyrodniczych wszystkim 34 uczniom I.E. Arrendamientos, od 1. do 6. klasy szkoły podstawowej.</p>
-              <p class="lang-en">The school is in the Lagunas area, the district with the lowest Human Development Index in the country in the latest complete district ranking from UNDP (2019).</p>
-              <p class="lang-es">La escuela está en la zona de Lagunas, el distrito con el menor Índice de Desarrollo Humano del país en el último ranking distrital completo del PNUD (2019).</p><p class="lang-pl">Szkoła leży w&nbsp;strefie Lagunas, w&nbsp;dystrykcie o&nbsp;najniższym Wskaźniku Rozwoju Społecznego w&nbsp;kraju według ostatniego pełnego rankingu dystryktów UNDP (2019).</p>
+              <p class="lang-en">We delivered science books, backpacks, notebooks, pencils, colouring pencils, erasers, sharpeners and rulers to all 34 pupils of I.E. Arrendamientos, from 1st to 6th grade of primary.</p>
+              <p class="lang-es">Entregamos libros de ciencia, mochilas, cuadernos, lápices, colores, borradores, tajadores y&nbsp;reglas a&nbsp;los 34 alumnos de la I.E. Arrendamientos, de 1.º a&nbsp;6.º de primaria.</p><p class="lang-pl">Przekazaliśmy podręczniki, plecaki, zeszyty, ołówki, kredki, gumki, temperówki i&nbsp;linijki wszystkim 34 uczniom I.E. Arrendamientos, od 1. do 6. klasy szkoły podstawowej.</p>
+              <p class="lang-en">The school is in the Lagunas area, the district with the lowest Human Development Index in the country according to UNDP (2019).</p>
+              <p class="lang-es">La escuela está en la zona de Lagunas, el distrito con el menor Índice de Desarrollo Humano del país según el PNUD (2019).</p><p class="lang-pl">Szkoła leży w&nbsp;strefie Lagunas, w&nbsp;dystrykcie o&nbsp;najniższym Wskaźniku Rozwoju Społecznego w&nbsp;kraju według UNDP (2019).</p>
               <p class="lang-en"><strong>In the pupils&#8217; words.</strong> Their favourite subjects include Science, Communication, Religion and Physical Education. One of the girls told us she walks more than an hour through the mountains every day, one way, to reach school and be able to study. That daily effort is the clearest proof of how much they want to learn.</p>
               <p class="lang-es"><strong>Voces de los alumnos.</strong> Entre sus asignaturas favoritas están Ciencia, Comunicación, Religión y&nbsp;Educación Física. Una de las niñas nos contó que cada día camina más de una hora por la montaña, solo de ida, para llegar a&nbsp;la escuela y&nbsp;poder estudiar. Ese esfuerzo de cada día es la mejor prueba de sus ganas de aprender.</p><p class="lang-pl"><strong>Głosy uczniów.</strong> Do ich ulubionych przedmiotów należą przyroda, komunikacja, religia i&nbsp;wychowanie fizyczne. Jedna z&nbsp;dziewczynek opowiedziała nam, że codziennie idzie ponad godzinę przez góry, w&nbsp;jedną stronę, żeby dotrzeć do szkoły i&nbsp;móc się uczyć. Ten codzienny wysiłek najlepiej świadczy o&nbsp;tym, jak bardzo pragną wiedzy.</p>
               </div>
@@ -1951,8 +1957,8 @@
               <p class="lang-es">Nos pareció un buen ejemplo de cómo la cooperación entre instituciones de Valencia y&nbsp;de la región de Piura genera oportunidades de aprendizaje para personas del territorio. Es también el tipo de puente que queremos construir a&nbsp;través de la educación.</p><p class="lang-pl">Uznaliśmy ją za dobry przykład tego, jak współpraca instytucji z&nbsp;Walencji i&nbsp;regionu Piury tworzy możliwości nauki dla mieszkańców. To także rodzaj mostu, który chcemy budować poprzez edukację.</p>
               </div>
               <div class="log-gallery log-gallery--2">
-                <figure class="log-fig"><img src="images/piura-pilot/ceramics_2.webp" width="800" height="1088" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">The opening of the exhibition at the Alliance Française of Piura.</span><span class="lang-es">La inauguración de la muestra en la Alianza Francesa de Piura.</span><span class="lang-pl">Otwarcie wystawy w&nbsp;Alliance Française w&nbsp;Piurze.</span></figcaption></figure>
-                <figure class="log-fig"><img src="images/piura-pilot/ceramics_1.webp" width="800" height="1067" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">Pieces from the first of the artisan pairs in the exhibition.</span><span class="lang-es">Piezas del primer equipo de artesanas de la muestra.</span><span class="lang-pl">Prace pierwszego zespołu rzemieślniczek prezentowane na wystawie.</span></figcaption></figure>
+                <figure class="log-fig"><img src="images/piura-pilot/ceramics_1.webp" width="800" height="1067" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">The opening of the exhibition at the Alliance Française of Piura.</span><span class="lang-es">La inauguración de la muestra en la Alianza Francesa de Piura.</span><span class="lang-pl">Otwarcie wystawy w&nbsp;Alliance Française w&nbsp;Piurze.</span></figcaption></figure>
+                <figure class="log-fig"><img src="images/piura-pilot/ceramics_2.webp" width="800" height="1088" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">Pieces from the first of the artisan pairs in the exhibition.</span><span class="lang-es">Piezas del primer equipo de artesanas de la muestra.</span><span class="lang-pl">Prace pierwszego zespołu rzemieślniczek prezentowane na wystawie.</span></figcaption></figure>
               </div>
             </div>
           </details>
@@ -1969,10 +1975,12 @@
             </summary>
             <div class="log-body">
               <div class="log-text">
-              <p class="lang-en">A one-hour in-person session for more than 20 UDEP students.</p>
-              <p class="lang-es">Sesión presencial de 1&nbsp;hora para más de 20 estudiantes de UDEP.</p><p class="lang-pl">Godzinne spotkanie na miejscu dla ponad 20 studentów UDEP.</p>
-              <p class="lang-en">We went through the master&#8217;s programmes on offer in Spain and how to prepare a&nbsp;strong application.</p>
-              <p class="lang-es">Repasamos la oferta de maestrías en España y&nbsp;cómo preparar una candidatura sólida.</p><p class="lang-pl">Omówiliśmy ofertę studiów magisterskich w&nbsp;Hiszpanii i&nbsp;to, jak przygotować mocną aplikację.</p>
+              <p class="lang-en">“I have always been passionate about this field.” It is the most repeated sentence in motivation letters, and the one that says the least.</p>
+              <p class="lang-es">«Siempre me ha apasionado este campo.» Es la frase más repetida en las cartas de motivación, y&nbsp;la que menos dice.</p><p class="lang-pl">„Ta dziedzina zawsze mnie pasjonowała.” To najczęściej powtarzane zdanie w&nbsp;listach motywacyjnych - i&nbsp;to, które mówi najmniej.</p>
+              <p class="lang-en">On 2 October, at the University of Piura campus, more than 20 students spent an hour with us on which master’s programmes exist in Spain, what they cost and when applications close; which scholarships to apply for; how to fit a&nbsp;CV on one page; and the motivation letter: the “why”, not the “what”. In addition, a&nbsp;UDEP graduate shared her experience of studying in Spain.</p>
+              <p class="lang-es">El 2 de octubre, en el campus de la Universidad de Piura, más de 20 estudiantes recorrieron con nosotros en una hora qué maestrías hay en España, cuánto cuestan y&nbsp;cuándo cierran las convocatorias; a&nbsp;qué becas postular; cómo resumir el CV en una página; y&nbsp;la carta de motivación: el «por qué», no el «qué». Además, una egresada de la UDEP compartió su experiencia de estudiar en España.</p><p class="lang-pl">2 października na kampusie Universidad de Piura ponad 20 studentów przez godzinę omawiało z&nbsp;nami, jakie studia magisterskie są dostępne w&nbsp;Hiszpanii, ile kosztują i&nbsp;kiedy zamykane są nabory; o&nbsp;jakie stypendia aplikować; jak zmieścić CV na jednej stronie; oraz list motywacyjny: „dlaczego”, a&nbsp;nie „co”. Dodatkowo absolwentka UDEP opowiedziała o&nbsp;swoich studiach w&nbsp;Hiszpanii.</p>
+              <p class="lang-en">Then it was hands-on: with a&nbsp;CV in front of them, they had to spot its mistakes. Every participant left with a&nbsp;CV checklist, a&nbsp;master’s budget breakdown and a&nbsp;sheet to name and quantify their strengths.</p>
+              <p class="lang-es">Luego, manos a&nbsp;la obra: con un CV delante, tocaba encontrar sus errores. Cada participante se llevó un checklist de CV, un desglose del presupuesto de una maestría y&nbsp;una hoja para poner nombre y&nbsp;cifra a&nbsp;sus fortalezas.</p><p class="lang-pl">Potem praktyka: trzeba było znaleźć błędy w&nbsp;przykładowym CV. Każdy uczestnik wyszedł z&nbsp;checklistą CV, rozbiciem budżetu studiów magisterskich i&nbsp;arkuszem, na którym nazywa swoje mocne strony i&nbsp;opisuje je liczbami.</p>
               </div>
               <div class="log-gallery log-gallery--2">
                 <figure class="log-fig"><img src="images/piura-pilot/taller_1.webp" width="800" height="942" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">The University of Piura campus.</span><span class="lang-es">El campus de la Universidad de Piura.</span><span class="lang-pl">Kampus Universidad de Piura.</span></figcaption></figure>
@@ -1985,7 +1993,7 @@
             <summary>
               <img class="log-thumb" src="images/piura-pilot/udep_reu.webp" width="96" height="96" alt="" loading="lazy" decoding="async">
               <span class="log-main">
-                <span class="log-meta"><span class="log-date"><span class="lang-en">24 Sep – 9 Oct 2026</span><span class="lang-es">24 sep – 9 oct 2026</span><span class="lang-pl">24 wrz – 9 paź 2026</span></span><span class="log-tag log-tag--partners"><span class="lang-en">Partners</span><span class="lang-es">Alianzas</span><span class="lang-pl">Partnerstwa</span></span></span>
+                <span class="log-meta"><span class="log-date"><span class="lang-en">24 Sep - 9 Oct 2026</span><span class="lang-es">24 sep - 9 oct 2026</span><span class="lang-pl">24 wrz - 9 paź 2026</span></span><span class="log-tag log-tag--partners"><span class="lang-en">Partners</span><span class="lang-es">Alianzas</span><span class="lang-pl">Partnerstwa</span></span></span>
                 <span class="log-title"><span class="lang-en">Meetings with UDEP and HUB UDEP</span><span class="lang-es">Reuniones con UDEP y&nbsp;HUB UDEP</span><span class="lang-pl">Spotkania z&nbsp;UDEP i&nbsp;HUB UDEP</span></span>
                 <span class="log-tease"><span class="lang-en">Working with the University of Piura and its Centre for Innovation and Entrepreneurship.</span><span class="lang-es">Trabajo con la Universidad de Piura y&nbsp;su Centro de Innovación y&nbsp;Emprendimiento.</span><span class="lang-pl">Współpraca z&nbsp;Universidad de Piura i&nbsp;jej Centrum Innowacji i&nbsp;Przedsiębiorczości.</span></span>
               </span>
@@ -2086,8 +2094,8 @@
             <h2><span class="lang-en">How to apply</span><span class="lang-es">Cómo postular</span><span class="lang-pl">Jak aplikować</span></h2>
 
             <h3><span class="lang-en">Stage 1: Application</span><span class="lang-es">Etapa 1: Postulación</span><span class="lang-pl">Etap 1: Zgłoszenie</span></h3>
-            <p class="lang-en"><strong>Documents required:</strong> bachelor&#8217;s degree diploma, academic transcript, CV (1 page), motivation letter (maximum 700 words) and completed application form.</p>
-            <p class="lang-es"><strong>Documentos requeridos:</strong> diploma de bachiller, certificado de notas, CV (1 página), carta de motivación (máximo 700 palabras) y&nbsp;formulario de solicitud completado.</p><p class="lang-pl"><strong>Wymagane dokumenty:</strong> dyplom ukończenia studiów (bachiller), wykaz ocen, CV (1 strona), list motywacyjny (maksymalnie 700 słów) i&nbsp;wypełniony formularz zgłoszeniowy.</p>
+            <p class="lang-en wide-p"><strong>Documents required:</strong> bachelor&#8217;s degree diploma, academic transcript, CV (1 page), motivation letter (maximum 700&nbsp;words) and completed application form.</p>
+            <p class="lang-es wide-p"><strong>Documentos requeridos:</strong> diploma de bachiller, certificado de notas, CV (1 página), carta de motivación (máximo 700&nbsp;palabras) y&nbsp;formulario de solicitud completado.</p><p class="lang-pl wide-p"><strong>Wymagane dokumenty:</strong> dyplom licencjata, wykaz ocen, CV (1 strona), list motywacyjny (maksymalnie 700&nbsp;słów) i&nbsp;wypełniony formularz aplikacyjny.</p>
             <p class="lang-en"><strong>Your motivation letter should answer three questions:</strong></p>
             <p class="lang-es"><strong>Tu carta de motivación debe responder tres preguntas:</strong></p><p class="lang-pl"><strong>Twój list motywacyjny powinien odpowiadać na trzy pytania:</strong></p>
             <ul class="lang-en">
@@ -2106,8 +2114,8 @@
             </ul>
 
             <h3><span class="lang-en">Stage 2: Interview</span><span class="lang-es">Etapa 2: Entrevista</span><span class="lang-pl">Etap 2: Rozmowa</span></h3>
-            <p class="lang-en">The highest-scoring candidates are invited to an informal online interview of about 30 minutes. It helps us understand your motivation, how you think, and how prepared you are to study and live abroad.</p>
-            <p class="lang-es">Las candidatas con mayor puntuación son invitadas a&nbsp;una entrevista online informal de unos 30 minutos para conocer su motivación, visión y&nbsp;preparación para estudiar en el extranjero.</p><p class="lang-pl">Kandydatki z&nbsp;najwyższą liczbą punktów zapraszamy na nieformalną rozmowę online (ok. 30 minut), aby poznać ich motywację, plany i&nbsp;przygotowanie do studiów za granicą.</p>
+            <p class="lang-en wide-p">The highest-scoring candidates are invited to an informal online interview of about 30 minutes. It helps us understand your motivation, how you think, and how prepared you are to study and live abroad.</p>
+            <p class="lang-es wide-p">Las candidatas con mayor puntuación son invitadas a&nbsp;una entrevista online informal de unos 30 minutos para conocer su motivación, visión y&nbsp;preparación para estudiar en el extranjero.</p><p class="lang-pl wide-p">Kandydatki z&nbsp;najwyższą liczbą punktów zapraszamy na nieformalną rozmowę online (ok. 30 minut), aby poznać ich motywację, plany i&nbsp;przygotowanie do studiów za granicą.</p>
           </div>
         </div>
       </div>
@@ -2154,7 +2162,7 @@
             <h2 class="no-rule"><span class="lang-en">How the process runs</span><span class="lang-es">Cómo avanza el proceso</span><span class="lang-pl">Jak przebiega proces</span></h2>
             <div class="roadmap">
               <div class="step">
-                <div class="step-when"><span class="lang-en">December – January</span><span class="lang-es">Diciembre – enero</span><span class="lang-pl">Grudzień – styczeń</span></div>
+                <div class="step-when"><span class="lang-en">December - January</span><span class="lang-es">Diciembre - enero</span><span class="lang-pl">Grudzień - styczeń</span></div>
                 <div class="step-spine"><span class="step-dot"></span></div>
                 <div class="step-card">
                   <h3><span class="lang-en">Call opens</span><span class="lang-es">Convocatoria</span><span class="lang-pl">Nabór</span></h3>
@@ -2172,7 +2180,7 @@
                 </div>
               </div>
               <div class="step">
-                <div class="step-when"><span class="lang-en">February – March</span><span class="lang-es">Febrero – marzo</span><span class="lang-pl">Luty – marzec</span></div>
+                <div class="step-when"><span class="lang-en">February - March</span><span class="lang-es">Febrero - marzo</span><span class="lang-pl">Luty - marzec</span></div>
                 <div class="step-spine"><span class="step-dot"></span></div>
                 <div class="step-card">
                   <h3><span class="lang-en">Applications</span><span class="lang-es">Postulaciones</span><span class="lang-pl">Aplikacje</span></h3>
@@ -2181,7 +2189,7 @@
                 </div>
               </div>
               <div class="step">
-                <div class="step-when"><span class="lang-en">April – May</span><span class="lang-es">Abril – mayo</span><span class="lang-pl">Kwiecień – maj</span></div>
+                <div class="step-when"><span class="lang-en">April - May</span><span class="lang-es">Abril - mayo</span><span class="lang-pl">Kwiecień - maj</span></div>
                 <div class="step-spine"><span class="step-dot"></span></div>
                 <div class="step-card">
                   <h3><span class="lang-en">Admissions</span><span class="lang-es">Admisiones</span><span class="lang-pl">Przyjęcia</span></h3>
@@ -2249,11 +2257,11 @@
                 </div>
                 <div class="spec-row">
                   <span class="spec-key"><span class="lang-en">Employability</span><span class="lang-es">Empleabilidad</span><span class="lang-pl">Zatrudnialność</span></span>
-                  <span class="spec-val none">—</span>
+                  <span class="spec-val none">-</span>
                 </div>
                 <div class="spec-row">
                   <span class="spec-key"><span class="lang-en">Schedule</span><span class="lang-es">Horario</span><span class="lang-pl">Godziny zajęć</span></span>
-                  <span class="spec-val none">—</span>
+                  <span class="spec-val none">-</span>
                 </div>
                 <div class="spec-row">
                   <span class="spec-key"><span class="lang-en">Places</span><span class="lang-es">Plazas</span><span class="lang-pl">Liczba miejsc</span></span>
@@ -2294,7 +2302,7 @@
                 </div>
                 <div class="spec-row">
                   <span class="spec-key"><span class="lang-en">Schedule</span><span class="lang-es">Horario</span><span class="lang-pl">Godziny zajęć</span></span>
-                  <span class="spec-val none">—</span>
+                  <span class="spec-val none">-</span>
                 </div>
                 <div class="spec-row">
                   <span class="spec-key"><span class="lang-en">Places</span><span class="lang-es">Plazas</span><span class="lang-pl">Liczba miejsc</span></span>
@@ -2331,7 +2339,7 @@
                 </div>
                 <div class="spec-row">
                   <span class="spec-key"><span class="lang-en">Employability</span><span class="lang-es">Empleabilidad</span><span class="lang-pl">Zatrudnialność</span></span>
-                  <span class="spec-val none">—</span>
+                  <span class="spec-val none">-</span>
                 </div>
                 <div class="spec-row">
                   <span class="spec-key"><span class="lang-en">Schedule</span><span class="lang-es">Horario</span><span class="lang-pl">Godziny zajęć</span></span>
@@ -2352,7 +2360,7 @@
           </div>
 
           <p class="note lang-en">Tuition is the total fee for the programme, academic year 2026/27, taken from each university's official website, at the rate that applies to international students from outside the EU who are not resident in Spain. Students who are nationals, EU residents or resident in Spain generally pay a&nbsp;lower rate. Figures, fee categories and entry requirements are set by the universities and can change - always check the university's own page before applying. A&nbsp;dash means the university does not publish that figure.</p>
-          <p class="note lang-es">La matrícula es el importe total del programa, curso 2026/27, según la web oficial de cada universidad, en la tarifa aplicable a&nbsp;estudiantes internacionales de fuera de la UE no residentes en España. Quienes tengan nacionalidad española, residencia en España o&nbsp;en la UE suelen pagar una tarifa menor. Las cifras, las categorías de tarifa y&nbsp;los requisitos de admisión los establece cada universidad y&nbsp;pueden cambiar - consulta siempre la página oficial antes de postular. Un guion indica que la universidad no publica ese dato.</p><p class="note lang-pl">Czesne to łączny koszt programu w&nbsp;roku akademickim 2026/27 według oficjalnej strony każdej uczelni, w&nbsp;stawce dla studentów międzynarodowych spoza UE, którzy nie mieszkają w&nbsp;Hiszpanii. Osoby z&nbsp;obywatelstwem hiszpańskim lub miejscem zamieszkania w&nbsp;Hiszpanii albo w&nbsp;UE zwykle płacą mniej. Kwoty, kategorie opłat i&nbsp;wymagania rekrutacyjne ustala każda uczelnia i&nbsp;mogą się one zmienić – przed złożeniem aplikacji zawsze sprawdź oficjalną stronę. Myślnik oznacza, że uczelnia nie publikuje tej informacji.</p>
+          <p class="note lang-es">La matrícula es el importe total del programa, curso 2026/27, según la web oficial de cada universidad, en la tarifa aplicable a&nbsp;estudiantes internacionales de fuera de la UE no residentes en España. Quienes tengan nacionalidad española, residencia en España o&nbsp;en la UE suelen pagar una tarifa menor. Las cifras, las categorías de tarifa y&nbsp;los requisitos de admisión los establece cada universidad y&nbsp;pueden cambiar - consulta siempre la página oficial antes de postular. Un guion indica que la universidad no publica ese dato.</p><p class="note lang-pl">Czesne to łączny koszt programu w&nbsp;roku akademickim 2026/27 według oficjalnej strony każdej uczelni, w&nbsp;stawce dla studentów międzynarodowych spoza UE, którzy nie mieszkają w&nbsp;Hiszpanii. Osoby z&nbsp;obywatelstwem hiszpańskim lub miejscem zamieszkania w&nbsp;Hiszpanii albo w&nbsp;UE zwykle płacą mniej. Kwoty, kategorie opłat i&nbsp;wymagania rekrutacyjne ustala każda uczelnia i&nbsp;mogą się one zmienić - przed złożeniem aplikacji zawsze sprawdź oficjalną stronę. Myślnik oznacza, że uczelnia nie publikuje tej informacji.</p>
         </div>
 
         <div class="band-inner">
@@ -2484,7 +2492,7 @@
       <div class="photo-seam photo-seam--right photo-seam--narrow photo-seam--up">
         <figure>
           <div class="seam-ph" style="background-image: url('images/piura-pilot/dividers/contacto_1.webp'); background-position: 50% 56%;"></div>
-          <figcaption><span class="lang-en">Your journey to Spain starts here.</span><span class="lang-es">Tu viaje a&nbsp;España empieza aquí.</span><span class="lang-pl">Twoja podróż do Hiszpanii zaczyna się tutaj.</span></figcaption>
+          <figcaption><span class="lang-en">Your journey to Spain starts with Cadena Brillante.</span><span class="lang-es">Tu viaje a&nbsp;España empieza con Cadena Brillante.</span><span class="lang-pl">Twoja podróż do Hiszpanii zaczyna się z&nbsp;Cadena Brillante.</span></figcaption>
         </figure>
       </div>
 
@@ -2495,7 +2503,7 @@
             <p class="lang-en">Are you an NGO working in Peru? An institution supporting education or gender equality? Someone who believes education is a&nbsp;right, not a&nbsp;privilege?</p>
             <p class="lang-en">We work with universities in Spain and with schools and organisations in the Piura region, and we are open to talking with others. If you are a&nbsp;university interested in hosting funded scholars, a&nbsp;school or organisation working in Piura, or an individual or company considering supporting the programme, write to us. We would be glad to work with you and walk you through how the programme works.</p>
             <p class="lang-es">¿Eres una ONG con presencia en el Perú? ¿Una institución que apoya la educación o&nbsp;la igualdad de género? ¿Una persona que cree que la educación es un derecho, no un privilegio?</p><p class="lang-pl">Jesteś organizacją pozarządową działającą w&nbsp;Peru? Instytucją wspierającą edukację lub równość płci? Osobą, która wierzy, że edukacja to prawo, a&nbsp;nie przywilej?</p>
-            <p class="lang-es">Trabajamos con universidades en España y&nbsp;con escuelas y&nbsp;organizaciones de la región de Piura, y&nbsp;estamos abiertos a&nbsp;hablar con otras. Si eres una universidad interesada en acoger becarias financiadas, una escuela u&nbsp;organización que opera en Piura, o&nbsp;una persona o&nbsp;empresa que se plantea apoyar el programa, escríbenos. Nos encantará trabajar contigo y&nbsp;explicarte cómo funciona el programa.</p><p class="lang-pl">Współpracujemy z&nbsp;uczelniami w&nbsp;Hiszpanii oraz ze szkołami i&nbsp;organizacjami w&nbsp;regionie Piury i&nbsp;chętnie porozmawiamy z&nbsp;kolejnymi. Jeśli reprezentujesz uczelnię zainteresowaną przyjęciem stypendystek, szkołę lub organizację działającą w&nbsp;Piurze albo jesteś osobą lub firmą, która rozważa wsparcie programu – napisz do nas. Chętnie nawiążemy współpracę i&nbsp;wyjaśnimy, jak działa program.</p>
+            <p class="lang-es">Trabajamos con universidades en España y&nbsp;con escuelas y&nbsp;organizaciones de la región de Piura, y&nbsp;estamos abiertos a&nbsp;hablar con otras. Si eres una universidad interesada en acoger becarias financiadas, una escuela u&nbsp;organización que opera en Piura, o&nbsp;una persona o&nbsp;empresa que se plantea apoyar el programa, escríbenos. Nos encantará trabajar contigo y&nbsp;explicarte cómo funciona el programa.</p><p class="lang-pl">Współpracujemy z&nbsp;uczelniami w&nbsp;Hiszpanii oraz ze szkołami i&nbsp;organizacjami w&nbsp;regionie Piury i&nbsp;chętnie porozmawiamy z&nbsp;kolejnymi. Jeśli reprezentujesz uczelnię zainteresowaną przyjęciem stypendystek, szkołę lub organizację działającą w&nbsp;Piurze albo jesteś osobą lub firmą, która rozważa wsparcie programu - napisz do nas. Chętnie nawiążemy współpracę i&nbsp;wyjaśnimy, jak działa program.</p>
           </div>
 
           <p class="mail-line">
