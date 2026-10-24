@@ -1055,6 +1055,10 @@
     #contact .photo-seam--up { transform: translateY(-54px); } /* photo sits two text lines higher */
     #contact .mail-line { margin-bottom: 54px; } /* extra room at the bottom of Contact */
     .founder-body p:not(.role) { min-height: 3lh; } /* every bio takes the same three lines */
+    @media (max-width: 640px) {
+      #home .seam-sign { transform: translateY(-31px); } /* centred between the two sections on phones */
+      #contact .photo-seam--up { transform: translateY(-18px); } /* clear of the text above on phones */
+    }
 
 
 
@@ -1341,7 +1345,7 @@
         </div>
       </div>
 
-      <div class="photo-seam photo-seam--right photo-seam--low photo-seam--fit">
+      <div class="photo-seam seam-sign photo-seam--right photo-seam--low photo-seam--fit">
         <figure>
           <div class="seam-ph" style="background-image: url('images/piura-pilot/dividers/inico_1.webp'); background-position: 50% 36%;"></div>
           <figcaption><span class="lang-en">How the school thanked us.<br><a class="seam-link" data-page="updates" href="#/en/updates">See how the visit went</a>.</span><span class="lang-es">Así nos dio las gracias la escuela.<br><a class="seam-link" data-page="updates" href="#/es/updates">Mira cómo fue la visita</a>.</span><span class="lang-pl">Tak szkoła nam podziękowała.<br><a class="seam-link" data-page="updates" href="#/pl/updates">Zobacz, jak przebiegła wizyta</a>.</span></figcaption>
@@ -1682,7 +1686,7 @@
                 <div class="founder-strip"><img src="data:image/png;base64,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" width="20" height="18" alt=""><span>Cadena Brillante</span></div>
                 <div class="founder-body">
                 <h3>Janek</h3>
-                <p class="role"><span class="lang-en">Project lead</span><span class="lang-es">Líder del proyecto</span><span class="lang-pl">Lider projektu</span></p>
+                <p class="role"><span class="lang-en">Project lead</span><span class="lang-es">Líder de proyecto</span><span class="lang-pl">Lider projektu</span></p>
                 <p class="lang-en">Data analyst. Leads the project, the university partnerships and the design of the pilot.</p>
                 <p class="lang-es">Analista de datos. Dirige el proyecto, las alianzas con las universidades y&nbsp;el diseño del piloto.</p><p class="lang-pl">Analityk danych. Kieruje projektem, współpracą z&nbsp;uczelniami i&nbsp;przygotowaniem pilotażu.</p>
                 </div>
@@ -1860,7 +1864,7 @@
             <a class="latest" data-page="updates" href="#/en/updates">
             <img class="latest-img" src="images/piura-pilot/prim_1.webp" width="800" height="1067" alt="" loading="lazy" decoding="async">
             <span class="latest-text">
-              <span class="eyebrow"><span class="lang-en">Latest update</span><span class="lang-es">Última actividad</span><span class="lang-pl">Ostatnie działanie</span> · <span class="latest-date"><span class="lang-en">7 Oct 2026</span><span class="lang-es">7 oct 2026</span><span class="lang-pl">7 paź 2026</span></span></span>
+              <span class="eyebrow"><span class="lang-en">Latest update</span><span class="lang-es">Última actividad</span><span class="lang-pl">Ostatnie działanie</span> · <span class="latest-date"><span class="lang-en">Oct 2026</span><span class="lang-es">oct 2026</span><span class="lang-pl">paź 2026</span></span></span>
               <span class="latest-title"><span class="lang-en">34 pupils, one school, new materials to learn</span><span class="lang-es">34 alumnos, una escuela y&nbsp;material para aprender</span><span class="lang-pl">34 uczniów, jedna szkoła i&nbsp;materiały do nauki</span></span>
               <span class="latest-tease"><span class="lang-en">Science books, backpacks and more for every pupil at I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-es">Libros de ciencia, mochilas y&nbsp;más para cada alumno de la I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-pl">Podręczniki, plecaki i&nbsp;nie tylko dla każdego ucznia I.E. Arrendamientos, Ayabaca (Meseta Andina).</span></span>
               <span class="latest-more"><span class="lang-en">See all updates</span><span class="lang-es">Ver todas las actividades</span><span class="lang-pl">Zobacz wszystkie działania</span> &#8594;</span>
@@ -1881,8 +1885,8 @@
           <p class="eyebrow"><span class="lang-en">Updates</span><span class="lang-es">Actividades</span><span class="lang-pl">Działania</span></p>
           <h1 id="h-updates" tabindex="-1"><span class="lang-en">Step by step, in Piura</span><span class="lang-es">Paso a&nbsp;paso, en Piura</span><span class="lang-pl">Krok po kroku, w&nbsp;Piurze</span></h1>
           <div class="rule"></div>
-          <p class="lead lead--full lang-en"><span class="nb">A running log of our work on the ground, newest first.</span></p>
-          <p class="lead lead--full lang-es"><span class="nb">Un registro de nuestro trabajo sobre el terreno, de lo más reciente a lo más antiguo.</span></p><p class="lead lead--full lang-pl"><span class="nb">Zapis naszej pracy w&nbsp;terenie, od najnowszych do najstarszych.</span></p>
+          <p class="lead lead--full lang-en"><span class="nb">A record of our work on the ground, latest at the top.</span></p>
+          <p class="lead lead--full lang-es"><span class="nb">Un registro de nuestro trabajo sobre el terreno, lo más reciente arriba.</span></p><p class="lead lead--full lang-pl"><span class="nb">Zapis naszej pracy w&nbsp;terenie, najnowsze na górze.</span></p>
         </div>
       </div>
 
@@ -1914,7 +1918,7 @@
             <summary>
               <img class="log-thumb" src="images/piura-pilot/prim_1.webp" width="96" height="96" alt="" loading="lazy" decoding="async">
               <span class="log-main">
-                <span class="log-meta"><span class="log-date"><span class="lang-en">7 Oct 2026</span><span class="lang-es">7 oct 2026</span><span class="lang-pl">7 paź 2026</span></span><span class="log-tag log-tag--school"><span class="lang-en">School materials</span><span class="lang-es">Material escolar</span><span class="lang-pl">Materiały szkolne</span></span></span>
+                <span class="log-meta"><span class="log-date"><span class="lang-en">Oct 2026</span><span class="lang-es">oct 2026</span><span class="lang-pl">paź 2026</span></span><span class="log-tag log-tag--school"><span class="lang-en">School materials</span><span class="lang-es">Material escolar</span><span class="lang-pl">Materiały szkolne</span></span></span>
                 <span class="log-title"><span class="lang-en">34 pupils, one school, new materials to learn</span><span class="lang-es">34 alumnos, una escuela y&nbsp;material para aprender</span><span class="lang-pl">34 uczniów, jedna szkoła i&nbsp;materiały do nauki</span></span>
                 <span class="log-tease"><span class="lang-en">Science books, backpacks and more for every pupil at I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-es">Libros de ciencia, mochilas y&nbsp;más para cada alumno de la I.E. Arrendamientos, Ayabaca (Meseta Andina).</span><span class="lang-pl">Podręczniki, plecaki i&nbsp;nie tylko dla każdego ucznia I.E. Arrendamientos, Ayabaca (Meseta Andina).</span></span>
               </span>
@@ -1942,7 +1946,7 @@
             <summary>
               <img class="log-thumb" src="images/piura-pilot/th_ceramica.webp" width="96" height="96" alt="" loading="lazy" decoding="async">
               <span class="log-main">
-                <span class="log-meta"><span class="log-date"><span class="lang-en">6 Oct 2026</span><span class="lang-es">6 oct 2026</span><span class="lang-pl">6 paź 2026</span></span><span class="log-tag log-tag--partners"><span class="lang-en">Partners</span><span class="lang-es">Alianzas</span><span class="lang-pl">Partnerstwa</span></span></span>
+                <span class="log-meta"><span class="log-date"><span class="lang-en">Oct 2026</span><span class="lang-es">oct 2026</span><span class="lang-pl">paź 2026</span></span><span class="log-tag log-tag--partners"><span class="lang-en">Partners</span><span class="lang-es">Alianzas</span><span class="lang-pl">Partnerstwa</span></span></span>
                 <span class="log-title"><span class="lang-en">&#8220;Chulucanas–Valencia, united by ceramics&#8221;</span><span class="lang-es">&#171;Chulucanas–Valencia, unidos por la cerámica&#187;</span><span class="lang-pl">„Chulucanas–Walencja, połączone ceramiką”</span></span>
                 <span class="log-tease"><span class="lang-en">We attended the opening of an exhibition born from artisan exchanges between Valencia and Piura.</span><span class="lang-es">Asistimos a&nbsp;la inauguración de una muestra nacida del intercambio entre artesanos de Valencia y&nbsp;Piura.</span><span class="lang-pl">Byliśmy na otwarciu wystawy, która powstała z&nbsp;wymiany między rzemieślnikami z&nbsp;Walencji i&nbsp;Piury.</span></span>
               </span>
@@ -1967,7 +1971,7 @@
             <summary>
               <img class="log-thumb" src="images/piura-pilot/th_taller_post_4x5.webp" width="96" height="96" style="object-position: 50% 100%;" alt="" loading="lazy" decoding="async">
               <span class="log-main">
-                <span class="log-meta"><span class="log-date"><span class="lang-en">2 Oct 2026</span><span class="lang-es">2 oct 2026</span><span class="lang-pl">2 paź 2026</span></span><span class="log-tag log-tag--workshop"><span class="lang-en">Workshop</span><span class="lang-es">Taller</span><span class="lang-pl">Warsztaty</span></span></span>
+                <span class="log-meta"><span class="log-date"><span class="lang-en">Oct 2026</span><span class="lang-es">oct 2026</span><span class="lang-pl">paź 2026</span></span><span class="log-tag log-tag--workshop"><span class="lang-en">Workshop</span><span class="lang-es">Taller</span><span class="lang-pl">Warsztaty</span></span></span>
                 <span class="log-title"><span class="lang-en">&#8220;Get ready for your master&#8217;s in Spain&#8221;</span><span class="lang-es">&#171;Prepárate para tu máster en&nbsp;España&#187;</span><span class="lang-pl">„Przygotuj się do studiów magisterskich w&nbsp;Hiszpanii”</span></span>
                 <span class="log-tease"><span class="lang-en">A one-hour in-person session for more than 20 students of the University of Piura.</span><span class="lang-es">Sesión presencial de 1&nbsp;hora para más de 20 estudiantes de la Universidad de Piura.</span><span class="lang-pl">Godzinne spotkanie na miejscu dla ponad 20 studentów Universidad de Piura.</span></span>
               </span>
@@ -1993,7 +1997,7 @@
             <summary>
               <img class="log-thumb" src="images/piura-pilot/udep_reu.webp" width="96" height="96" alt="" loading="lazy" decoding="async">
               <span class="log-main">
-                <span class="log-meta"><span class="log-date"><span class="lang-en">24 Sep - 9 Oct 2026</span><span class="lang-es">24 sep - 9 oct 2026</span><span class="lang-pl">24 wrz - 9 paź 2026</span></span><span class="log-tag log-tag--partners"><span class="lang-en">Partners</span><span class="lang-es">Alianzas</span><span class="lang-pl">Partnerstwa</span></span></span>
+                <span class="log-meta"><span class="log-date"><span class="lang-en">Sep - Oct 2026</span><span class="lang-es">sep - oct 2026</span><span class="lang-pl">wrz - paź 2026</span></span><span class="log-tag log-tag--partners"><span class="lang-en">Partners</span><span class="lang-es">Alianzas</span><span class="lang-pl">Partnerstwa</span></span></span>
                 <span class="log-title"><span class="lang-en">Meetings with UDEP and HUB UDEP</span><span class="lang-es">Reuniones con UDEP y&nbsp;HUB UDEP</span><span class="lang-pl">Spotkania z&nbsp;UDEP i&nbsp;HUB UDEP</span></span>
                 <span class="log-tease"><span class="lang-en">Working with the University of Piura and its Centre for Innovation and Entrepreneurship.</span><span class="lang-es">Trabajo con la Universidad de Piura y&nbsp;su Centro de Innovación y&nbsp;Emprendimiento.</span><span class="lang-pl">Współpraca z&nbsp;Universidad de Piura i&nbsp;jej Centrum Innowacji i&nbsp;Przedsiębiorczości.</span></span>
               </span>
@@ -2007,6 +2011,46 @@
               </div>
             </div>
           </details>
+
+          <details class="log-entry" id="spain-universities" data-pilot="piura-2026" data-tag="partners">
+            <summary>
+              <img class="log-thumb" src="images/piura-pilot/th_uni_es.webp" width="96" height="96" alt="" loading="lazy" decoding="async" style="object-position: 50% 85%;">
+              <span class="log-main">
+                <span class="log-meta"><span class="log-date"><span class="lang-en">Aug - Sep 2026</span><span class="lang-es">ago - sep 2026</span><span class="lang-pl">sie - wrz 2026</span></span><span class="log-tag log-tag--partners"><span class="lang-en">Partners</span><span class="lang-es">Alianzas</span><span class="lang-pl">Partnerstwa</span></span></span>
+                <span class="log-title"><span class="lang-en">Talks with universities in Spain</span><span class="lang-es">Conversaciones con universidades en España</span><span class="lang-pl">Rozmowy z&nbsp;uczelniami w&nbsp;Hiszpanii</span></span>
+                <span class="log-tease"><span class="lang-en">Looking for a&nbsp;partner university in Spain.</span><span class="lang-es">Buscamos una universidad socia en España.</span><span class="lang-pl">Szukamy uczelni partnerskiej w&nbsp;Hiszpanii.</span></span>
+              </span>
+            </summary>
+            <div class="log-body">
+              <div class="log-text">
+              <p class="lang-en">We held talks with several Spanish universities, looking for an institutional partner. We presented our scholarship programme and explored how a&nbsp;collaboration could work. Our conversations with institutions in Madrid, Barcelona and Valencia helped us shape the programme, answer open questions and secure better conditions for the students taking part.</p>
+              <p class="lang-es">Conversamos con varias universidades españolas en busca de un socio institucional. Presentamos nuestro programa de becas y&nbsp;exploramos cómo podría funcionar una colaboración. Las conversaciones con instituciones de Madrid, Barcelona y&nbsp;Valencia nos ayudaron a&nbsp;dar forma al programa, resolver dudas y&nbsp;conseguir mejores condiciones para las estudiantes que participen en el proyecto.</p><p class="lang-pl">Rozmawialiśmy z&nbsp;kilkoma hiszpańskimi uczelniami, szukając partnera instytucjonalnego. Przedstawiliśmy nasz program stypendialny i&nbsp;omówiliśmy, jak mogłaby wyglądać współpraca. Rozmowy z&nbsp;instytucjami w&nbsp;Madrycie, Barcelonie i&nbsp;Walencji pomogły nam dopracować program, wyjaśnić wątpliwości i&nbsp;wynegocjować lepsze warunki dla studentek biorących udział w&nbsp;projekcie.</p>
+              </div>
+              <div class="log-gallery log-gallery--3">
+                <figure class="log-fig"><img src="images/piura-pilot/uni_es_1.webp" width="800" height="1067" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">As Spain’s capital, Madrid attracts talent and offers a&nbsp;wealth of job opportunities.</span><span class="lang-es">Como capital de España, Madrid atrae talento y&nbsp;concentra oportunidades laborales.</span><span class="lang-pl">Jako stolica Hiszpanii Madryt przyciąga talenty i&nbsp;oferuje wiele możliwości zawodowych.</span></figcaption></figure>
+                <figure class="log-fig"><img src="images/piura-pilot/uni_es_2.webp" width="800" height="1067" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">Valencia combines quality education with an affordable cost of living.</span><span class="lang-es">Valencia combina una educación de calidad con un costo de vida asequible.</span><span class="lang-pl">Walencja łączy wysoką jakość kształcenia z&nbsp;przystępnymi kosztami życia.</span></figcaption></figure>
+                <figure class="log-fig"><img src="images/piura-pilot/uni_es_3.webp" width="800" height="1067" alt="" loading="lazy" decoding="async"><figcaption><span class="lang-en">Barcelona brings together leading technical universities and a&nbsp;fast-growing tech scene.</span><span class="lang-es">Barcelona reúne universidades técnicas de referencia y&nbsp;un ecosistema tecnológico en pleno crecimiento.</span><span class="lang-pl">Barcelona łączy renomowane uczelnie techniczne z&nbsp;dynamicznie rozwijającym się sektorem technologicznym.</span></figcaption></figure>
+              </div>
+            </div>
+          </details>
+
+          <details class="log-entry" id="udep-international" data-pilot="piura-2026" data-tag="partners">
+            <summary>
+              <img class="log-thumb" src="images/piura-pilot/th_udep_int.webp" width="96" height="96" alt="" loading="lazy" decoding="async">
+              <span class="log-main">
+                <span class="log-meta"><span class="log-date"><span class="lang-en">Jul 2026</span><span class="lang-es">jul 2026</span><span class="lang-pl">lip 2026</span></span><span class="log-tag log-tag--partners"><span class="lang-en">Partners</span><span class="lang-es">Alianzas</span><span class="lang-pl">Partnerstwa</span></span></span>
+                <span class="log-title"><span class="lang-en">Meeting with UDEP Internacional</span><span class="lang-es">Reunión con UDEP Internacional</span><span class="lang-pl">Spotkanie z&nbsp;UDEP Internacional</span></span>
+                <span class="log-tease"><span class="lang-en">Exploring how to work with the University of Piura.</span><span class="lang-es">Exploramos cómo colaborar con la Universidad de Piura.</span><span class="lang-pl">Szukamy sposobów współpracy z&nbsp;Universidad de Piura.</span></span>
+              </span>
+            </summary>
+            <div class="log-body">
+              <div class="log-text">
+              <p class="lang-en">We met the University of Piura (UDEP) to get to know each other and explore ways to collaborate. We presented Cadena Brillante and our pilot project, and discussed how to reach students in Piura interested in a&nbsp;master’s in Spain. It was the starting point of a&nbsp;relationship that now includes workshops on campus.</p>
+              <p class="lang-es">Nos reunimos con la Universidad de Piura (UDEP) para conocernos y&nbsp;explorar posibles formas de colaborar. Presentamos Cadena Brillante y&nbsp;nuestro proyecto piloto, y&nbsp;conversamos sobre cómo llegar a&nbsp;estudiantes de Piura interesadas en una maestría en España. Fue el punto de partida de una relación que hoy incluye talleres en el campus.</p><p class="lang-pl">Spotkaliśmy się z&nbsp;Universidad de Piura (UDEP), aby się poznać i&nbsp;omówić możliwe formy współpracy. Przedstawiliśmy Cadena Brillante i&nbsp;nasz projekt pilotażowy oraz rozmawialiśmy o&nbsp;tym, jak dotrzeć do studentek z&nbsp;Piury zainteresowanych studiami magisterskimi w&nbsp;Hiszpanii. To był początek współpracy, która dziś obejmuje także warsztaty na kampusie.</p>
+              </div>
+            </div>
+          </details>
+
           </div>
 
         </div>
@@ -2737,6 +2781,15 @@
         var open = header.classList.toggle('menu-open');
         menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
+
+      /* a tap anywhere outside the header closes the open menu (and does nothing else) */
+      document.addEventListener('click', function (e) {
+        if (!header.classList.contains('menu-open') || header.contains(e.target)) return;
+        e.preventDefault();
+        e.stopPropagation();
+        header.classList.remove('menu-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+      }, true);
 
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && picker.classList.contains('open')) {
